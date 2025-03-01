@@ -35,16 +35,14 @@ Never commit large data files,trained models, personal API Keys/secrets to GitHu
 
 # E115 - Birdwatching App
 
-**Team Members**  
-Jaqueline Garcia-Yi, Susan Urban, Yong Li, and Victoria Okereke
+**Team Members**: Jaqueline Garcia-Yi, Susan Urban, Yong Li, and Victoria Okereke
 
-**Group Name**
-The Birdwatching Group
+**Group Name**: The Birdwatching Group
 
-**Project**
+**Project**  
 In this project, we aim to develop an AI-powered bird identification and knowledge application. The app will feature two main methods for recognizing birds: users can either upload a sound file for automatic bird recognition, powered by a fine-tuned AI model, or manually search for a bird by its scientific name. Once identified, the app will provide detailed information, including the bird’s location on a map within the national park and key characteristics about the species. Additionally, a built-in chatbot will allow users to ask bird-related questions, offering expert insights powered by a RAG model.
 
-### Milestone2 ###
+### Milestone 2 ###
 
 In this milestone, we have the components for data management, including versioning, as well as the acoustic and language models.
 
