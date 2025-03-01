@@ -35,7 +35,7 @@ Never commit large data files,trained models, personal API Keys/secrets to GitHu
 
 # E115 - Birdwatching App
 
-**Team Members**
+**Team Members**  
 Jaqueline Garcia-Yi, Susan Urban, Yong Li, and Victoria Okereke
 
 **Group Name**
