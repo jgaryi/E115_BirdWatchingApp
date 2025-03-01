@@ -1,4 +1,4 @@
-## Milestone 2 Template
+## Milestone 2 - E115 - Birdwatching App
 
 ```
 The files are empty placeholders only. You may adjust this template as appropriate for your project.
@@ -33,20 +33,20 @@ Never commit large data files,trained models, personal API Keys/secrets to GitHu
         └── train_model.py
 ```
 
-# AC215 - Milestone2 - Cheesy App
+# E115 - Birdwatching App
 
 **Team Members**
-Pavlos Parmigianopapas, Pavlos Ricottapapas and Pavlos Gouda-papas
+Jaqueline Garcia-Yi, Susan Urban, Yong Li, and Victoria Okereke
 
 **Group Name**
-The Grate Cheese Group
+The Birdwatching Group
 
 **Project**
 In this project, we aim to develop an AI-powered cheese application. The app will feature visual recognition technology to identify various types of cheese and include a chatbot for answering all kinds of cheese-related questions. Users can simply take a photo of the cheese, and the app will identify it, providing detailed information. Additionally, the chatbot will allow users to ask cheese-related questions. It will be powered by a RAG model and fine-tuned models, making it a specialist in cheese expertise.
 
 ### Milestone2 ###
 
-In this milestone, we have the components for data management, including versioning, as well as the computer vision and language models.
+In this milestone, we have the components for data management, including versioning, as well as the acoustic and language models.
 
 **Data**
 We gathered a dataset of 100,000 cheese images representing approximately 1,500 different varieties. The dataset, approximately 100GB in size, was collected from the following sources: (1), (2), (3). We have stored it in a private Google Cloud Bucket.
