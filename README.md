@@ -42,7 +42,7 @@ Jaqueline Garcia-Yi, Susan Urban, Yong Li, and Victoria Okereke
 The Birdwatching Group
 
 **Project**
-In this project, we aim to develop an AI-powered cheese application. The app will feature visual recognition technology to identify various types of cheese and include a chatbot for answering all kinds of cheese-related questions. Users can simply take a photo of the cheese, and the app will identify it, providing detailed information. Additionally, the chatbot will allow users to ask cheese-related questions. It will be powered by a RAG model and fine-tuned models, making it a specialist in cheese expertise.
+In this project, we aim to develop an AI-powered bird identification and knowledge application. The app will feature two main methods for recognizing birds: users can either upload a sound file for automatic bird recognition, powered by a fine-tuned AI model, or manually search for a bird by its scientific name. Once identified, the app will provide detailed information, including the bird’s location on a map within the national park and key characteristics about the species. Additionally, a built-in chatbot will allow users to ask bird-related questions, offering expert insights powered by a RAG model.
 
 ### Milestone2 ###
 
