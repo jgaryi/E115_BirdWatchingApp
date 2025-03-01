@@ -1,4 +1,4 @@
-## Milestone 2 - E115 - Birdwatching App
+## Project Milestone 2 - E115 - Birdwatching App
 
 ```
 The files are empty placeholders only. You may adjust this template as appropriate for your project.
