@@ -40,19 +40,11 @@ def extract_data(URL, FILE_PATH):
             html = f.read()
 
     soup = BeautifulSoup(html, 'html.parser')
-    rows = soup.find("p", class_="u-stack-sm").text
+    rows = soup.find("div", class_="content-column one_half").text
     print(rows)
-    # img_url = soup.find('img', class_="Species-media-image")["src"]
-    img_url = [img["src"] for img in soup.find_all("img", class_="Species-media-image")]
-    print(img_url)
-    img_list = []
-    for i in img_url:
-        img = requests.get(i)
-        img_list.append(Image.open(BytesIO(img.content)))
-        
-    # img = requests.get(img_url)
-    # print(img)
-    return rows, img_list
+
+    return rows
+
 
 def save_doc(text, doc_path):
     doc = Document()
@@ -67,48 +59,38 @@ def all_urls(spec_name,urls, main_fold):
         file_name = 'data.html'
         file_path = os.path.join(path, file_name)
 
-        data, images = extract_data(url, file_path)
+        data = extract_data(url, file_path)
         bucket_name = "acoustic_monitoring_project"   
-        folder_prefix = "NEWbird_images"
-        folder_prefix2 = "NEWbird_descriptions"
+        # folder_prefix = "bird_images"
+        folder_prefix2 = "peru_aves_descriptions"
 
         blob_name = f"{folder_prefix2}/{specie.replace(' ', '_')}.txt"
+        # upload_to_gcs(bucket_name, f'{folder_prefix}/{specie}_{i + 1}.jpg', img_p) 
 
         upload_to_gcs(bucket_name, blob_name, data)
-        # upload_to_gcs(bucket_name, f'{folder_prefix2}/{specie}_{i + 1}.jpg', img_p)
-
-        doc_p = os.path.join(path, f'{specie}.docx')
-        save_doc(data, doc_p)
-
-        for i, image in enumerate(images):
-            img_p = os.path.join(path, f'{specie}_{i + 1}.jpg')
-            image.save(img_p)
-
-            upload_to_gcs(bucket_name, f'{folder_prefix}/{specie}_{i + 1}.jpg', img_p)  
+        # upload_to_gcs(bucket_name, f'{folder_prefix2}/{specie}_{i + 1}.jpg', img_p) 
 
 
 
 species = ["Rupicola peruvianus",
-           "Andigena hypoglauca",
            "Aulacorhynchus coeruleicinctis",
            "Doliornis sclateri",
            "Pipile cumanensis",
            "Gallinago jamesoni",
            "Tinamus osgoodi",
-           "Pionus menstruus",
+           "Pionus tumultuosus",
            "Hapalopsittaca melanotis"
            ]
-urls = ["https://ebird.org/species/andcot1",
-        "https://ebird.org/species/gybmot1",
-        "https://ebird.org/species/blbtou1",
-        "https://ebird.org/species/bavcot1",
-        "https://ebird.org/species/butpig1",
-        "https://ebird.org/species/andsni1",
-        "https://ebird.org/species/blatin1",
-        "https://ebird.org/species/blhpar1",
-        "https://ebird.org/species/blwpar1"
+urls = ["https://www.peruaves.org/cotingidae/andean-cock-rock-rupicola-peruvianus/",
+        "https://www.peruaves.org/ramphastidae/blue-banded-toucanet-aulacorhynchus-coeruleicinctis/",
+        "https://www.peruaves.org/cotingidae/bay-vented-cotinga-doliornis-sclateri/",
+        "https://www.peruaves.org/cracidae/blue-throated-piping-guan-pipile-cumanensis/",
+        "https://www.peruaves.org/scolopacidae/andean-snipe-gallinago-jamesoni/",
+        "https://www.peruaves.org/tinamidae/black-tinamou-tinamus-osgoodi/",
+        "https://www.peruaves.org/psittacidae/speckle-faced-parrot-pionus-tumultuosus/",
+        "https://www.peruaves.org/psittacidae/black-winged-parrot-hapalopsittaca-melanotis/"
 ]
-mainpath = 'bird_files'
+mainpath = 'bird_files2'
 
 all_urls(species, urls,mainpath)
 
