@@ -10,6 +10,7 @@
 ├── References
 ├── Reports
 │   └── Statement_of_Work.pdf
+│   └── E115_BirdWatching App Wireframe.pdf
 └── Models
     └── Acoustic_Monitoring_Model
     │   ├── Dockerfile
@@ -119,7 +120,7 @@ An initial baseline of both the acoustic data and the LLM-RAG data was collected
 
 Over the course of several months, additional data may be incorporated into both the acoustic and LLM-RAG datasets. However, for the remote sensing model, deforestation data is typically updated once per year.
 
-Both the acoustic and LLM-RAG datasets are dynamic, with snapshots taken at specific intervals to capture changes. As website authors may update or expand the data, these datasets are expected to evolve over time, with content updates occurring over several months.
+Both the acoustic and LLM-RAG datasets are dynamic, with snapshots taken at specific intervals to capture full replacements of the data. As website authors may update or expand the data, these datasets are expected to evolve over time, with content updates occurring over several months.
 
 Previous versions of the models are not expected to be revisited. Given that updates are anticipated to occur every few months, the team will establish the initial baseline and later implement the Data Versioning Container.
 
