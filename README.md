@@ -9,6 +9,7 @@
     │   ├── Dockerfile
     │   ├── pipfile
     │   ├── pipfile.lock
+    │   ├── docker-shell.sh
     │   ├── cli.py
     │   └── preprocess_cv.py
     │
