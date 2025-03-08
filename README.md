@@ -100,10 +100,10 @@ All data is stored in a private Google Cloud Bucket (https://console.cloud.googl
 <br><br>
 ## Data Pipeline Overview
 
-1. **`src/datapipeline/preprocess_cv.py`**
+1. **`data/data_collection/preprocess_cv.py`**
    This script handles preprocessing on the forty-seven bird images. It reduces the image sizes to 128x128 to ensure faster loading, improved performance, and a consistent display. The preprocessed dataset is stored in the specified GCS location.
 
-2. **`src/datapipeline/preprocess_rag.py`**
+2. **`data/data_processing/preprocess_rag.py`**
    This script prepares the necessary data for setting up our vector database. It performs chunking, embedding, and loads the data into a vector database (ChromaDB).
 
 3. **`src/datapipeline/Pipfile`**
