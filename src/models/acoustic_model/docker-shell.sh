@@ -12,4 +12,5 @@ export IMAGE_NAME="bird_acoustic_model"
 docker build -t $IMAGE_NAME --platform=linux/amd64 -f Dockerfile .
 
 # Run the container, for windows system, use absolute folder path instead of "pwd"
-docker run --rm --name $IMAGE_NAME -ti -v "/your/folder/path":/app $IMAGE_NAME
+#docker run --rm --name $IMAGE_NAME -ti -v "/your/folder/path":/app $IMAGE_NAME
+docker run --rm --name $IMAGE_NAME -ti -v "$(dirname $(realpath $0))/:/app" $IMAGE_NAME
