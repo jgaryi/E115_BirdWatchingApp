@@ -60,10 +60,10 @@ We gathered a dataset of 411 audio recordings of nine representative bird specie
 - Rupicola peruvianus, 158
 - Tinamus osgoodi, 20  
 
-The dataset, approximately XX GB in size, was collected from the following source: (1).
+The dataset, approximately 565 MB in size, was collected from the following source: (1).
   
 **2. For the LLM-RAG Model**  
-We compiled detailed bird information from seven authoritative sources: (2), (3), (4), (5), (6), (7), (8). The dataset consists of 9 integrated files, one per species. Due to copyright considerations, we will not use full scientific articles but only the abstracts available on Google Scholar.
+We compiled detailed bird information from seven authoritative sources: (2), (3), (4), (5), (6), (7), and (8). The dataset consists of nine integrated files, one per species. Due to copyright considerations, we only included abstracts from Google Scholar (Source 8) rather than full scientific articles.
   
 **3. For the Remote Sensing Model**  
 We obtained time series data of remote sensing Landsat images, detailing global forest extent and annual change from 2000 to 2023, from source (9), along with more than 20,000 georeferenced data from previous locations where the nine species were observed since the early 1980s, although without audio recordings, as provided by source (3).
