@@ -76,7 +76,7 @@ All data is stored in a private Google Cloud Bucket (https://console.cloud.googl
 
 <br><br>
 ## Data Pipeline Containers
-1. One container processes the 100GB dataset by resizing the images and storing them back to Google Cloud Storage (GCS).
+1. One container processes the forty-seven images by resizing and storing them back to Google Cloud Storage (GCS).
 
 	**Input:** Source and destination GCS locations, resizing parameters, and required secrets (provided via Docker).
 
@@ -85,7 +85,7 @@ All data is stored in a private Google Cloud Bucket (https://console.cloud.googl
 2. Another container prepares data for the RAG model, including tasks such as chunking, embedding, and populating the vector database.
 
 <br><br>
-## Pipeline Overview
+## Data Pipeline Overview
 
 1. **`src/datapipeline/preprocess_cv.py`**
    This script handles preprocessing on the forty-seven bird images. It reduces the image sizes to 128x128 to ensure faster loading, improved performance, and a consistent display. The preprocessed dataset is stored in the specified GCS location.
