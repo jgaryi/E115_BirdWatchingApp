@@ -4,7 +4,15 @@
 
 ```
 ├── Readme.md
-├── Data 
+└── Data
+    └── Data_Collection
+    │   ├── Dockerfile
+    │   ├── pipfile
+    │   ├── pipfile.lock
+    │   ├── cli.py
+    │   └── preprocess_cv.py
+    │
+    └── Data Processing
 ├── Notebooks
 │   └── Acoustic_Monitoring_EDA.ipynb
 ├── References
