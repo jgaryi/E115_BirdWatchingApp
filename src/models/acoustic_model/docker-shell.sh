@@ -11,5 +11,5 @@ export IMAGE_NAME="bird_acoustic_model"
 #docker build -t $IMAGE_NAME -f Dockerfile .
 docker build -t $IMAGE_NAME --platform=linux/amd64 -f Dockerfile .
 
-# Run the container
-docker run --rm --name $IMAGE_NAME -ti -v "C:/Users/yongl/E115/Project/BirdNET-Analyzer":/app $IMAGE_NAME
+# Run the container, for windows system, use absolute folder path instead of "pwd"
+docker run --rm --name $IMAGE_NAME -ti -v "/your/folder/path":/app $IMAGE_NAME
