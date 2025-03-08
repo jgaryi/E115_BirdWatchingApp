@@ -39,7 +39,7 @@
 
 **Project:**  
 This project aims to develop an AI-powered bird identification and knowledge application using as case study the the Yanachaga Chemillen National Park in Peru. The app will offer two primary methods for bird recognition: (1) users can upload a sound file for automatic identification, driven by an acoustic AI model, or (2) manually search for a bird by its scientific name. <br><br>
-Upon successful identification, the app will present comprehensive information about the bird, including its geographic location within the national park and key species characteristics. The integrated map will also display the bird's current habitat conditions, highlighting changes such as deforestation through a remote sensing model. <br><br>
+Upon successful identification, the app will present comprehensive information about the bird, including its geographic location within the national park, key species characteristics, and a corresponding image for visual reference. The integrated map will also display the bird's current habitat conditions, highlighting changes such as deforestation through a remote sensing model. <br><br>
 Additionally, a built-in chatbot will enable users to ask bird-related questions, providing expert answers powered by a LLM Retrieval-Augmented Generation (LLM-RAG) model.
 <br><br>
 
