@@ -4,10 +4,28 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
+beautifulsoup4 = "*"
 bs4 = "*"
-"google.cloud" = "*"
+certifi = "*"
+charset-normalizer = "*"
+distlib = "*"
+filelock = "*"
+google-cloud = "*"
+google-cloud-storage = "*"
+idna = "*"
+importlib-metadata = "*"
+pillow = "*"
+pipenv = "*"
+platformdirs = "*"
+python-docx = "*"
+requests = "*"
+soupsieve = "*"
+typing-extensions = "*"
+urllib3 = "*"
+virtualenv = "*"
+zipp = "*"
 
 [dev-packages]
 
 [requires]
-python_version = "3.11"
+python_version = "3.9"

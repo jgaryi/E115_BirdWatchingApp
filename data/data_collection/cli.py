@@ -16,9 +16,9 @@ if not os.path.exists(source_data):
 
 def upload_to_gcs(bucket_name, blob_name, content):
 
-    credentials = service_account.Credentials.from_service_account_file('secrets/acoustic_monitoring_sa.json')
+    # credentials = service_account.Credentials.from_service_account_file('secrets/acoustic_monitoring_sa.json')
 
-    storage_client = storage.Client(credentials=credentials, project='acoustic_monitoring_sa')
+    storage_client = storage.Client(project='acoustic_monitoring_sa')
     bucket = storage_client.bucket(bucket_name)
     
     
@@ -289,8 +289,8 @@ for species in bird_species_dirs:
 
 
 def upload_folder_to_gcs(bucket_name, local_folder, gcs_folder=""):
-    credentials = service_account.Credentials.from_service_account_file('secrets/acoustic_monitoring_sa.json')
-    storage_client = storage.Client(credentials=credentials, project='acoustic_monitoring_sa')
+    # credentials = service_account.Credentials.from_service_account_file('secrets/acoustic_monitoring_sa.json')
+    storage_client = storage.Client(project='acoustic_monitoring_sa')
     bucket = storage_client.bucket(bucket_name)
 
     for root, _, files in os.walk(local_folder):
@@ -305,7 +305,7 @@ def upload_folder_to_gcs(bucket_name, local_folder, gcs_folder=""):
             print(f"Uploaded {local_path} to gs://{bucket_name}/{gcs_path}")
 
 
-bucket_name = "acoustic_monitoring_project"
+bucket_name = os.getenv('BUCKET_NAME', 'acoustic_monitoring_project')
 
 local_folder = os.path.join(source_data, 'output_folder')
 gcs_folder = "bird_description"

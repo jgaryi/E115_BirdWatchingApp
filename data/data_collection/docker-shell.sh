@@ -10,6 +10,8 @@ export SECRETS_DIR=$(pwd)/../secrets/
 export GCP_PROJECT="gen-lang-client-0083231133" # CHANGE TO YOUR PROJECT ID
 export GOOGLE_APPLICATION_CREDENTIALS="/secrets/acoustic_monitoring_sa.json"
 export IMAGE_NAME="data-scraping-cli"
+export BUCKET_NAME = "acoustic_monitoring_project"
+#change line 10 and line 11
 
 
 # Create the network if we don't have it yet
