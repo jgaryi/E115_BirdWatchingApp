@@ -37,7 +37,7 @@
     │   ├── pipfile.lock
     │   └── Infer_Model.py   
     │
-    └── Remote_Sensing_Deforestation_Model
+    └── Remote_Sensing_Model
         ├── Dockerfile
         ├── pipfile
         ├── pipfile.lock
