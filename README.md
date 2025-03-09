@@ -13,7 +13,7 @@
     │   ├── cli.py
     │   └── preprocess_cv.py
     │
-    └── Data Processing
+    └── Data_Processing
     │   ├── Dockerfile
     │   ├── pipfile
     │   ├── pipfile.lock
@@ -89,28 +89,35 @@ All data is stored in a private Google Cloud Bucket (https://console.cloud.googl
 
 <br><br>
 ## Data Pipeline Containers
-1. One container processes the forty-seven images by resizing and storing them back to Google Cloud Storage (GCS).
+The data pipeline consists of two containers:
+1. **data_collection** contains scripts that automate the collection, processing, and storage of our data, including text, images, and audio.
 
-	**Input:** Source and destination GCS locations, resizing parameters, and required secrets (provided via Docker).
+	**Input:** Url pages from the authoritative sources above.
 
-	**Output:** Resized images stored in the specified GCS location.
+	**Output:** Resized images, merged texts, and audio files stored in the specified GCS location.
 
-2. Another container prepares data for the RAG model, including tasks such as chunking, embedding, and populating the vector database.
+2. **data_processing** prepares data for the RAG model, including tasks such as chunking, embedding, and populating the vector database.
 
 <br><br>
 ## Data Pipeline Overview
 
-1. **`data/data_collection/preprocess_cv.py`**
-   This script handles preprocessing on the forty-seven bird images. It reduces the image sizes to 128x128 to ensure faster loading, improved performance, and a consistent display. The preprocessed dataset is stored in the specified GCS location.
+1. **`data/data_collection/cli.py`**
+   This script scrapes text and images from three websites and stores the data both locally and in GCS bucket. It handles the following:
+   a. Text Data -> Saved as .txt files in the bird_description folders
+   b. Image Data -> Stored in the bird_images folder
+   c. Audio Data -> Manually added to the acoustic_data folder.
 
-2. **`data/data_processing/preprocess_rag.py`**
+2. **`data/data_collection/preprocess_cv.py`** This script process the images collected in bird_images by:
+   a.	Resizing them to 128x128 pixels to ensure faster loading, improved performance, and consistent display in the app.
+   b.	Uploading the resized images to the resized folder in the specified GCS location.
+4. **`data/data_processing/preprocess_rag.py`**
    This script prepares the necessary data for setting up our vector database. It performs chunking, embedding, and loads the data into a vector database (ChromaDB).
 
-3. **`src/datapipeline/Pipfile`**
+5. **`src/datapipeline/Pipfile`**
    We used the following packages to help with preprocessing:
    - `special cheese package`
 
-4. **`src/preprocessing/Dockerfile(s)`**
+6. **`src/preprocessing/Dockerfile(s)`**
    Our Dockerfiles follow standard conventions, with the exception of some specific modifications described in the Dockerfile/described below.
 
 <br><br>
