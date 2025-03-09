@@ -18,7 +18,7 @@
     │   ├── pipfile
     │   ├── pipfile.lock
     │   └── preprocess_rag.py
-└── Notebooks
+├── Notebooks
 │   └── Acoustic_Monitoring_EDA.ipynb
 ├── References
 ├── Reports
