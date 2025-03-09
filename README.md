@@ -119,13 +119,13 @@ The data pipeline consists of two containers:
 Instructions for running the Dockerfiles:
 
 **Data Collection**
-📂 **Dockerfile**: [`data/data_collection/Dockerfile`](data/data_collection/Dockerfile)  
+[`data/data_collection/Dockerfile`](data/data_collection/Dockerfile)  
 - Run the `docker-shell.sh` to launch the container.
 - Run the `cli.py` within the container.
 - run the `preprocess_cv.py` within the container.
 
 **Data Processing**
-📂 **Dockerfile**: [`data/data_processing/Dockerfile`](data/data_processing/Dockerfile)  
+[`data/data_processing/Dockerfile`](data/data_processing/Dockerfile)  
 - [PLACEHOLDER]
 - [PLACEHOLDER]
 
