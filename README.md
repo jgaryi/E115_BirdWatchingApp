@@ -148,7 +148,6 @@ Instructions for running the Dockerfiles:
     - Run the `docker-shell.sh` to launch the container.
     - Create a `secrets` folder at the same level with the `cli.py` file
     - Add your GCS credentials to the `secrets` folder
-    Within the container:
     - Run 'python cli.py --chunk --chunk_type char-split'
     - Run 'python cli.py --chunk --chunk_type recursive-split'
     - Run 'python cli.py --embed --chunk_type char-split'
