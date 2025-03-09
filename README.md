@@ -18,13 +18,13 @@
     │   ├── pipfile
     │   ├── pipfile.lock
     │   └── preprocess_rag.py
-├── Notebooks
+└── Notebooks
 │   └── Acoustic_Monitoring_EDA.ipynb
 ├── References
 ├── Reports
 │   └── Statement_of_Work.pdf
 │   └── E115_BirdWatching App Wireframe.pdf
-└── Models
+└── src
     └── Acoustic_Monitoring_Model
     │   ├── Dockerfile
     │   ├── pipfile
