@@ -104,27 +104,30 @@ The data pipeline consists of two containers:
 
 1. **`data/data_collection/cli.py`**
    This script scrapes text and images from three websites and stores the data both locally and in GCS bucket. It handles the following:
-   1.	Text Data -> Saved as `.txt` files in the `bird_description` folders
-   2.	Image Data -> Stored in the `bird_images` folder
+   1.	Text Data -> Saved as `.txt` files in the `bird_description` folder.
+   2.	Image Data -> Stored in the `bird_images` folder.
    3.	Audio Data -> Manually added to the `acoustic_data` folder.
 
 2. **`data/data_collection/preprocess_cv.py`** This script process the images collected in `bird_images` by:
    1.	Resizing them to 128x128 pixels to ensure faster loading, improved performance, and consistent display in the app.
-   2.	Uploading the resized images to the resized folder in the specified GCS location.
+   2.	Uploading the resized images to the `resized` folder in the specified GCS location.
 4. **`data/data_processing/preprocess_rag.py`**
    This script prepares the necessary data for setting up our vector database. It performs chunking, embedding, and loads the data into a vector database (ChromaDB).
 
-5. **`src/datapipeline/Pipfile`**
-   We used the following packages to help with preprocessing:
-   - `special cheese package`
-
-6. **`src/preprocessing/Dockerfile(s)`**
-   Our Dockerfiles follow standard conventions, with the exception of some specific modifications described in the Dockerfile/described below.
-
 <br><br>
-## Running Dockerfile
-Instructions for running the Dockerfile can be added here.
-To run Dockerfile - `Instructions here`
+## Running Dockerfiles
+Instructions for running the Dockerfiles:
+**Data Collection**
+📂 **Dockerfile**: [`data/data_collection/Dockerfile`](data/data_collection/Dockerfile)  
+- Run the `docker-shell.sh` to launch the container.
+- Run the `cli.py` within the container.
+- run the `preprocess_cv.py` within the container.
+
+## **2️⃣ Data Processing**
+📂 **Dockerfile**: [`data/data_processing/Dockerfile`](data/data_processing/Dockerfile)  
+- [PLACEHOLDER]
+- [PLACEHOLDER]
+
 
 **Models container**
 - This container has scripts for model training, rag pipeline and inference
