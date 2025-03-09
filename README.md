@@ -135,15 +135,15 @@ Instructions for running the Dockerfiles:
 - Instructions for running the model container - `Instructions here`
    1. Acoustic Inference Model - use the existing BirdNet model for inference 
    ['src/models/acoustic_model/Dockerfile'](src/models/acoustic_model/Dockerfile)
-    - Run the 'docker-shell.sh' to launch the container
-    - Run the 'Species_Prediction.py' within the container
+    - Run the `docker-shell.sh` to launch the container
+    - Run the `Species_Prediction.py` within the container
    
    2. Transfer Training Model
     - We will use data of nine representative bird species mentioned above to do transfer learning and improve the prediction confidence of the model to bird species we are interested. The transfer learning model will be ready in the next mileston.  
 
 **Notebooks/Reports**
 This folder contains code that is not part of container - for e.g: Application mockup, EDA, any 🔍 🕵️‍♀️ 🕵️‍♂️ crucial insights, reports or visualizations.
-- The Jupyter file "Acoustic_Monitoirng_EDA" explore the features of audio file. The audio signal or data can be represented in time, frequency and time-frequency domain. The time and frequency domain represenation only show information of audio signal from one-dimension. while the time-frequency domain representation will give a 2D representation as an image. The Mel spectrogram can be extracted from this 2D image and fed as input for Convolutional Neural Network.    
+- The Jupyter file `Acoustic_Monitoirng_EDA` explore the features of audio file. The audio signal or data can be represented in time, frequency and time-frequency domain. The time and frequency domain represenation only show information of audio signal from one-dimension. while the time-frequency domain representation will give a 2D representation as an image. The Mel spectrogram can be extracted from this 2D image and fed as input for Convolutional Neural Network.    
 
 <br><br>
 ## Data Versioning Strategy
