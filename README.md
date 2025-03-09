@@ -83,7 +83,7 @@ The dataset consists of nine integrated text files (one per species) and forty-s
 We obtained time series data of remote sensing Landsat images, detailing global forest extent and annual change from 2000 to 2023, from source (9), along with more than 20,000 georeferenced data from previous locations where the nine species were observed since the early 1980s, although without audio recordings, as provided by source (3).
 
 <br>
-All data is stored in a private Google Cloud Bucket (https://console.cloud.google.com/storage/browser/acoustic_monitoring_project;tab=objects?hl=en&project=gen-lang-client-0083231133&prefix=&forceOnObjectsSortingFiltering=false)
+All data is stored in a private Google Cloud Storage Bucket (https://console.cloud.google.com/storage/browser/acoustic_monitoring_project;tab=objects?hl=en&project=gen-lang-client-0083231133&prefix=&forceOnObjectsSortingFiltering=false)
        
     
          
@@ -104,11 +104,11 @@ The data pipeline consists of two containers:
 
 1. **`data/data_collection/cli.py`**
    This script scrapes text and images from three websites and stores the data both locally and in GCS bucket. It handles the following:
-   a. Text Data -> Saved as .txt files in the bird_description folders
-   b. Image Data -> Stored in the bird_images folder
-   c. Audio Data -> Manually added to the acoustic_data folder.
+   a. Text Data -> Saved as `.txt` files in the `bird_description` folders
+   b. Image Data -> Stored in the `bird_images` folder
+   c. Audio Data -> Manually added to the `acoustic_data` folder.
 
-2. **`data/data_collection/preprocess_cv.py`** This script process the images collected in bird_images by:
+2. **`data/data_collection/preprocess_cv.py`** This script process the images collected in `bird_images` by:
    a.	Resizing them to 128x128 pixels to ensure faster loading, improved performance, and consistent display in the app.
    b.	Uploading the resized images to the resized folder in the specified GCS location.
 4. **`data/data_processing/preprocess_rag.py`**
