@@ -133,6 +133,9 @@ Instructions for running the Dockerfiles:
 **Models container**
 - This container has scripts for model training, rag pipeline and inference
 - Instructions for running the model container - `Instructions here`
+   1. Acoustic Inference Model. 
+    - Run the 'docker-shell.sh' to launch the container
+    - Run the 'Species_Prediction.py' within the container
 
 **Notebooks/Reports**
 This folder contains code that is not part of container - for e.g: Application mockup, EDA, any 🔍 🕵️‍♀️ 🕵️‍♂️ crucial insights, reports or visualizations.
