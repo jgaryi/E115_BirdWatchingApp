@@ -74,13 +74,10 @@ We gathered a dataset of 411 audio recordings of nine representative bird specie
 - Tinamus osgoodi, 20  
 
 The dataset, approximately 565 MB in size, was collected from the following source: [**1**](https://xeno-canto.org/about/xeno-canto)
-  (1)
   
 **2. For the LLM-RAG Model**  
-We compiled detailed bird information from three authoritative sources: 
-https://www.peruaves.org/ (2) 
-https://ebird.org/home (3) 
-https://en.wikipedia.org/wiki/Main_Page (4). The dataset consists of nine integrated text files (one per species) and forty-seven bird images. Due to copyright considerations, we only included abstracts from Google Scholar (Source 8) rather than full scientific articles.
+We compiled detailed bird information from three authoritative sources: [**2**](https://www.peruaves.org/), [**3**](https://ebird.org/home), [**4**](https://en.wikipedia.org/wiki/Main_Page)
+The dataset consists of nine integrated text files (one per species) and forty-seven bird images. Due to copyright considerations, we only included abstracts from Google Scholar (Source 8) rather than full scientific articles.
   
 **3. For the Remote Sensing Model**  
 We obtained time series data of remote sensing Landsat images, detailing global forest extent and annual change from 2000 to 2023, from source (9), along with more than 20,000 georeferenced data from previous locations where the nine species were observed since the early 1980s, although without audio recordings, as provided by source (3).
