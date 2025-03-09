@@ -133,7 +133,8 @@ Instructions for running the Dockerfiles:
 **Models container**
 - This container has scripts for model training, rag pipeline and inference
 - Instructions for running the model container - `Instructions here`
-   1. Acoustic Inference Model - use the existing BirdNet model for inference (src/models/acoustic_model/Dockerfile)
+   1. Acoustic Inference Model - use the existing BirdNet model for inference 
+   ['src/models/acoustic_model/Dockerfile'](src/models/acoustic_model/Dockerfile)
     - Run the 'docker-shell.sh' to launch the container
     - Run the 'Species_Prediction.py' within the container
    
