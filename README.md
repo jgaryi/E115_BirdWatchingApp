@@ -142,7 +142,28 @@ Instructions for running the Dockerfiles:
     - Run the `Species_Prediction.py` within the container
    
    2. Transfer Training Model
-    - We will use data of nine representative bird species mentioned above to do transfer learning and improve the prediction confidence of the model to bird species we are interested. The transfer learning model will be ready in the next mileston.  
+    - We will use data of nine representative bird species mentioned above to do transfer learning and improve the prediction confidence of the model to bird species we are interested. The transfer learning model will be ready in the next mileston.
+
+   3. LLM-RAG Model
+    - Run the `docker-shell.sh` to launch the container.
+    - Create a `secrets` folder at the same level with the `cli.py` file
+    - Add your GCS credentials to the `secrets` folder
+    Within the container:
+    - Run 'python cli.py --chunk --chunk_type char-split'
+    - Run 'python cli.py --chunk --chunk_type recursive-split'
+    - Run 'python cli.py --embed --chunk_type char-split'
+    - Run 'python cli.py --embed --chunk_type recursive-split'
+    - Run 'python cli.py --load --chunk_type char-split'
+    - Run 'python cli.py --load --chunk_type recursive-split'
+    - Run 'python cli.py --query --chunk_type char-split'
+    - Run 'python cli.py --query --chunk_type recursive-split'
+    - Run 'python cli.py --chat --chunk_type char-split'
+    - Run 'python cli.py --chat --chunk_type recursive-split'
+ 
+  Note: The query prompts are:
+  	"Where does Andigena hypoglauca live?"
+        Query based on embedding value + metadata filter
+        Query based on embedding value + lexical search filter
 
 **Notebooks/Reports**
 This folder contains code that is not part of container - for e.g: Application mockup, EDA, any 🔍 🕵️‍♀️ 🕵️‍♂️ crucial insights, reports or visualizations.
