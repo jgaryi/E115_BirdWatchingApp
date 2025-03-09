@@ -104,13 +104,13 @@ The data pipeline consists of two containers:
 
 1. **`data/data_collection/cli.py`**
    This script scrapes text and images from three websites and stores the data both locally and in GCS bucket. It handles the following:
-   a. Text Data -> Saved as `.txt` files in the `bird_description` folders
-   b. Image Data -> Stored in the `bird_images` folder
-   c. Audio Data -> Manually added to the `acoustic_data` folder.
+   1.	Text Data -> Saved as `.txt` files in the `bird_description` folders
+   2.	Image Data -> Stored in the `bird_images` folder
+   3.	Audio Data -> Manually added to the `acoustic_data` folder.
 
 2. **`data/data_collection/preprocess_cv.py`** This script process the images collected in `bird_images` by:
-   a.	Resizing them to 128x128 pixels to ensure faster loading, improved performance, and consistent display in the app.
-   b.	Uploading the resized images to the resized folder in the specified GCS location.
+   1.	Resizing them to 128x128 pixels to ensure faster loading, improved performance, and consistent display in the app.
+   2.	Uploading the resized images to the resized folder in the specified GCS location.
 4. **`data/data_processing/preprocess_rag.py`**
    This script prepares the necessary data for setting up our vector database. It performs chunking, embedding, and loads the data into a vector database (ChromaDB).
 
