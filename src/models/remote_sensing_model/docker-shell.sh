@@ -32,5 +32,4 @@ WORKDIR=$(echo $WORKDIR | sed 's/^/\/c\//;s/\\/\//g')
 echo "Starting container '$CONTAINER_NAME' with image '$IMAGE_NAME'..."
 
 # Run Docker command with the absolute path for Windows, without running the Python script
-#docker run --rm --name $CONTAINER_NAME -ti -v "$WORKDIR:/app" -w /app $IMAGE_NAME
 docker run --rm --name $IMAGE_NAME -ti -v "$(dirname $(realpath $0))/:/app" $IMAGE_NAME
