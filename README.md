@@ -35,7 +35,7 @@
     │   ├── Dockerfile
     │   ├── pipfile
     │   ├── pipfile.lock
-    │   └── Infer_Model.py   
+    │   └── cli.py   
     │
     └── Remote_Sensing_Model
         ├── Dockerfile
