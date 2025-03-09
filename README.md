@@ -51,9 +51,13 @@
 **Group Name:** Birdwatching App
 
 **Project:**  
-This project aims to develop an AI-powered bird identification and knowledge application using as case study the the Yanachaga Chemillen National Park in Peru. The app will offer two primary methods for bird recognition: (1) users can upload a sound file for automatic identification, driven by an acoustic AI model, or (2) manually search for a bird by its scientific name. <br><br>
-Upon successful identification, the app will present comprehensive information about the bird, including its geographic location within the national park, key species characteristics, and a corresponding image for visual reference. The integrated map will also display the bird's current habitat conditions, highlighting changes such as deforestation through a remote sensing model. <br><br>
-Additionally, a built-in chatbot will enable users to ask bird-related questions, providing expert answers powered by a LLM Retrieval-Augmented Generation (LLM-RAG) model.
+This project aims to develop an AI-powered bird identification and knowledge application, using the Yanachaga Chemillen National Park in Peru as a case study. The app will offer two primary methods for bird recognition: (1) users can upload a sound file for automatic identification, powered by an acoustic AI model, or (2) manually search for a bird by its scientific name using a dropdown menu to select from one of nine species.<br><br>
+
+If the identified bird is one of the 500 species found in the national park but not listed in the dropdown menu, the app will display only the species name and return to the initial page when clicked again. If the bird is one of the nine pre-selected species—whose populations are vulnerable and decreasing—the app will provide detailed information about the species, its migratory path, and an image for visual reference. <br><br>
+
+An interactive map will show the bird's previously identified locations within the national park, habitat details, and changes over time that help explain why these species are vulnerable or endangered. The map will also highlight other areas where the bird is likely to be found, based on predictions from a geo-referenced model using remote sensing data.<br><br>
+
+Additionally, a built-in chatbot will allow users to ask bird-related questions and receive expert answers powered by a Retrieval-Augmented Generation (RAG) model combined with a Large Language Model (LLM).
 <br><br>
 
 # Milestone 2
