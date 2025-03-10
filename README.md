@@ -185,7 +185,7 @@ The Jupyter file `Acoustic_Monitoirng_EDA` explore the features of audio file. T
 <br><br>
 ## Data Versioning Strategy
 
-An initial baseline of both the acoustic data and the LLM-RAG data was collected on [XXX]. The data was scraped from the sources mentioned above using custom scripts, with some websites requiring logins for access.
+An initial baseline of both the acoustic data and the LLM-RAG data was collected in March 2025. The data was scraped from the sources mentioned above using custom scripts.
 
 Over the course of several months, additional data may be incorporated into both the acoustic and LLM-RAG datasets. However, for the remote sensing model, relevant information such as deforestation changes is typically updated once per year.
 
