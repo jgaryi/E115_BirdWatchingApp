@@ -5,8 +5,9 @@ import os
 from google.oauth2 import service_account
 
 
-image_location = "bird_files"  
-GCBucket_name = "birdwatchingapp"
+image_location = "source_data"  
+# GCBucket_name = "birdwatchingapp"
+GCBucket_name = os.getenv('BUCKET_NAME', 'acoustic_monitoring_project')
 image_size = (128, 128) 
 
 def list_local_images(directory):
@@ -30,9 +31,9 @@ def resize_image(image_path):
         return buf
 
 def upload_to_gcs(file_name, image_buffer, bucket_name):
-    credentials = service_account.Credentials.from_service_account_file('birdwatchingapp_sa.json')
+    # credentials = service_account.Credentials.from_service_account_file('birdwatchingapp_sa.json')
 
-    storage_client = storage.Client(credentials=credentials, project='birdwatchingapp_sa')
+    storage_client = storage.Client(project='acoustic_monitoring_sa')
     bucket = storage_client.bucket(bucket_name)
 
     b_name = os.path.basename(file_name)
