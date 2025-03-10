@@ -165,21 +165,21 @@ Instructions for running the Dockerfiles:
         Query based on embedding value + lexical search filter
 
    4. Remote Sensing Model
-    - Create a Google Earth Engine Account, if you do not have one yet
-    - Before running the script, you need to authenticate your Google Earth Engine account. To do this, run the following Python code:
-      import ee
-      ee.Authenthicate()
-    - The ee.Authenticate() method will output a URL to the console. It will look something like this:
-      Go to the following link in your browser:
-      https://accounts.google.com/o/oauth2/auth?client_id=...
-    - When you open this URL in a web browser, it will ask you to log in your Google Earth Engine account.
-    - Run the `docker-shell.sh` to launch the container.
-    - Run the `birdlocations.py` within the container
+    - Create a Google Earth Engine Account, if you do not have one yet   
+    - Before running the script, you need to authenticate your Google Earth Engine account. To do this, run the following Python code:  
+      import ee  
+      ee.Authenthicate()   
+    - The ee.Authenticate() method will output a URL to the console. It will look something like this:   
+      Go to the following link in your browser:   
+      https://accounts.google.com/o/oauth2/auth?client_id=...  
+    - When you open this URL in a web browser, it will ask you to log in your Google Earth Engine account.  
+    - Run the `docker-shell.sh` to launch the container.  
+    - Run the `birdlocations.py` within the container  
 
 Currently, the Python script identifies the locations of birds, with remote sensing images in the background that include key habitat characteristics such as deforestation and biodiversity indicators. Future milestones will build on this foundation to develop a model that identifies other areas where the bird is likely to be found, based on predictions from a geo-referenced model using remote sensing data (we are still evaluating a suitable "occupancy model" available on GitHub).
 
 <br><br>
-**Notebooks/Reports**
+## Notebooks/Reports
 The Jupyter file `Acoustic_Monitoirng_EDA` explore the features of audio file. The audio signal or data can be represented in time, frequency and time-frequency domain. The time and frequency domain represenation only show information of audio signal from one-dimension. while the time-frequency domain representation will give a 2D representation as an image. The Mel spectrogram can be extracted from this 2D image and fed as input for Convolutional Neural Network.    
 
 <br><br>
