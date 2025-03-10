@@ -85,7 +85,7 @@ The dataset consists of nine integrated text files (one per species) and forty-s
 We obtained more than 20,000 georeferenced data from previous locations where the nine species were observed since the early 1980s, although without audio recordings, from source [**3**](https://ebird.org/home). We will obtain (time series) data from remote sensing images, detailing forest extent and annual change and other habitat and biodiversity characteristics from source [**9**](https://developers.google.com/earth-engine/datasets). 
 
 <br>
-The data for the acoustic model and LLM-RAG model is stored in a private Google Cloud Storage (GCS) bucket, while remote sensing and geo-referenced data is is stored in Google Earth Engine, a cloud-based platform for geospatial data processing and analysis.
+The data for the acoustic model and LLM-RAG model is stored in a private Google Cloud Storage (GCS) bucket, while remote sensing and geo-referenced data is stored in Google Earth Engine, a cloud-based platform for geospatial data processing and analysis.
        
     
          
