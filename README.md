@@ -85,7 +85,7 @@ The dataset consists of nine integrated text files (one per species) and forty-s
 We obtained more than 20,000 georeferenced data from previous locations where the nine species were observed since the early 1980s, although without audio recordings, from source [**3**](https://ebird.org/home). We will obtain (time series) data from remote sensing images, detailing forest extent and annual change and other habitat and biodiversity characteristics from source [**9**](https://developers.google.com/earth-engine/datasets). 
 
 <br>
-The data for the acoustic model and LLM-RAG model is stored in a private Google Cloud Storage Bucket (https://console.cloud.google.com/storage/browser/acoustic_monitoring_project;tab=objects?hl=en&project=gen-lang-client-0083231133&prefix=&forceOnObjectsSortingFiltering=false), while remote sensing and geo-referenced data is is stored in Google Earth Engine, a cloud-based platform for geospatial data processing and analysis.
+The data for the acoustic model and LLM-RAG model is stored in a private Google Cloud Storage Bucket, while remote sensing and geo-referenced data is is stored in Google Earth Engine, a cloud-based platform for geospatial data processing and analysis.
        
     
          
@@ -166,7 +166,7 @@ Instructions for running the model containers:
         Query based on embedding value + lexical search filter
 
    4. Remote Sensing Model
-    - Before running the script in the container, you need an account in Google Earth Engine, if you do not have one yet
+    - Create a Google Earth Engine Account, if you do not have one yet
     - Before running the script, you need to authenticate your Google Earth Engine account. To do this, run the following Python code:
       import ee
       ee.Authenthicate()
@@ -177,6 +177,9 @@ Instructions for running the model containers:
     - Run the `docker-shell.sh` to launch the container.
     - Run the `birdlocations.py` within the container
 
+Currently, the Python script identifies the locations of birds, with remote sensing images in the background that include key habitat characteristics such as deforestation and biodiversity indicators. Future milestones will build on this foundation to develop a model that identifies other areas where the bird is likely to be found, based on predictions from a geo-referenced model using remote sensing data (we are still evaluating a suitable "occupancy model" available on GitHub).
+
+<br><br>
 **Notebooks/Reports**
 The Jupyter file `Acoustic_Monitoirng_EDA` explore the features of audio file. The audio signal or data can be represented in time, frequency and time-frequency domain. The time and frequency domain represenation only show information of audio signal from one-dimension. while the time-frequency domain representation will give a 2D representation as an image. The Mel spectrogram can be extracted from this 2D image and fed as input for Convolutional Neural Network.    
 
