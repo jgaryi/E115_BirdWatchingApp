@@ -176,7 +176,7 @@ Instructions for running the Dockerfiles:
     - Run the `docker-shell.sh` to launch the container.  
     - Run the `birdlocations.py` within the container  
 
-Currently, the Python script identifies the locations of birds, with remote sensing images in the background that include key habitat characteristics such as deforestation and biodiversity indicators. Future milestones will build on this foundation to develop a model that identifies other areas where the bird is likely to be found, based on predictions from a geo-referenced model using remote sensing data (we are still evaluating a suitable "occupancy model" available on GitHub).
+Currently, the Python script identifies the locations of the bird, with remote sensing images in the background that include key habitat characteristics such as deforestation and biodiversity indicators. Future milestones will build on this foundation to develop a map that identifies other areas where the bird is likely to be found, based on predictions from a geo-referenced model using the remote sensing data.
 
 <br><br>
 ## Notebooks/Reports
