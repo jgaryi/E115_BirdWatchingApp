@@ -55,12 +55,12 @@ This project aims to develop an AI-powered bird identification and knowledge app
 
 If the identified bird is one of the 500 species found in the national park but not listed in the dropdown menu, the app will display only the species name and return to the initial page when clicked again. If the bird is one of the nine pre-selected species—whose populations are vulnerable and decreasing—the app will provide detailed information about the species, its migratory path, and an image for visual reference. <br>
 
-An interactive map will show the bird's previously identified locations within the national park, habitat details, and changes over time that help explain why these species are vulnerable or endangered. The map will also highlight other areas where the bird is likely to be found, based on predictions from a geo-referenced model using remote sensing data. Additionally, a built-in chatbot will allow users to ask bird-related questions and receive answers powered by a Retrieval-Augmented Generation (RAG) Large Language Model (LLM).
+An interactive map will show the bird's previously identified locations within the national park, habitat details, and changes over time that help explain why these species are vulnerable or endangered. The map will also highlight other areas where the bird is likely to be found, based on predictions from a geo-referenced model using remote sensing data. Additionally, a built-in chatbot will allow users to ask bird-related questions and receive answers powered by a Large Language Model with Retrieval-Augmented Generation (LLM-RAG).
 <br><br>
 
 # Milestone 2
 
-In this milestone, we present the components for data management, as well as the acoustic, language, and remote sensing models.
+In this milestone, we present the components for data management, as well as the acoustic, RAG-LLM, and remote sensing models.
 
 ## Data  
 **1. For the Acoustic Model**  
@@ -82,10 +82,10 @@ We compiled detailed bird information from three authoritative sources: [**2**](
 The dataset consists of nine integrated text files (one per species) and forty-seven bird images.
   
 **3. For the Remote Sensing Model**  
-We obtained time series data of remote sensing Landsat images, detailing global forest extent and annual change from 2000 to 2023, from source (9), along with more than 20,000 georeferenced data from previous locations where the nine species were observed since the early 1980s, although without audio recordings, as provided by source (3).
+We obtained more than 20,000 georeferenced data from previous locations where the nine species were observed since the early 1980s, although without audio recordings, from source [**3**](https://ebird.org/home). We will obtain (time series) data from remote sensing images, detailing forest extent and annual change and other habitat and biodiversity characteristics from source [**9**](https://developers.google.com/earth-engine/datasets). 
 
 <br>
-All data is stored in a private Google Cloud Storage Bucket (https://console.cloud.google.com/storage/browser/acoustic_monitoring_project;tab=objects?hl=en&project=gen-lang-client-0083231133&prefix=&forceOnObjectsSortingFiltering=false)
+The data for the acoustic model and LLM-RAG model is stored in a private Google Cloud Storage Bucket (https://console.cloud.google.com/storage/browser/acoustic_monitoring_project;tab=objects?hl=en&project=gen-lang-client-0083231133&prefix=&forceOnObjectsSortingFiltering=false), while remote sensing and geo-referenced data is is stored in Google Earth Engine, a cloud-based platform for geospatial data processing and analysis.
        
     
          
@@ -136,15 +136,14 @@ Instructions for running the Dockerfiles:
 
 
 **Models container**
-- This container has scripts for model training, rag pipeline and inference
-- Instructions for running the model container - `Instructions here`
+Instructions for running the model containers:
    1. Acoustic Inference Model - use the existing BirdNet model for inference 
    ['src/models/acoustic_model/Dockerfile'](src/models/acoustic_model/Dockerfile)
     - Run the `docker-shell.sh` to launch the container
     - Run the `Species_Prediction.py` within the container
    
-   2. Transfer Training Model
-    - We will use data of nine representative bird species mentioned above to do transfer learning and improve the prediction confidence of the model to bird species we are interested. The transfer learning model will be ready in the next mileston.
+   2. Accoustic Transfer Training Model
+    - Not available yet. We will use data from the nine representative bird species previously mentioned to perform transfer learning and enhance the prediction confidence of the model for the bird species of interest. The transfer learning model will be ready in the next milestone.
 
    3. LLM-RAG Model
     - Run the `docker-shell.sh` to launch the container.
@@ -160,15 +159,25 @@ Instructions for running the Dockerfiles:
     - Run 'python cli.py --query --chunk_type recursive-split'
     - Run 'python cli.py --chat --chunk_type char-split'
     - Run 'python cli.py --chat --chunk_type recursive-split'
- 
+
   Note: The query prompts are:
   	"Where does Andigena hypoglauca live?"
         Query based on embedding value + metadata filter
         Query based on embedding value + lexical search filter
 
+   4. Remote Sensing Model
+    - Before running the script in the container, you need an account in Google Earth Engine, if you do not have one yet
+    - Run the following Python code to authenticate with Google Earth Engine using the built-in ee.Authenticate() method:
+      import ee
+      ee.Authenthicate()
+    - The ee.Authenticate() method will print a URL to the console. It will look something like this:
+      Go to the following link in your browser:
+      https://accounts.google.com/o/oauth2/auth?client_id=...
+    - Run the `docker-shell.sh` to launch the container.
+
+
 **Notebooks/Reports**
-This folder contains code that is not part of container - for e.g: Application mockup, EDA, any 🔍 🕵️‍♀️ 🕵️‍♂️ crucial insights, reports or visualizations.
-- The Jupyter file `Acoustic_Monitoirng_EDA` explore the features of audio file. The audio signal or data can be represented in time, frequency and time-frequency domain. The time and frequency domain represenation only show information of audio signal from one-dimension. while the time-frequency domain representation will give a 2D representation as an image. The Mel spectrogram can be extracted from this 2D image and fed as input for Convolutional Neural Network.    
+The Jupyter file `Acoustic_Monitoirng_EDA` explore the features of audio file. The audio signal or data can be represented in time, frequency and time-frequency domain. The time and frequency domain represenation only show information of audio signal from one-dimension. while the time-frequency domain representation will give a 2D representation as an image. The Mel spectrogram can be extracted from this 2D image and fed as input for Convolutional Neural Network.    
 
 <br><br>
 ## Data Versioning Strategy
