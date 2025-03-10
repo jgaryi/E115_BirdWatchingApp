@@ -148,16 +148,16 @@ Instructions for running the Dockerfiles:
     - Run the `docker-shell.sh` to launch the container.  
     - Create a `secrets` folder at the same level with the `cli.py` file  
     - Add your GCS credentials to the `secrets` folder  
-    - Run 'python cli.py --chunk --chunk_type char-split'  
-    - Run 'python cli.py --chunk --chunk_type recursive-split'  
-    - Run 'python cli.py --embed --chunk_type char-split'  
-    - Run 'python cli.py --embed --chunk_type recursive-split'  
-    - Run 'python cli.py --load --chunk_type char-split'  
-    - Run 'python cli.py --load --chunk_type recursive-split'  
-    - Run 'python cli.py --query --chunk_type char-split'  
-    - Run 'python cli.py --query --chunk_type recursive-split'  
-    - Run 'python cli.py --chat --chunk_type char-split'  
-    - Run 'python cli.py --chat --chunk_type recursive-split'  
+    - Run `python cli.py --chunk --chunk_type char-split`  
+    - Run `python cli.py --chunk --chunk_type recursive-split`  
+    - Run `python cli.py --embed --chunk_type char-split`  
+    - Run `python cli.py --embed --chunk_type recursive-split`  
+    - Run `python cli.py --load --chunk_type char-split`  
+    - Run `python cli.py --load --chunk_type recursive-split`  
+    - Run `python cli.py --query --chunk_type char-split`  
+    - Run `python cli.py --query --chunk_type recursive-split`  
+    - Run `python cli.py --chat --chunk_type char-split`  
+    - Run `python cli.py --chat --chunk_type recursive-split`  
 
   Note: The query prompts are:
   	"Where does Andigena hypoglauca live?"
