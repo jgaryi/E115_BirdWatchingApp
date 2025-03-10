@@ -123,8 +123,8 @@ Instructions for running the Dockerfiles:
 **Data Collection**
 [`data/data_collection/Dockerfile`](data/data_collection/Dockerfile)  
 - Run the `docker-shell.sh` to launch the container.
-- Create a `secrets` folder at the same level with the `cli.py` file
-- Add your GCS credentials to the `secrets` folder
+- Create a `secrets` folder at the same level with the `cli.py` file 
+- Add your GCS credentials to the `secrets` folder and rename the jason file to `acoustic_monitoring_project_sa`
 - Run the `cli.py` within the container.
 - Run the `preprocess_cv.py` within the container.
 - The processed images and text files will be stored in your GCS bucket.
