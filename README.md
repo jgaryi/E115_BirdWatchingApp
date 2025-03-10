@@ -167,14 +167,15 @@ Instructions for running the model containers:
 
    4. Remote Sensing Model
     - Before running the script in the container, you need an account in Google Earth Engine, if you do not have one yet
-    - Run the following Python code to authenticate with Google Earth Engine using the built-in ee.Authenticate() method:
+    - Before running the script, you need to authenticate your Google Earth Engine account. To do this, run the following Python code:
       import ee
       ee.Authenthicate()
-    - The ee.Authenticate() method will print a URL to the console. It will look something like this:
+    - The ee.Authenticate() method will output a URL to the console. It will look something like this:
       Go to the following link in your browser:
       https://accounts.google.com/o/oauth2/auth?client_id=...
+    - When you open this URL in a web browser, it will ask you to log in your Google Earth Engine account.
     - Run the `docker-shell.sh` to launch the container.
-
+    - Run the `birdlocations.py` within the container
 
 **Notebooks/Reports**
 The Jupyter file `Acoustic_Monitoirng_EDA` explore the features of audio file. The audio signal or data can be represented in time, frequency and time-frequency domain. The time and frequency domain represenation only show information of audio signal from one-dimension. while the time-frequency domain representation will give a 2D representation as an image. The Mel spectrogram can be extracted from this 2D image and fed as input for Convolutional Neural Network.    
@@ -184,7 +185,7 @@ The Jupyter file `Acoustic_Monitoirng_EDA` explore the features of audio file. T
 
 An initial baseline of both the acoustic data and the LLM-RAG data was collected on [XXX]. The data was scraped from the sources mentioned above using custom scripts, with some websites requiring logins for access.
 
-Over the course of several months, additional data may be incorporated into both the acoustic and LLM-RAG datasets. However, for the remote sensing model, deforestation data is typically updated once per year.
+Over the course of several months, additional data may be incorporated into both the acoustic and LLM-RAG datasets. However, for the remote sensing model, relevant information such as deforestation changes is typically updated once per year.
 
 Both the acoustic and LLM-RAG datasets are dynamic, with snapshots taken at specific intervals to capture full replacements of the data. As website authors may update or expand the data, these datasets are expected to evolve over time, with content updates occurring over several months.
 
