@@ -135,8 +135,7 @@ Instructions for running the Dockerfiles:
 - [PLACEHOLDER]
 
 
-**Models container**
-Instructions for running the model containers:
+**Models container**  
    1. Acoustic Inference Model - use the existing BirdNet model for inference 
    ['src/models/acoustic_model/Dockerfile'](src/models/acoustic_model/Dockerfile)
     - Run the `docker-shell.sh` to launch the container
@@ -146,19 +145,19 @@ Instructions for running the model containers:
     - Not available yet. We will use data from the nine representative bird species previously mentioned to perform transfer learning and enhance the prediction confidence of the model for the bird species of interest. The transfer learning model will be ready in the next milestone.
 
    3. LLM-RAG Model
-    - Run the `docker-shell.sh` to launch the container.
-    - Create a `secrets` folder at the same level with the `cli.py` file
-    - Add your GCS credentials to the `secrets` folder
-    - Run 'python cli.py --chunk --chunk_type char-split'
-    - Run 'python cli.py --chunk --chunk_type recursive-split'
-    - Run 'python cli.py --embed --chunk_type char-split'
-    - Run 'python cli.py --embed --chunk_type recursive-split'
-    - Run 'python cli.py --load --chunk_type char-split'
-    - Run 'python cli.py --load --chunk_type recursive-split'
-    - Run 'python cli.py --query --chunk_type char-split'
-    - Run 'python cli.py --query --chunk_type recursive-split'
-    - Run 'python cli.py --chat --chunk_type char-split'
-    - Run 'python cli.py --chat --chunk_type recursive-split'
+    - Run the `docker-shell.sh` to launch the container.  
+    - Create a `secrets` folder at the same level with the `cli.py` file  
+    - Add your GCS credentials to the `secrets` folder  
+    - Run 'python cli.py --chunk --chunk_type char-split'  
+    - Run 'python cli.py --chunk --chunk_type recursive-split'  
+    - Run 'python cli.py --embed --chunk_type char-split'  
+    - Run 'python cli.py --embed --chunk_type recursive-split'  
+    - Run 'python cli.py --load --chunk_type char-split'  
+    - Run 'python cli.py --load --chunk_type recursive-split'  
+    - Run 'python cli.py --query --chunk_type char-split'  
+    - Run 'python cli.py --query --chunk_type recursive-split'  
+    - Run 'python cli.py --chat --chunk_type char-split'  
+    - Run 'python cli.py --chat --chunk_type recursive-split'  
 
   Note: The query prompts are:
   	"Where does Andigena hypoglauca live?"
