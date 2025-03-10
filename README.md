@@ -160,9 +160,9 @@ Instructions for running the Dockerfiles:
     - Run `python cli.py --chat --chunk_type recursive-split`  
 
   Note: The query prompts are:
-  	"Where does Andigena hypoglauca live?"
-        Query based on embedding value + metadata filter
-        Query based on embedding value + lexical search filter
+  -	"Where does Andigena hypoglauca live?"
+   -	Query based on embedding value + metadata filter
+   -	Query based on embedding value + lexical search filter
 
    4. Remote Sensing Model
     - Create a Google Earth Engine Account, if you do not have one yet   
