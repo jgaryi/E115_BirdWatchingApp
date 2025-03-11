@@ -159,6 +159,7 @@ Instructions for running the Dockerfiles:
 
   Note: The query prompts are:
   -	"Where does Andigena hypoglauca live?"
+   3. LLM-RAG Model
 
    4. Remote Sensing Model
     - Create a Google Earth Engine Account, if you do not have one yet   
