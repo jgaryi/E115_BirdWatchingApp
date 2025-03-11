@@ -176,7 +176,7 @@ Currently, the Python script identifies the locations of the bird, with remote s
 
 <br><br>
 ## Notebooks/Reports
-The Jupyter file `Acoustic_Monitoirng_EDA` explore the features of audio file. The audio signal or data can be represented in time, frequency and time-frequency domain. The time and frequency domain represenation only show information of audio signal from one-dimension. while the time-frequency domain representation will give a 2D representation as an image. The Mel spectrogram can be extracted from this 2D image and fed as input for Convolutional Neural Network.    
+The Jupyter file `Acoustic_Monitoirng_EDA` explore the features of audio file. The audio signal or data can be represented in time, frequency and time-frequency domain. The time and frequency domain represenation only show information of audio signal from one-dimension. while the time-frequency domain representation will give a 2D representation as an image. The Mel spectrogram can be extracted from this 2D image and fed as input to Convolutional Neural Networks for model training and prediction.    
 
 <br><br>
 ## Data Versioning Strategy
