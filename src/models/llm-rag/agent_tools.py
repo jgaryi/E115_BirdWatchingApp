@@ -52,8 +52,8 @@ def get_book_by_search_content(search_content, collection, embed_func):
     )
     return "\n".join(results["documents"][0])
 
-# Define all functions available to the cheese expert
-cheese_expert_tool = Tool(function_declarations=[get_book_by_author_func,get_book_by_search_content_func])
+# Define all functions available to the bird expert
+bird_expert_tool = Tool(function_declarations=[get_book_by_author_func,get_book_by_search_content_func])
 
 
 def execute_function_calls(function_calls,collection, embed_func):

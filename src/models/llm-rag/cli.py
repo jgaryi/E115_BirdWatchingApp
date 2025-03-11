@@ -48,42 +48,44 @@ generation_config = {
 }
 # Initialize the GenerativeModel with specific system instructions
 SYSTEM_INSTRUCTION = """
-You are an AI assistant specialized in cheese knowledge. Your responses are based solely on the information provided in the text chunks given to you. Do not use any external knowledge or make assumptions beyond what is explicitly stated in these chunks.
+You are an AI assistant specialized in bird knowledge. Your responses are based solely on the information provided in the text chunks given to you. Do not use any external knowledge or make assumptions beyond what is explicitly stated in these chunks.
 
 When answering a query:
 1. Carefully read all the text chunks provided.
 2. Identify the most relevant information from these chunks to address the user's question.
 3. Formulate your response using only the information found in the given chunks.
 4. If the provided chunks do not contain sufficient information to answer the query, state that you don't have enough information to provide a complete answer.
-5. Always maintain a professional and knowledgeable tone, befitting a cheese expert.
+5. Always maintain a professional and knowledgeable tone, befitting a bird expert.
 6. If there are contradictions in the provided chunks, mention this in your response and explain the different viewpoints presented.
 
 Remember:
-- You are an expert in cheese, but your knowledge is limited to the information in the provided chunks.
+- You are an expert in bird, but your knowledge is limited to the information in the provided chunks.
 - Do not invent information or draw from knowledge outside of the given text chunks.
-- If asked about topics unrelated to cheese, politely redirect the conversation back to cheese-related subjects.
+- If asked about topics unrelated to bird, politely redirect the conversation back to bird-related subjects.
 - Be concise in your responses while ensuring you cover all relevant information from the chunks.
 
-Your goal is to provide accurate, helpful information about cheese based solely on the content of the text chunks you receive with each query.
+Your goal is to provide accurate, helpful information about bird based solely on the content of the text chunks you receive with each query.
 """
 generative_model = GenerativeModel(
 	GENERATIVE_MODEL,
 	system_instruction=[SYSTEM_INSTRUCTION]
 )
 
-book_mappings = {
-	"Bird 1": {"author":"C. F. Langworthy and Caroline Louisa Hunt", "year": 2023},
-	"Cottage Cheese Recipe Book":{"author": "Milk Industry Foundation", "year": 2021},
-	"Dairying exemplified, or, The business of cheese-making": {"author":"J. Twamley", "year": 2023},
-	"Hand-book on cheese making": {"author":"George E. Newell", "year": 2023},
-	"Hints on cheese-making, for the dairyman, the factoryman, and the manufacturer": {"author":"T. D. Curtis", "year": 2013},
-	"The Book of Cheese": {"author":"Charles Thom and W. W. Fisk", "year": 2012},
-	"The book of The Cheese Being traits and stories of Ye Olde Cheshire Cheese": {"author":"Thomas Wilson Reid", "year": 2023},
-	"The Complete Book of Cheese": {"author":"Bob Brown", "year": 2024},
-	"Theres Pippins and Cheese to Come": {"author":"Charles S. Brooks", "year": 2003},
-	"Womans Institute Library of Cookery. Volume 2_ Milk, Butter and Cheese Eggs Vegetables": {"author":"Woman's Institute of Domestic Arts and Sciences", "year": 2006},
-	"Tolminc Cheese": {"author": "Pavlos Protopapas", "year": 2024}
-}
+# Will update for future use
+# book_mappings = {
+#	"Bird 1": {"author":"C. F. Langworthy and Caroline Louisa Hunt", "year": 2023},
+#	"Cottage Cheese Recipe Book":{"author": "Milk Industry Foundation", "year": 2021},
+#	"Dairying exemplified, or, The business of cheese-making": {"author":"J. Twamley", "year": 2023},
+#	"Hand-book on cheese making": {"author":"George E. Newell", "year": 2023},
+#	"Hints on cheese-making, for the dairyman, the factoryman, and the manufacturer": {"author":"T. D. Curtis", "year": 2013},
+#	"The Book of Cheese": {"author":"Charles Thom and W. W. Fisk", "year": 2012},
+#	"The book of The Cheese Being traits and stories of Ye Olde Cheshire Cheese": {"author":"Thomas Wilson Reid", "year": 2023},
+#	"The Complete Book of Cheese": {"author":"Bob Brown", "year": 2024},
+#	"Theres Pippins and Cheese to Come": {"author":"Charles S. Brooks", "year": 2003},
+#	"Womans Institute Library of Cookery. Volume 2_ Milk, Butter and Cheese Eggs Vegetables": {"author":"Woman's Institute of Domestic Arts and Sciences", "year": 2006},
+#	"Tolminc Cheese": {"author": "Pavlos Protopapas", "year": 2024}
+#}
+book_mappings = {}
 
 
 def generate_query_embedding(query):
@@ -391,7 +393,7 @@ def get(method="char-split"):
 
 	# Get documents with filters
 	results = collection.get(
-		where={"book":"The Complete Book of Cheese"},
+		where={"book":"bird_description-Andigena hypoglauca.txt"},
 		limit=10
 	)
 	print("\n\nResults:", results)
@@ -411,7 +413,7 @@ def agent(method="char-split"):
 	user_prompt_content = Content(
     	role="user",
 		parts=[
-			Part.from_text("Describe where cheese making is important in Pavlos's book?"),
+			Part.from_text("Describe the plummage of Gallinago jamesoni?"),
 		],
 	)
 	
@@ -420,7 +422,7 @@ def agent(method="char-split"):
 	response = generative_model.generate_content(
 		user_prompt_content,
 		generation_config=GenerationConfig(temperature=0),  # Configuration settings
-		tools=[agent_tools.cheese_expert_tool],  # Tools available to the model
+		tools=[agent_tools.bird_expert_tool],  # Tools available to the model
 		tool_config=ToolConfig(
 			function_calling_config=ToolConfig.FunctionCallingConfig(
 				# ANY mode forces the model to predict only function calls
@@ -445,7 +447,7 @@ def agent(method="char-split"):
 					parts=function_responses
 				),
 			],
-			tools=[agent_tools.cheese_expert_tool],
+			tools=[agent_tools.bird_expert_tool],
 		)
 		print("LLM Response:", response)
 
