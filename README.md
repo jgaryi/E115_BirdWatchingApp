@@ -160,6 +160,7 @@ Instructions for running the Dockerfiles:
   Note: The query prompts are:
   -	"Where does Andigena hypoglauca live?"
 
+
    4. Remote Sensing Model
     - Create a Google Earth Engine Account, if you do not have one yet   
     - Before running the script, you need to authenticate your Google Earth Engine account. To do this, run the following Python code:  
