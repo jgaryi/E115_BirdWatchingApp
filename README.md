@@ -113,8 +113,7 @@ The data pipeline consists of two containers:
 2. **`data/data_collection/preprocess_cv.py`** This script process the images collected in `bird_images` by:
    1.	Resizing them to 128x128 pixels to ensure faster loading, improved performance, and consistent display in the app.
    2.	Uploading the resized images to the `resized` folder in the specified GCS location.
-4. **`data/data_processing/preprocess_rag.py`**
-   This script prepares the necessary data for setting up our vector database. It performs chunking, embedding, and loads the data into a vector database (ChromaDB).
+
 
 <br><br>
 ## Running Dockerfiles
@@ -131,8 +130,13 @@ Instructions for running the Dockerfiles:
 
 **Data Processing**
 [`data/data_processing/Dockerfile`](data/data_processing/Dockerfile)  
-- [PLACEHOLDER]
-- [PLACEHOLDER]
+- Run the `docker-shell.sh` to launch the container.  
+- Create a `secrets` folder at the same level with the `cli.py` file  
+- Add your GCS credentials to the `secrets` folder  
+- Run `python cli.py --chunk --chunk_type char-split` in the container
+- Run `python cli.py --chunk --chunk_type recursive-split` in the container
+- Run `python cli.py --embed --chunk_type char-split` in the container
+- Run `python cli.py --embed --chunk_type recursive-split` in the container
 
 
 **Models container**  
@@ -145,24 +149,16 @@ Instructions for running the Dockerfiles:
     - Not available yet. We will use data from the nine representative bird species previously mentioned to perform transfer learning and enhance the prediction confidence of the model for the bird species of interest. The transfer learning model will be ready in the next milestone.
 
    3. LLM-RAG Model
-    - Run the `docker-shell.sh` to launch the container.  
-    - Create a `secrets` folder at the same level with the `cli.py` file  
-    - Add your GCS credentials to the `secrets` folder  
-    - Run `python cli.py --chunk --chunk_type char-split`  
-    - Run `python cli.py --chunk --chunk_type recursive-split`  
-    - Run `python cli.py --embed --chunk_type char-split`  
-    - Run `python cli.py --embed --chunk_type recursive-split`  
-    - Run `python cli.py --load --chunk_type char-split`  
-    - Run `python cli.py --load --chunk_type recursive-split`  
-    - Run `python cli.py --query --chunk_type char-split`  
-    - Run `python cli.py --query --chunk_type recursive-split`  
-    - Run `python cli.py --chat --chunk_type char-split`  
-    - Run `python cli.py --chat --chunk_type recursive-split`  
+- In the container:  
+- Run `python cli.py --load --chunk_type char-split`  
+- Run `python cli.py --load --chunk_type recursive-split`  
+- Run `python cli.py --query --chunk_type char-split`  
+- Run `python cli.py --query --chunk_type recursive-split`  
+- Run `python cli.py --chat --chunk_type char-split`  
+- Run `python cli.py --chat --chunk_type recursive-split`  
 
   Note: The query prompts are:
   -	"Where does Andigena hypoglauca live?"
-   -	Query based on embedding value + metadata filter
-   -	Query based on embedding value + lexical search filter
 
    4. Remote Sensing Model
     - Create a Google Earth Engine Account, if you do not have one yet   
