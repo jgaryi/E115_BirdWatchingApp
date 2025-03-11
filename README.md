@@ -75,7 +75,7 @@ We gathered a dataset of 411 audio recordings of nine representative bird specie
 - Rupicola peruvianus, 158
 - Tinamus osgoodi, 20  
 
-The dataset, approximately 565 MB in size, was collected from the following source: [**1**](https://xeno-canto.org/about/xeno-canto). The data will be used for transfer learning based on an base BirdNet model to improve the accuracy of species prediction base don the acoustic data collected by users.
+The dataset, approximately 565 MB in size, was collected from the following source: [**1**](https://xeno-canto.org/about/xeno-canto). The data will be used for building a transfer learning model based on base BirdNet model to improve the accuracy of species prediction using the acoustic data collected by users.
   
 **2. For the LLM-RAG Model**  
 We compiled detailed bird information from three authoritative sources: [**2**](https://www.peruaves.org/), [**3**](https://ebird.org/home), [**4**](https://en.wikipedia.org/wiki/Main_Page).
