@@ -147,15 +147,16 @@ Instructions for running the Dockerfiles:
     - Not available yet. We will use data from the nine representative bird species previously mentioned to perform transfer learning and enhance the prediction confidence of the model for the bird species of interest. The transfer learning model will be ready in the next milestone.
 
    3. LLM-RAG Model - [`src/models/llm-rag/Dockerfile`](src/models/llm-rag/Dockerfile)     
-  In the container:  
-- Run `python cli.py --load --chunk_type char-split`  
-- Run `python cli.py --load --chunk_type recursive-split`  
-- Run `python cli.py --query --chunk_type char-split`  
-- Run `python cli.py --query --chunk_type recursive-split`  
-- Run `python cli.py --chat --chunk_type char-split`  
-- Run `python cli.py --chat --chunk_type recursive-split`  
-
-  Note: The query prompts are:
+  In the container, generate embeddings for the text chunks:
+   - Run python cli.py --embed --chunk_type char-split
+   - Run python cli.py --embed --chunk_type recursive-split
+  Load the generated embeddings into ChromaDB:
+   - Run python cli.py --load --chunk_type char-split
+   - Run python cli.py --load --chunk_type recursive-split
+  Test querying the vector database:
+   - python cli.py --query --chunk_type char-split
+   - python cli.py --query --chunk_type recursive-split
+  Note: The query prompt is:
   -	"Where does Andigena hypoglauca live?"
 
 4. Remote Sensing Model - [`src/models/remote_sensing_model/Dockerfile`](src/models/remote_sensing_model/Dockerfile)
