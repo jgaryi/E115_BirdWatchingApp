@@ -28,4 +28,4 @@ RUN pipenv install --deploy --ignore-pipfile
 COPY . /app/
 
 # Set the entry point to run the script
-CMD ["pipenv", "run", "python", "infer_model.py"]
+CMD ["pipenv", "run", "python", "infer_model.py", "deforestation.py"]
