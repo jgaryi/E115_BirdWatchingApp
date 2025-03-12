@@ -7,6 +7,7 @@ geemap = "*"
 earthengine-api = "*" #includes ee
 folium = "*"
 ipywidgets = "*"
+matplotlib = "*"
 
 [dev-packages]
 
