@@ -36,7 +36,8 @@
         ├── Dockerfile
         ├── pipfile
         ├── pipfile.lock
-        └── Infer_Model.py
+        ├── Infer_model.py
+        └── deforestation.py
 ```
 
 # E115 - Birdwatching App
@@ -50,7 +51,9 @@ This project aims to develop an AI-powered bird identification and knowledge app
 
 If the identified bird is one of the 500 species found in the national park but not listed in the dropdown menu, the app will display only the species name and return to the initial page when clicked again. If the bird is one of the nine pre-selected species—whose populations are vulnerable and decreasing—the app will provide detailed information about the species, its migratory path, and an image for visual reference. <br>
 
-An interactive map will show the bird's previously identified locations within the national park, habitat details, and changes over time that help explain why these species are vulnerable or endangered. The map will also highlight other areas where the bird is likely to be found, based on predictions from a geo-referenced model using remote sensing data. Additionally, a built-in chatbot will allow users to ask bird-related questions and receive answers powered by a Large Language Model with Retrieval-Augmented Generation (LLM-RAG).
+An interactive map will show the bird's previously identified locations within the national park, habitat details, and changes over time that help explain why these species are vulnerable or endangered. The map will also highlight other areas where the bird is likely to be found, based on predictions from a geo-referenced model using remote sensing data. Additionally, a built-in chatbot will allow users to ask bird-related questions and receive answers powered by a Large Language Model with Retrieval-Augmented Generation (LLM-RAG).<br>
+
+The lastest version of the project wireframe is available here: [`reports/E115_BirdWatching App Wireframe_13March2025.pdf`](reports/E115_BirdWatching App Wireframe_13March2025.pdf)  
 <br><br>
 
 # Milestone 2
@@ -165,9 +168,10 @@ Instructions for running the Dockerfiles:
 	https://accounts.google.com/o/oauth2/auth?client_id=...  
 - When you open this URL in a web browser, it will ask you to log in your Google Earth Engine account.  
 - Run the `docker-shell.sh` to launch the container.  
-- Run the `infer_model.py` within the container  
+- Run `infer_model.py` within the container
+- Run `deforestation.py` within the container  
 
-Currently, the Python script identifies the locations of the bird, with remote sensing images in the background that include key habitat characteristics such as deforestation and biodiversity indicators. Future milestones will build on this foundation to develop a map that identifies other areas where the bird is likely to be found, based on predictions from a geo-referenced AI model using the remote sensing data.
+Currently, for the remote sensing model, the Python scripts identify the locations of the bird, with remote sensing images in the background that include key habitat characteristics such as deforestation and biodiversity indicators. Future milestones will build on this foundation to develop a map that identifies other areas where the bird is likely to be found, based on predictions from a geo-referenced AI model using the remote sensing data.
 
 <br><br>
 ## Notebooks/Reports
