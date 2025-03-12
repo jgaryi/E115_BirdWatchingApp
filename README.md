@@ -165,7 +165,7 @@ Instructions for running the Dockerfiles:
 	https://accounts.google.com/o/oauth2/auth?client_id=...  
 - When you open this URL in a web browser, it will ask you to log in your Google Earth Engine account.  
 - Run the `docker-shell.sh` to launch the container.  
-- Run the `birdlocations.py` within the container  
+- Run the `infer_model.py` within the container  
 
 Currently, the Python script identifies the locations of the bird, with remote sensing images in the background that include key habitat characteristics such as deforestation and biodiversity indicators. Future milestones will build on this foundation to develop a map that identifies other areas where the bird is likely to be found, based on predictions from a geo-referenced AI model using the remote sensing data.
 
