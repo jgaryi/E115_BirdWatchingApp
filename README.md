@@ -189,7 +189,9 @@ The Jupyter file `Acoustic_Monitoirng_EDA` explore the features of audio file. T
 -	Update OS packages: sudo apt-get update
 -	Install Git: sudo apt install git
 <br>
-The screenshot of the VM of the project is available here: [`reports/`](reports/)    
+The screenshot of the VM of the project is available here: [`reports/`](reports/)
+<br><br>
+The statement of work and lastest version of the project wireframe are available here: [`reports/`](reports/)  
 <br><br>
 
 ## Data Versioning Strategy
