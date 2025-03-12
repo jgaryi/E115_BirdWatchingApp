@@ -26,7 +26,7 @@
     │   ├── pipfile.lock
     │   └── Infer_Model.py
     │   
-    └── RAG_Model
+    └── LLM-RAG_Model
     │   ├── Dockerfile
     │   ├── pipfile
     │   ├── pipfile.lock
@@ -143,7 +143,7 @@ Instructions for running the Dockerfiles:
    2. Accoustic Transfer Training Model
     - Not available yet. We will use data from the nine representative bird species previously mentioned to perform transfer learning and enhance the prediction confidence of the model for the bird species of interest. The transfer learning model will be ready in the next milestone.
 
-   3. LLM-RAG Model
+   3. LLM-RAG Model - [`src/models/llm-rag/Dockerfile`](src/models/llm-rag/Dockerfile)
 - In the container:  
 - Run `python cli.py --load --chunk_type char-split`  
 - Run `python cli.py --load --chunk_type recursive-split`  
@@ -155,7 +155,7 @@ Instructions for running the Dockerfiles:
   Note: The query prompts are:
   -	"Where does Andigena hypoglauca live?"
 
-4. Remote Sensing Model
+4. Remote Sensing Model - [`src/models/remote_sensing_model/Dockerfile`](src/models/remote_sensing_model/Dockerfile)
 - Create or sign in a Google Earth Engine Account   
 - Before running the script, you need to authenticate your Google Earth Engine account. To do this, run the following Python code:  
 	import ee  
