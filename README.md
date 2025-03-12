@@ -171,7 +171,7 @@ Instructions for running the Dockerfiles:
 - Run `infer_model.py` within the container
 - Run `deforestation.py` within the container  
 
-Currently, for the remote sensing model, the Python scripts identify the previous locations of the bird, with remote sensing images in the background, and overview ofkey habitat characteristics such as trends in deforestation and biodiversity indicators. Future milestones will build on this foundation to develop a map that identifies other areas where the bird is likely to be found, based on predictions from a geo-referenced AI model using the remote sensing data.
+Currently, for the remote sensing model, the Python scripts identify the previous locations of the bird, with remote sensing images in the background, and overview of key habitat characteristics such as trends in deforestation and biodiversity indicators. Future milestones will build on this foundation to develop a map that identifies other areas where the bird is likely to be found, based on predictions from a geo-referenced AI model using the remote sensing data.
 
 <br><br>
 ## Notebooks/Reports
