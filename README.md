@@ -143,7 +143,7 @@ Instructions for running the Dockerfiles:
    2. Accoustic Transfer Training Model
     - Not available yet. We will use data from the nine representative bird species previously mentioned to perform transfer learning and enhance the prediction confidence of the model for the bird species of interest. The transfer learning model will be ready in the next milestone.
 
-   3. LLM-RAG Model - [`src/models/llm-rag/Dockerfile`](src/models/llm-rag/Dockerfile)
+   3. LLM-RAG Model - [`src/models/llm-rag/Dockerfile`](src/models/llm-rag/Dockerfile)     
   In the container:  
 - Run `python cli.py --load --chunk_type char-split`  
 - Run `python cli.py --load --chunk_type recursive-split`  
