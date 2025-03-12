@@ -171,11 +171,11 @@ Instructions for running the Dockerfiles:
 - Run `infer_model.py` within the container
 - Run `deforestation.py` within the container  
 
-Currently, for the remote sensing model, the Python scripts identify the locations of the bird, with remote sensing images in the background that include key habitat characteristics such as deforestation and biodiversity indicators. Future milestones will build on this foundation to develop a map that identifies other areas where the bird is likely to be found, based on predictions from a geo-referenced AI model using the remote sensing data.
+Currently, for the remote sensing model, the Python scripts identify the previous locations of the bird, with remote sensing images in the background, and overview ofkey habitat characteristics such as trends in deforestation and biodiversity indicators. Future milestones will build on this foundation to develop a map that identifies other areas where the bird is likely to be found, based on predictions from a geo-referenced AI model using the remote sensing data.
 
 <br><br>
 ## Notebooks/Reports
-The Jupyter file `Acoustic_Monitoirng_EDA` explore the features of audio file. The audio signal or data can be represented in time, frequency and time-frequency domain. The time and frequency domain represenation only show information of audio signal from one-dimension. while the time-frequency domain representation will give a 2D representation as an image. The Mel spectrogram can be extracted from this 2D image and fed as input to Convolutional Neural Networks for model training and prediction.    
+The Jupyter file `Acoustic_Monitoirng_EDA` explore the features of audio file. The audio signal or data can be represented in time, frequency and time-frequency domain. The time and frequency domain representation only show information of audio signal from one-dimension. while the time-frequency domain representation gives a 2D representation as an image. The Mel spectrogram can be extracted from this 2D image and fed as input to Convolutional Neural Networks for model training and prediction.    
 
 <br><br>
 
