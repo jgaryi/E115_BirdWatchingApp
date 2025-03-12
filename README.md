@@ -12,8 +12,6 @@
     │   ├── docker-shell.sh
     │   ├── cli.py
     │   └── preprocess_cv.py
-    │
-    │
 ├── Notebooks
 │   └── Acoustic_Monitoring_EDA.ipynb
 ├── References
