@@ -150,12 +150,15 @@ Instructions for running the Dockerfiles:
   In the container, generate embeddings for the text chunks:
    - Run python cli.py --embed --chunk_type char-split
    - Run python cli.py --embed --chunk_type recursive-split
+     <br>
   Load the generated embeddings into ChromaDB:
    - Run python cli.py --load --chunk_type char-split
    - Run python cli.py --load --chunk_type recursive-split
+     <br>
   Test querying the vector database:
    - python cli.py --query --chunk_type char-split
    - python cli.py --query --chunk_type recursive-split
+     <br>
   Note: The query prompt is:
   -	"Where does Andigena hypoglauca live?"
 
