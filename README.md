@@ -18,7 +18,7 @@
 ├── Reports
 │   └── Statement_of_Work.pdf
 │   └── E115_BirdWatching App Wireframe.pdf
-│   └── birdwatching_vm_screenshot.png
+│   └── birdwatchingapp_vm_screenshot.png
 └── src
     └── Acoustic_Monitoring_Model
     │   ├── Dockerfile
