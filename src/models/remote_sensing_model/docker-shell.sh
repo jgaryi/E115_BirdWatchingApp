@@ -4,7 +4,7 @@
 IMAGE_NAME="my-python-image"
 CONTAINER_NAME="my-python-container"
 DOCKERFILE="Dockerfile"
-PYTHON_SCRIPT="infer_model.py"
+#PYTHON_SCRIPT="infer_model.py"
 
 # Ensure the Python script exists (this check is removed as we no longer run the script)
 if [[ ! -f "$DOCKERFILE" ]]; then
@@ -22,14 +22,14 @@ if [[ $? -ne 0 ]]; then
     exit 1
 fi
 
-# Get the absolute path of the current script's directory (adapted for Windows)
+# Get the absolute path of the current scripts' directory (adapted for Windows)
 WORKDIR=$(dirname $(realpath $0))
 
 # Convert Windows path to Docker-compatible path (e.g. C:\Users\Username -> /c/Users/Username)
 WORKDIR=$(echo $WORKDIR | sed 's/^/\/c\//;s/\\/\//g')
 
-# Run the container but do not execute the Python script
+# Run the container but do not execute the Python scripts
 echo "Starting container '$CONTAINER_NAME' with image '$IMAGE_NAME'..."
 
-# Run Docker command with the absolute path for Windows, without running the Python script
+# Run Docker command with the absolute path for Windows, without running the Python scripts
 docker run --rm --name $IMAGE_NAME -ti -v "$(dirname $(realpath $0))/:/app" $IMAGE_NAME
