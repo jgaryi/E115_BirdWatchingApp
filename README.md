@@ -13,17 +13,14 @@
     │   ├── cli.py
     │   └── preprocess_cv.py
     │
-    └── Data_Processing
-    │   ├── Dockerfile
-    │   ├── pipfile
-    │   ├── pipfile.lock
-    │   └── preprocess_rag.py
+    │
 ├── Notebooks
 │   └── Acoustic_Monitoring_EDA.ipynb
 ├── References
 ├── Reports
 │   └── Statement_of_Work.pdf
 │   └── E115_BirdWatching App Wireframe.pdf
+│   └── birdwatching_vm_screenshot.png
 └── src
     └── Acoustic_Monitoring_Model
     │   ├── Dockerfile
