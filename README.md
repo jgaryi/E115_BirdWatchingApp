@@ -139,8 +139,8 @@ Instructions for running the Dockerfiles:
 
 **Models container**  
    1. Acoustic Inference Model - use the existing BirdNet model for inference ['src/models/acoustic_model/Dockerfile'](src/models/acoustic_model/Dockerfile)    
-    - Run the 'docker-shell.sh' to launch the container  
-    - Run the 'Species_Prediction.py' within the container  
+   - Run the 'docker-shell.sh' to launch the container  
+   - Run the 'Species_Prediction.py' within the container  
  
    2. Accoustic Transfer Training Model
     - Not available yet. We will use data from the nine representative bird species previously mentioned to perform transfer learning and enhance the prediction confidence of the model for the bird species of interest. The transfer learning model will be ready in the next milestone.
