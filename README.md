@@ -53,7 +53,7 @@ If the identified bird is one of the 500 species found in the national park but 
 
 An interactive map will show the bird's previously identified locations within the national park, habitat details, and changes over time that help explain why these species are vulnerable or endangered. The map will also highlight other areas where the bird is likely to be found, based on predictions from a geo-referenced model using remote sensing data. Additionally, a built-in chatbot will allow users to ask bird-related questions and receive answers powered by a Large Language Model with Retrieval-Augmented Generation (LLM-RAG).<br>
 
-The lastest version of the project wireframe is available here: [`reports/E115_BirdWatching App Wireframe_13March2025.pdf`](reports/E115_BirdWatching App Wireframe_13March2025.pdf)  
+The lastest version of the project wireframe is available here: [`reports/`](reports/)  
 <br><br>
 
 # Milestone 2
@@ -127,7 +127,7 @@ Instructions for running the Dockerfiles:
 - The processed images and text files will be stored in your GCS bucket.
 
 **Data Processing**
-[`data/data_processing/Dockerfile`](data/data_processing/Dockerfile)  
+[`src/models/llm-rag/Dockerfile`](src/models/llm-rag/Dockerfile)
 - Run the `docker-shell.sh` to launch the container.  
 - Create a `secrets` folder at the same level with the `cli.py` file  
 - Add your GCS credentials to the `secrets` folder  
