@@ -179,6 +179,14 @@ Currently, the Python script identifies the locations of the bird, with remote s
 The Jupyter file `Acoustic_Monitoirng_EDA` explore the features of audio file. The audio signal or data can be represented in time, frequency and time-frequency domain. The time and frequency domain represenation only show information of audio signal from one-dimension. while the time-frequency domain representation will give a 2D representation as an image. The Mel spectrogram can be extracted from this 2D image and fed as input to Convolutional Neural Networks for model training and prediction.    
 
 <br><br>
+
+## Virtual Machine (VM) Setup
+-	Create a VM Instance from GCP
+-	SSH into your newly created instance
+-	Update OS packages: sudo apt-get update
+-	Install Git: sudo apt install git
+<br><br>
+
 ## Data Versioning Strategy
 
 An initial baseline of both the acoustic data and the LLM-RAG data was collected in March 2025. The data was scraped from the sources mentioned above using custom scripts.
