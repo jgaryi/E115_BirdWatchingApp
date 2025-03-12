@@ -4,7 +4,7 @@
 IMAGE_NAME="my-python-image"
 CONTAINER_NAME="my-python-container"
 DOCKERFILE="Dockerfile"
-PYTHON_SCRIPT="birdlocations.py"
+PYTHON_SCRIPT="infer_model.py"
 
 # Ensure the Python script exists (this check is removed as we no longer run the script)
 if [[ ! -f "$DOCKERFILE" ]]; then
