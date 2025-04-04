@@ -4,40 +4,42 @@
 
 ```
 ├── Readme.md
-└── Data
-    └── Data_Collection
-    │   ├── Dockerfile
-    │   ├── pipfile
-    │   ├── pipfile.lock
-    │   ├── docker-shell.sh
-    │   ├── cli.py
-    │   └── preprocess_cv.py
 ├── Notebooks
 │   └── Acoustic_Monitoring_EDA.ipynb
 ├── References
+│   └── references_13March2025.pdf
 ├── Reports
 │   └── Statement_of_Work.pdf
 │   └── E115_BirdWatching App Wireframe.pdf
 │   └── birdwatchingapp_vm_screenshot.png
 └── src
-    └── Acoustic_Monitoring_Model
+    └── data_collector
     │   ├── Dockerfile
     │   ├── pipfile
     │   ├── pipfile.lock
-    │   └── Infer_Model.py
-    │   
-    └── LLM-RAG_Model
-    │   ├── Dockerfile
-    │   ├── pipfile
-    │   ├── pipfile.lock
-    │   └── cli.py   
-    │
-    └── Remote_Sensing_Model
-        ├── Dockerfile
-        ├── pipfile
-        ├── pipfile.lock
-        ├── Infer_model.py
-        └── deforestation.py
+    │   ├── cli.py
+    │   ├── preprocess_cv.py
+    │   ├── semanticscholar.py
+    │   └── docker-shell.sh
+    └── models	    
+        └── Acoustic_Monitoring_Model
+        │   ├── Dockerfile
+        │   ├── pipfile
+        │   ├── pipfile.lock
+        │   └── Infer_Model.py
+        │   
+        └── LLM-RAG_Model
+        │   ├── Dockerfile
+        │   ├── pipfile
+        │   ├── pipfile.lock
+        │   └── cli.py   
+        │
+        └── Remote_Sensing_Model
+            ├── Dockerfile
+            ├── pipfile
+            ├── pipfile.lock
+            ├── Infer_model.py
+            └── deforestation.py
 ```
 
 # E115 - Birdwatching App
