@@ -7,8 +7,10 @@ from io import BytesIO
 from PIL import Image
 from google.oauth2 import service_account
 from google.cloud import storage
+from PyPDF2 import PdfReader
+import io
 
-
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "secrets/acoustic_monitoring_sa.json"  # Add your credentials to the 'secrets' folder and provide the Path here
 source_data = 'source_data'
 
 if not os.path.exists(source_data):
@@ -231,6 +233,60 @@ mainpath_wiki = os.path.join(source_data, 'unprocessed_wiki')
 wiki(species, wiki_urls,mainpath_wiki)
 
 
+# os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "secrets/acoustic_monitoring_sa.json"  # Path to your GCP service account key file
+# gcp_project = os.getenv("GCP_PROJECT")
+
+
+def scrape_pdf(url):
+
+    response = requests.get(url)
+    response.raise_for_status()  
+    pdf_file = io.BytesIO(response.content)
+    reader = PdfReader(pdf_file)
+    
+    text = ""
+    for page in reader.pages:
+        page_text = page.extract_text()
+        if page_text:
+            text += page_text + "\n"
+    return text
+
+
+def all_txt(urls, output_filename):
+    bucket_name = "acoustic_monitoring_project"
+    combined_text = ""
+    for url in urls:
+        print(f"Processing: {url}")
+        combined_text += scrape_pdf(url) + "\n"
+
+    storage_client = storage.Client()
+    bucket = storage_client.bucket(bucket_name)
+
+    blob = bucket.blob(output_filename)
+    # print("Uploading:",destination_blob_name, text_file)
+    blob.upload_from_string(combined_text, content_type='text/plain')
+    print(f"Uploaded '{output_filename}' to bucket '{bucket_name}'")
+    return combined_text
+urls = [
+        "https://sora.unm.edu/sites/default/files/journals/auk/v111n01/p0001-p0007.pdf",
+        "https://asociacioncolombianadeornitologia.org/wp-content/uploads/2018/10/16eNB0401-19.pdf",
+        "https://citeseerx.ist.psu.edu/document?repid=rep1&type=pdf&doi=3f2576a5c0a28504abf0d25af844f2569c736c59",
+        "https://sora.unm.edu/sites/default/files/journals/auk/v093n03/p0415-p0428.pdf",
+        "https://sora.unm.edu/sites/default/files/journals/auk/v106n03/p0422-p0432.pdf"     
+    ]
+    
+output_file = "combined_text.txt"
+combined_text = all_txt(urls, output_file)
+
+
+docx_path = "source_data/unprocessed_wiki/Doliornis sclateri/Doliornis sclateri.docx"
+doc = Document(docx_path)
+doc.add_paragraph(combined_text)
+doc.save(docx_path)
+print(f"Appended text to '{docx_path}'")
+
+
+# -----------+=
 #merge all docx and send final data to cloud
 
 script_dir = os.path.dirname(os.path.abspath(__file__))
@@ -312,5 +368,23 @@ gcs_folder = "bird_description"
 
 upload_folder_to_gcs(bucket_name, local_folder, gcs_folder)
 
-  
+# delete the directories
+import shutil
+import os
+
+# Path to the directory to delete
+directory_path = ["secrets","source_data"]
+
+
+for dir in directory_path:
+    if os.path.exists(dir) and os.path.isdir(dir):
+        print(f"Deleting directory: {dir}")
+        # Delete the directory and all its contents
+        shutil.rmtree(dir)
+    elif os.path.exists(dir) and os.path.isfile(dir):
+        os.remove(dir)
+        print(f"Deleted file: {dir}")
+    else:
+        print(f"Directory or file does not exist: {dir}")
+
 

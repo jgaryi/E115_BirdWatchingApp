@@ -24,6 +24,7 @@ typing-extensions = "*"
 urllib3 = "*"
 virtualenv = "*"
 zipp = "*"
+pypdf2 = "*"
 
 [dev-packages]
 
