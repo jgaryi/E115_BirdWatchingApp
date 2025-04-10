@@ -4,6 +4,7 @@
 
 ```
 ├── Readme.md
+├── Images
 ├── Notebooks
 │   └── Acoustic_Monitoring_EDA.ipynb
 ├── References
