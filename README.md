@@ -31,17 +31,11 @@
         │   └── Infer_Model.py
         │   
         └── LLM-RAG_Model
-        │   ├── Dockerfile
-        │   ├── pipfile
-        │   ├── pipfile.lock
-        │   └── cli.py   
-        │
-        └── Remote_Sensing_Model
             ├── Dockerfile
             ├── pipfile
             ├── pipfile.lock
-            ├── Infer_model.py
-            └── deforestation.py
+            └── cli.py   
+
 ```
 
 # E115 - Milestone4 - Birdwatching App
