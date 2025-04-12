@@ -4,38 +4,32 @@
 
 ```
 ├── Readme.md
-├── Images
-├── Notebooks
-│   └── Acoustic_Monitoring_EDA.ipynb
-│   └── Interactive_Map_Deforestation.ipynb
-│
-├── References
-│   └── references_13March2025.pdf
-├── Reports
-│   └── Statement_of_Work.pdf
-│   └── E115_BirdWatching App Wireframe.pdf
-│   └── birdwatchingapp_vm_screenshot.png
+├── data 
+├── notebooks
+│   └── eda.ipynb
+├── references
+├── reports
+│   ├── Acoustic_Monitoring_EDA.ipynb
+│   └── Statement of Work_Sample.pdf  #This is Milestone1 proposal
 └── src
-    └── data_collector
+    ├── api-service
+    ├── datapipeline
     │   ├── Dockerfile
-    │   ├── pipfile
-    │   ├── pipfile.lock
-    │   ├── cli.py
+    │   ├── Pipfile
+    │   ├── Pipfile.lock
+    │   ├── dataloader.py
+    │   ├── docker-shell.sh
     │   ├── preprocess_cv.py
-    │   ├── semanticscholar.py
-    │   └── docker-shell.sh
-    └── models	    
-        └── Acoustic_Monitoring_Model
-        │   ├── Dockerfile
-        │   ├── pipfile
-        │   ├── pipfile.lock
-        │   └── Infer_Model.py
-        │   
-        └── LLM-RAG_Model
-            ├── Dockerfile
-            ├── pipfile
-            ├── pipfile.lock
-            └── cli.py   
+    │   └── preprocess_rag.py
+    ├── docker-compose.yml
+    ├── frontend
+    ├── models
+    │   ├── Dockerfile
+    │   ├── docker-shell.sh
+    │   ├── infer_model.py
+    │   ├── model_rag.py
+    │   └── train_model.py
+    └── workflow         
 
 ```
 
