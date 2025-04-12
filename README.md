@@ -6,11 +6,15 @@
 ├── Readme.md
 ├── data 
 ├── notebooks
-│   └── eda.ipynb
+│   ├── BirdWatchingApp.ipynb
+│   ├── Acoustic_Monitoring_EDA.ipynb
+│   ├── Interactive_Map_Biodiversity.ipynb
+│   ├── Interactive_Map_Bird_Locations.ipynb
+│   └── Interactive_Map_Deforestation.ipynb
 ├── references
 ├── reports
-│   ├── Acoustic_Monitoring_EDA.ipynb
-│   └── Statement of Work_Sample.pdf  #This is Milestone1 proposal
+|   ├── BirdWatchingAppMidterm.pdf
+│   └── Statement of Work_Sample.pdf 
 └── src
     ├── api-service
     ├── datapipeline
