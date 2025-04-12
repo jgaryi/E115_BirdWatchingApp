@@ -4,7 +4,8 @@
 
 ```
 ├── Readme.md
-├── data 
+├── data
+├── images 
 ├── notebooks
 │   ├── BirdWatchingApp.ipynb
 │   ├── Acoustic_Monitoring_EDA.ipynb
