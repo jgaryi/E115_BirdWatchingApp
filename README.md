@@ -17,7 +17,6 @@
 |   ├── BirdWatchingAppMidterm.pdf
 │   └── Statement of Work_Sample.pdf 
 └── src
-    ├── api-service
     ├── datapipeline
     │   ├── Dockerfile
     │   ├── Pipfile
@@ -26,8 +25,9 @@
     │   ├── docker-shell.sh
     │   ├── preprocess_cv.py
     │   └── preprocess_rag.py
-    ├── docker-compose.yml
+    ├── api-service 
     ├── frontend
+    ├── vector-db
     ├── models
     │   ├── Dockerfile
     │   ├── docker-shell.sh
