@@ -4,7 +4,6 @@
 
 ```
 ├── Readme.md
-├── data
 ├── images 
 ├── notebooks
 │   ├── BirdWatchingApp.ipynb
