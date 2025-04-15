@@ -26,14 +26,7 @@
     │   └── preprocess_rag.py
     ├── api-service 
     ├── frontend
-    ├── vector-db
-    ├── models
-    │   ├── Dockerfile
-    │   ├── docker-shell.sh
-    │   ├── infer_model.py
-    │   ├── model_rag.py
-    │   └── train_model.py
-    └── workflow         
+    └── vector-db        
 
 ```
 
