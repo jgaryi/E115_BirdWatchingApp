@@ -22,10 +22,19 @@
     │   ├── Pipfile.lock
     │   ├── dataloader.py
     │   ├── docker-shell.sh
-    │   ├── preprocess_cv.py
-    │   └── preprocess_rag.py
-    ├── api-service 
-    ├── frontend
+    │   └── preprocess_cv.py
+    │    
+    ├── api-service
+    │    ├── api
+    │    │   ├── routers
+    │    │   ├── utils
+    │    │   ├── service.py
+    │    ├── docker-entrypoint.sh
+    │    ├──docker-shell.sh
+    │    ├──Dockerfile
+    │    ├──Pipfile
+    │    ├──Pipfile.lock
+    ├── frontend-react
     └── vector-db        
 
 ```
