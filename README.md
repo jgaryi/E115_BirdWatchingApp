@@ -10,31 +10,30 @@
 │   ├── Acoustic_Monitoring_EDA.ipynb
 │   ├── Interactive_Map_Biodiversity.ipynb
 │   ├── Interactive_Map_Bird_Locations.ipynb
+│   ├── SemanticScholar.py
+│   ├── cli.py
+│   ├── preprocess_cv.py
 │   └── Interactive_Map_Deforestation.ipynb
 ├── references
 ├── reports
 |   ├── BirdWatchingAppMidterm.pdf
 │   └── Statement of Work_Sample.pdf 
-└── src
-    ├── datapipeline
-    │   ├── Dockerfile
-    │   ├── Pipfile
-    │   ├── Pipfile.lock
-    │   ├── dataloader.py
-    │   ├── docker-shell.sh
-    │   └── preprocess_cv.py
-    │    
+└── src  
     ├── api-service
     │    ├── api
     │    │   ├── routers
     │    │   ├── utils
     │    │   ├── service.py
     │    ├── docker-entrypoint.sh
-    │    ├──docker-shell.sh
-    │    ├──Dockerfile
-    │    ├──Pipfile
-    │    ├──Pipfile.lock
+    │    ├── docker-shell.sh
+    │    ├── Dockerfile
+    │    ├── Pipfile
+    │    ├── Pipfile.lock
     ├── frontend-react
+    │    ├── public
+    │    ├── src
+    │    ├── Dockerfile
+    │    ├── docker-shell.sh
     └── vector-db        
 
 ```
