@@ -41,7 +41,7 @@
     │    ├── components 
     │    ├── service 
     │    ├── Dockerfile
-    │    ├── docker-shell.sh
+    │    └── docker-shell.sh
     └── vector-db             
 
 ```
