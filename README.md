@@ -102,8 +102,7 @@ Here are some screenshots of our app:
 **3.2 **
 
 ### 4. Running Dockerfile ###
-Instructions for running the Dockerfile can be added here.
-To run Dockerfile - `Instructions here`
+
 
 
 ### 5. Notebooks/Reports ####
