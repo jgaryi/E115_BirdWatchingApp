@@ -108,11 +108,10 @@ The frontend will allow an audio file uploaded with a limitation of 5MB, and the
 
 The LLM agent is the conversational layer that brings context and insight to the app. Whether responding to text-based questions or enhancing audio-based bird species predictions, it serves up detailed, accurate, and engaging information.
 Key features:
--   RAG-Enhanced Response Generation: The agent uses a Retrieval-Augmented Generation (RAG) architecture. It includes a custom tool that retrieves relevant bird species data from our web-scrapped, chunked, and embedded knowledge base, then passes that context into the LLM to generate informed, natural responses.
--   Audio Input Pipeline: When an audio file is received, the BirdNET model predicts the most likely species. This prediction is used to generate a search query, retrieve species info, and craft a human-friendly explanation using the LLM.
+-   RAG-Enhanced Response Generation: The agent uses a Retrieval-Augmented Generation (RAG) architecture. It includes a custom tool that retrieves relevant bird species data from our web-scrapped, chunked, and embedded knowledge base, then injects the retrieved content into the LLM to generate informed, natural responses.
+-   Audio Input Pipeline: When an audio file is received, the BirdNET model predicts the most likely species. This prediction is then used as a query to retrieve species information, which the agent uses to craft a natural, informative response.
 -   Text Input Support: For direct user questions (e.g., "What does a cardinal sound like?" or "Where can I spot a robin?"), the agent dynamically pulls and injects relevant information to respond meaningfully.
--   Tool-Augmented Architecture
- The agent supports tools like ```get_specie_info_by_search_content```, which filters and ranks knowledge base content using cosine similarity against expanded user queries.
+-   Tool-Augmented Architecture: Our agent uses the ```get_specie_info_by_search_content``` tool, which filters and ranks knowledge base content using cosine similarity against expanded user queries.
 
 ### 3. Frontend React ###
 The frontend of the application is built as a user-friendly React web interface, designed to enable users to identify bird species through audio recordings and access detailed bird information via an AI agent. The primary functionality centers around integrating with a backend service that hosts a BirdNET-based acoustic model for species prediction and a large language model (LLM) acting as a bird expert assistant.
