@@ -107,10 +107,11 @@ The frontend will allow an audio file uploaded with a limitation of 5MB, and the
 **2.2. Bird Knowledge Expert (LLM-Agent Chatbot)**
 
 The LLM agent is the conversational layer that brings context and insight to the app. Whether responding to text-based questions or enhancing audio-based bird species predictions, it serves up detailed, accurate, and engaging information.
+
 Key features:
 -   RAG-Enhanced Response Generation: The agent uses a Retrieval-Augmented Generation (RAG) architecture. It includes a custom tool that retrieves relevant bird species data from our web-scrapped, chunked, and embedded knowledge base, then injects the retrieved content into the LLM to generate informed, natural responses.
 -   Audio Input Pipeline: When an audio file is received, the BirdNET model predicts the most likely species. This prediction is then used as a query to retrieve species information, which the agent uses to craft a natural, informative response.
--   Text Input Support: For direct user questions (e.g., "What does a cardinal sound like?" or "Where can I spot a robin?"), the agent dynamically pulls and injects relevant information to respond meaningfully.
+-   Text Input Support: For direct user questions, the agent dynamically pulls and injects relevant information to respond meaningfully.
 -   Tool-Augmented Architecture: Our agent uses the ```get_specie_info_by_search_content``` tool, which filters and ranks knowledge base content using cosine similarity against expanded user queries.
 
 ### 3. Frontend React ###
