@@ -309,19 +309,14 @@ Note: Make sure the API service container is running for full functionality
 
 Make sure you do not have any running containers and clear up an unused images. Complete the following steps: 
 
-1. Run
-
-docker container ls
+1. Run ```docker container ls```
 
 2. Stop any container that is running
 
-3. Run
+3. Run ```docker system prune```
 
-docker system prune
+4. Run ```docker image ls```
 
-4. Run
-
-docker image ls
 
 
 ### 5. Notebooks/Reports ####
