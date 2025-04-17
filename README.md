@@ -334,6 +334,11 @@ The notebook demonstrated how the BirdNET model is used to predict bird species 
 
 So for an audio recording longer than fixed chunk length, we can get embedding and prediction for each chunk of data. In the Notebook, we ranked the prediction result according to the confidence level from high to lower. A threshold can be set to decide if the prediction confidence level is acceptable, if not, the embedding generated for the audio file can be passed to transfer learn model for evaluation if it is a rare speices were trained in transfer leanring. 
 
+**Files:**
+- **TransferLearningModel.ipynb**: This notebook discussed the bird song acoustic representation in time, and time-frequency domain as "image". illustrate the feature extraction for the model prediction. 
+
+- **BirdWatchingApp.ipynb**: This notebook illustrate how to use BirdNET model prediction bird species, and ranking of the result according to prediction confidence. 
+
 **5.3 Transfer Learning for Identification of Rare Bird Species**   
 
 In this project, we develop a transfer learning approach to classify rare bird species based on audio recordings. The transfer learning workflow begins by preprocessing field recordings, followed by extracting acoustic embeddings using the BirdNET model. These embeddings serve as feature vectors for training lightweight classifiers capable of recognizing underrepresented species such as Doliornis and Hapalopsittaca.
@@ -341,7 +346,7 @@ In this project, we develop a transfer learning approach to classify rare bird s
 We implement and compare several models—including multinomial logistic regression, K-nearest neighbors (KNN), multilayer perceptrons (MLPs), and a few-shot learning strategy based on cosine similarity. Cross-validation using grouped audio samples ensures robust evaluation without data leakage. The MLP model achieved the best performance, with an average cross-validation accuracy of 0.87. Based on this result, the MLP was retrained on the full dataset for both rare species, and the notebook includes a practical example demonstrating how to use the final model for prediction.
 
 **Files:**
-- **TransferLearningModel.ipynb**: This is the main notebook containing the full transfer learning pipeline. Note: GitHub may display it as an "invalid notebook" due to a known glitch that occasionally occurs when exporting notebooks from Google Colab.
+- **Acoustic_Monitoring_EDA.ipynb**: This is the main notebook containing the full transfer learning pipeline. Note: GitHub may display it as an "invalid notebook" due to a known glitch that occasionally occurs when exporting notebooks from Google Colab.
 
 - **TransferLearningModel.pdf**: A static PDF version of the notebook is provided for easier viewing directly on GitHub.
 
