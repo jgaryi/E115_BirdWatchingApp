@@ -123,11 +123,15 @@ The React app is structured into several key sections:
 
 - **Home Page**: Offers an overview of the app’s capabilities and guides users to different features.
 
-- <img src="images/Frontend1.png"  width="800">
+  <img src="images/Frontend1.png"  width="800">
 
 - **Bird Sound Explorer**: A catalog of local bird species, complete with images and example vocalizations.
 
+  <img src="images/Frontend4.png"  width="800">
+
 - **Interactive Maps**: Displays geospatial data such as historical sighting locations, habitat conditions (e.g., forest cover, deforestation), and general biodiversity hotspots.
+
+ <img src="images/Frontend5.png"  width="800">
 
 - **Audio Upload & Chat Interface**: Allows users to submit recordings and engage with the LLM-based chatbot to ask questions and receive context-aware information about the identified bird species and other bird information of their interest.
 
