@@ -94,6 +94,7 @@ We built backend api service using fast API to expose model functionality to the
 <img src="images/api-list.png"  width="800">
 
 **2.1. Acoustic Model for Bird Species Identification**
+
 Bioacoustic analysis of bird songs, is a novel and non-invasive technology which provides a rich windlow into biodiversity and ecosystem health for national park protection and convervation. There are several deep learning model developed for the biacoustic identification of birds, BirdNET is one of the most popular models which was trained with EfficientNet architecture, and a broader training set of more than 6000 bird species and some non-avian species. To enable a range of downstream use-cases, BirdNET trades off some accuracy for efficient computation. The BirdNET code is available on GitHub§, and includes support for training small classifiers on embeddings by using transfer learning (see Section 5.3). In the selected 11 speices, 9 of them are in the list of training data set. Those species can be directly identified and monitored by the BirdNET model, and for the other 2 species, we will apply transfer leaning to process it. 
 
 **2.2. Bird Knowledge Expert (LLM-Agent Chatbot)**
@@ -125,6 +126,8 @@ This folder contains code that is not part of container - for e.g: Application m
 **5.1 Web Scrapping and Data Versioning**
 
 **5.2 Acoustid Model for Bird Identification**
+
+The notebook demonstrated how the BirdNET model is used to predict bird species from bird audio imput. the BirdNET model has a built-in preprocessor to chunk the input audio into fixed length (3 or 5 seconds) pieces, and convert each of small piece into a spectrogram by Short Time Fourier Transformation . The spectrogram is represented in both time and frequency domain, can be treated as "image" data. Each image data chunk pass to the BirdNET neural network model and generate an embedding. So for an audio recording longer than fixed chunk length, the BirdNET model will generate more than one embeddings, and give prediction for each embedding or each chunk of data. In the Notebook, we ranked the prediction result according to the confidence level from high to lower. A threshold can be set to decide if the prediction confidence level is acceptable, if not, the embedding generated for the audio file can be passed to transfer learn model for evaluation if it is a rare speices were trained in transfer leanring. 
 
 **5.3 Transfer Learning for Identification of Rare Bird Species**
 
