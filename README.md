@@ -115,12 +115,7 @@ Here are some screenshots of our app:
 **3.2 **
 
 ### 4. Running Dockerfile ###
-<<<<<<< HEAD
->>>>>>> a60db3e4c99205c015520f1ad3e40bd4c2b3ac47
-Instructions for running the Dockerfile can be added here.
-To run Dockerfile - `Instructions here`
-=======
->>>>>>> bd1f5cc3af336ff388b60770c88bb8e530c3ad53
+
 
 
 
