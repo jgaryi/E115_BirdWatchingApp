@@ -329,7 +329,7 @@ This folder contains code that is not part of container - for e.g: Application m
 
 **5.1 Web Scrapping and Data Versioning**
 
-We collected bird species information by scraping text from three authoritative websites, along with scholarly articles sourced from Google Scholar and Semantic Scholar. The extracted data was cleaned and structured before being stored in a Google Cloud Storage (GCS) bucket for use in downstream processing and semantic search.
+We collected bird species information by scraping text from three authoritative websites, along with scholarly articles sourced from Google Scholar and Semantic Scholar. The extracted data was cleaned and structured before being stored in a GCS bucket for use in downstream processing and semantic search.
 
 **5.2 Acoustid Model for Bird Identification**
 
