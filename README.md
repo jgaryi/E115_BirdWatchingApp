@@ -115,8 +115,21 @@ Key features:
  The agent supports tools like ```get_specie_info_by_search_content```, which filters and ranks knowledge base content using cosine similarity against expanded user queries.
 
 ### 3. Frontend React ###
+The frontend of the application is built as a user-friendly React web interface, designed to enable users to identify bird species through audio recordings and access detailed ornithological information via an AI agent. The primary functionality centers around integrating with a backend service that hosts a BirdNET-based acoustic model for species prediction and a large language model (LLM) acting as a bird expert assistant.
 
-A user friendly React app was built to identify various species of mushrooms in the wild using computer vision models from the backend. Using the app a user can take a picture of a mushroom and upload it. The app will send the image to the backend api to get prediction results on weather the mushroom is poisonous or not. 
+Users can record or upload bird vocalizations directly through the interface. These audio files are sent to the backend via a RESTful API, which returns prediction results indicating the most likely bird species. The frontend then displays this information in a clear and accessible format, enabling users to further explore related content.
+
+The React app is structured into several key sections:
+
+    Home Page – Offers an overview of the app’s capabilities and guides users to different features.
+
+    Bird Sound Explorer – A searchable catalog of local bird species, complete with images and example vocalizations.
+
+    Interactive Map – Displays geospatial data such as historical sighting locations, habitat conditions (e.g., forest cover, deforestation), and biodiversity indices.
+
+    Audio Upload & Chat Interface – Allows users to submit recordings and engage with the LLM-based chatbot to ask questions and receive context-aware information about the identified bird species.
+
+This frontend implementation demonstrates the seamless integration of modern web technologies with AI-driven services to support interactive, educational, and conservation-focused user experiences.
 
 Here are some screenshots of our app:
 
