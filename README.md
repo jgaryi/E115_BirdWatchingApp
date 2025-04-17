@@ -53,7 +53,7 @@
 
 ```
 
-# E115 - Milestone4 - Birdwatching App
+# E115 - Milestone 4 - Birdwatching App
 
 **Team Members:** Jaqueline Garcia-Yi, Susan Urban, Yong Li, and Victoria Okereke
 
@@ -67,9 +67,9 @@ This project leverages AI to support bird species identification, using Yanachag
 
 ## Milestone4 ##
 
-In this milestone, we have the components for frontend, API service, also components from previous milestones for data management, including versioning, as well as the interactive maps, and acoustic and language models.
+In this milestone, we have the frontend, API service, components from previous milestones for data management, including versioning, as well as the interactive maps, and acoustic and language models.
 
-After completions of building a robust ML Pipeline in our previous milestone we have built a backend api service and frontend app. This will be our user-facing application that ties together the various components built in previous milestones.
+After completion of building a robust ML Pipeline in our previous milestone we have built a backend api service and frontend app. This will be our user-facing application that ties together the various components built in previous milestones.
 
 
 ### 1. Application Design ###
@@ -95,13 +95,13 @@ The backend API is built using FastAPI and serves as the core interface between 
 
 **2.1. Acoustic Model for Bird Species Identification**
 
-The acoustic model -- BirdNET is used for identification of bird species by audio recording. The frontend will allow an audio file uploaded, and the backend api ```llm_cnn_chat``` will save the file in a temperory path and pass the temp file path to BirdNET model for prediction. 
+The acoustic model BirdNET is used for identification of bird species by audio recording. The frontend allows an audio file to be uploaded, and the backend api ```llm_cnn_chat``` saves the file in a temperory path and passes the temp file path to the BirdNET model for prediction. 
 Key features: 
--   No preprocessing on audio file is required: The BirdNET model use its built-in preprocessor to chunk the input audio into fixed length (3 or 5 seconds) pieces, and convert each of small piece into a spectrogram as image input to neural network in BirdNET.
--   Multiple audio format supported: supprot not only .mp3, .wav, but also .flac
--   long recording supported: for an audio recording longer than fixed chunk length, the BirdNET model will generate embedding and make prediction on each chunk of data. The audio file size limition is 5MB
--   Enhanced accuracy by longer data: The prediction on each data chunks is averaged on each species over all chunks, and the results are ranked and get the prediction with highest confidence. 
--   Augmented with text query: The api could answer question either when the audio is uploaded or after the model predict the audio input about the species related to habitat preferences, feeding behaviors and dietary needs, breeding cycles and nesting habits, conservation strategies and threats etc. 
+-   No preprocessing on audio file is required: The BirdNET model uses its built-in preprocessor to chunk the input audio into fixed length (3 or 5 seconds) pieces, and converts each of the small pieces into a spectrogram as an image input to a neural network in BirdNET.
+-   Multiple audio formats supported: supports not only .mp3 and .wav, but also .flac
+-   Long recording supported: for an audio recording longer than a fixed chunk length, the BirdNET model will generate embeddings and make a prediction on each chunk of data. The audio file size limition is 5MB.
+-   Enhanced accuracy with longer data: The prediction on each data chunk is averaged on each species over all chunks. The results are ranked to obtain the prediction with the highest confidence. 
+-   Augmented with text query: The api answers a question either when the audio is uploaded or after the model prediction.  The audio input about the species relates to habitat preferences, feeding behaviors and dietary needs, breeding cycles and nesting habits, conservation strategies and threats. 
 
 **2.2. Bird Knowledge Expert (LLM-Agent Chatbot)**
 
@@ -111,7 +111,7 @@ Key features:
 -   RAG-Enhanced Response Generation: The agent uses a Retrieval-Augmented Generation (RAG) architecture. It includes a custom tool that retrieves relevant bird species data from our web-scrapped, chunked, and embedded knowledge base, then injects the retrieved content into the LLM to generate informed, natural responses.
 -   Audio Input Pipeline: When an audio file is received, the BirdNET model predicts the most likely species. This prediction is then used as a query to retrieve species information, which the agent uses to craft a natural, informative response.
 -   Text Input Support: For direct user questions, the agent dynamically pulls and injects relevant information to respond meaningfully.
--   Tool-Augmented Architecture: Our agent uses the ```get_specie_info_by_search_content``` tool, which filters and ranks knowledge base content using cosine similarity against expanded user queries.
+-   Tool-Augmented Architecture: Our agent uses the ```get_specie_info_by_search_content``` tool, which filters and ranks the knowledge base content using the cosine similarity against expanded user queries.
 
 
 ### 3. Frontend React ###
@@ -314,7 +314,7 @@ Make sure you do not have any running containers and clear up an unused images. 
 
 
 ### 5. Notebooks/Reports ####
-This folder contains code that is not part of container - for e.g: Application mockup, EDA, any 🔍 🕵️‍♀️ 🕵️‍♂️ crucial insights, reports or visualizations.
+This folder contains code that is not part of a container e.g., Application mockup, EDA, any 🔍 🕵️‍♀️ 🕵️‍♂️ crucial insights, reports or visualizations.
 
 **5.1 Web Scrapping and Data Versioning**
 
@@ -330,14 +330,14 @@ Previous versions of the models are not expected to be revisited. Given that upd
 
 **5.2 Acoustic Model for Bird Identification**
 
-The notebook demonstrated how the BirdNET model is used to predict bird species from bird audio input. the BirdNET model use its built-in preprocessor to chunk the input audio into fixed length pieces, convert each of small piece into a spectrogram by Short Time Fourier Transformation. The spectrogram is represented in both time and frequency domain, can be treated as "image" data (see Notebook). It is pass to the neural network model BirdNET to generate an embedding. 
+The notebook demonstrated how the BirdNET model is used to predict bird species from bird audio input. The BirdNET model use its built-in preprocessor to chunk the input audio into fixed length pieces, convert each of small piece into a spectrogram by Short Time Fourier Transformation. The spectrogram is represented in both time and frequency domain, can be treated as "image" data (see Notebook). It passes it to the neural network model BirdNET to generate an embedding. 
 
-So for an audio recording longer than fixed chunk length, we can get embedding and prediction for each chunk of data. In the Notebook, we ranked the prediction result according to the confidence level from high to lower. A threshold can be set to decide if the prediction confidence level is acceptable, if not, the embedding generated for the audio file can be passed to transfer learn model for evaluation if it is a rare speices were trained in transfer leanring. 
+So for an audio recording longer than the fixed chunk length, we obtain embeddings and a prediction for each chunk of data. In the notebook, we ranked the prediction result according to the confidence level from high to low. A threshold can be set to decide if the prediction confidence level is acceptable, if not, the embedding generated for the audio file can be passed to the transfer model for evaluation if it is a rare species. 
 
 **Files:**
-- **Acoustic_Monitoring_EDA.ipynb**: This notebook discussed the bird song acoustic representation in time, and time-frequency domain as "image". illustrate the feature extraction for the model prediction. 
+- **Acoustic_Monitoring_EDA.ipynb**: This notebook discussed the bird song acoustic representation in time, and time-frequency domain as an "image". 
 
-- **BirdWatchingApp.ipynb**: This notebook illustrate how to use BirdNET model for bird species prediction, and ranking of the result according to prediction confidence. 
+- **BirdWatchingApp.ipynb**: This notebook illustrates how to use the BirdNET model for bird species prediction, and ranking of the result according to the prediction confidence. 
 
 **5.3 Transfer Learning for Identification of Rare Bird Species**   
 
