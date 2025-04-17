@@ -329,12 +329,12 @@ Both the acoustic and LLM-RAG datasets are dynamic, with snapshots taken at spec
 Previous versions of the models are not expected to be revisited. Given that updates are anticipated to occur every few months, the team will establish the initial baseline and later implement the Data Versioning Container.
 
 **Files:**
-- **cli.py**: This script scrapes text and images and stores the data both in GCS bucket. It handles the following:
+- **cli.py**: This script scrapes text and images and stores the data in GCS bucket. It handles the following:
    -   Text Data -> Saved as .txt files in the bird_description folder.
    -   Image Data -> Stored in the bird_images folder.
    -   Audio Data -> Manually added to the acoustic_data folder.
-- **preprocess_cv.py** This script process the images collected in bird_images by resizing them to 128x128 pixels to ensure faster loading, improved performance, and consistent display in the app. uploading the resized images to the resized folder in the specified GCS location.
-- **semanticscholar.py** This script scrapes PDF articles from the semantic scholar website
+- **preprocess_cv.py** This script process the images collected in bird_images by resizing them to 128x128 pixels and uploading the resized images to the resized folder in GCS bucket.
+- **semanticscholar.py** This script scrapes PDF articles from the semantic scholar website.
 
 **5.2 Acoustic Model for Bird Identification**
 
