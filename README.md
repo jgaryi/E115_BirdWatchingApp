@@ -109,9 +109,11 @@ This folder contains code that is not part of container - for e.g: Application m
 
 **5.1 Web Scrapping and Data Versioning**
 
-**5.2 Transfer Learning for Identification of Rare Bird Species**
+**5.2 Acoustid Model for Bird Identification**
 
-**5.3. Interactive Maps**
+**5.3 Transfer Learning for Identification of Rare Bird Species**
+
+**5.4. Interactive Maps**
 
 
 ### 6. Work in Progress ####
