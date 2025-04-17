@@ -123,6 +123,8 @@ The React app is structured into several key sections:
 
 - **Home Page**: Offers an overview of the app’s capabilities and guides users to different features.
 
+- <img src="images/Frontend1.png"  width="800">
+
 - **Bird Sound Explorer**: A catalog of local bird species, complete with images and example vocalizations.
 
 - **Interactive Maps**: Displays geospatial data such as historical sighting locations, habitat conditions (e.g., forest cover, deforestation), and general biodiversity hotspots.
