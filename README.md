@@ -128,7 +128,7 @@ The React app is structured into several key sections:
 
   <img src="images/Frontend4.png"  width="800">
 
-- **Interactive Maps**: Displays geospatial data such as historical sighting locations, habitat conditions (e.g., forest cover, deforestation), and general biodiversity hotspots.
+- **Interactive Maps**: This section presents geospatial visualizations of ecological and environmental data, including historical bird sighting locations, habitat conditions (e.g., forest cover, deforestation), and biodiversity hotspots. Users can interact with the maps by zooming in/out and toggling between multiple data layers, such as land cover classifications, deforestation patterns, and the boundaries of the protected area. These interactive features enable a deeper spatial understanding of bird habitats and environmental pressures within Yanachaga Chemillén National Park.
 
   <img src="images/Frontend5.png"  width="800">
 
