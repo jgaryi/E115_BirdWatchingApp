@@ -131,9 +131,13 @@ The React app is structured into several key sections:
 
 - **Interactive Maps**: Displays geospatial data such as historical sighting locations, habitat conditions (e.g., forest cover, deforestation), and general biodiversity hotspots.
 
- <img src="images/Frontend5.png"  width="800">
+  <img src="images/Frontend5.png"  width="800">
 
 - **Audio Upload & Chat Interface**: Allows users to submit recordings and engage with the LLM-based chatbot to ask questions and receive context-aware information about the identified bird species and other bird information of their interest.
+
+  <img src="images/Frontend8.png"  width="800">
+  <img src="images/Chatbot.jpg"  width="800">
+
 
 <<<<<<< HEAD
 
