@@ -333,7 +333,9 @@ We collected bird species information by scraping text from three authoritative 
 
 **5.2 Acoustid Model for Bird Identification**
 
-The notebook demonstrated how the BirdNET model is used to predict bird species from bird audio input. the BirdNET model use its built-in preprocessor to chunk the input audio into fixed length pieces, convert each of small piece into a spectrogram by Short Time Fourier Transformation. The spectrogram is represented in both time and frequency domain, can be treated as "image" data (see Notebook). It is pass to the neural network model BirdNET to generate an embedding. So for an audio recording longer than fixed chunk length, we can get embedding and prediction for each chunk of data. In the Notebook, we ranked the prediction result according to the confidence level from high to lower. A threshold can be set to decide if the prediction confidence level is acceptable, if not, the embedding generated for the audio file can be passed to transfer learn model for evaluation if it is a rare speices were trained in transfer leanring. 
+The notebook demonstrated how the BirdNET model is used to predict bird species from bird audio input. the BirdNET model use its built-in preprocessor to chunk the input audio into fixed length pieces, convert each of small piece into a spectrogram by Short Time Fourier Transformation. The spectrogram is represented in both time and frequency domain, can be treated as "image" data (see Notebook). It is pass to the neural network model BirdNET to generate an embedding. 
+
+So for an audio recording longer than fixed chunk length, we can get embedding and prediction for each chunk of data. In the Notebook, we ranked the prediction result according to the confidence level from high to lower. A threshold can be set to decide if the prediction confidence level is acceptable, if not, the embedding generated for the audio file can be passed to transfer learn model for evaluation if it is a rare speices were trained in transfer leanring. 
 
 **5.3 Transfer Learning for Identification of Rare Bird Species**
 
