@@ -385,6 +385,6 @@ The team identified the following future tasks for development and testing:
 
 1. Update internal code baseline from using cheese to bird naming conventions
 2. Problem resolution of an intermittent error for the chat input resulting in an Axios error
-3. Implement CI for multiple containers once we complete the lectures on this topic
+3. Implement CI/CD for multiple containers once we complete the lectures on this topic
 
 
