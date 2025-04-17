@@ -318,6 +318,14 @@ This folder contains code that is not part of container - for e.g: Application m
 
 We collected bird species information by scraping text from three authoritative websites, along with scholarly articles sourced from Google Scholar and Semantic Scholar. The extracted data was cleaned and structured before being stored in a GCS bucket for use in downstream processing and semantic search.
 
+An initial baseline of both the acoustic data and the LLM-RAG data was collected in March 2025. The data was scraped from the sources mentioned above using custom scripts.
+
+Over the course of several months, additional data may be incorporated into both the acoustic and LLM datasets. However, for the remote sensing model, relevant information such as deforestation changes is typically updated once per year.
+
+Both the acoustic and LLM-RAG datasets are dynamic, with snapshots taken at specific intervals to capture full replacements of the data. As website authors may update or expand the data, these datasets are expected to evolve over time, with content updates occurring over several months.
+
+Previous versions of the models are not expected to be revisited. Given that updates are anticipated to occur every few months, the team will establish the initial baseline and later implement the Data Versioning Container.
+
 **5.2 Acoustid Model for Bird Identification**
 
 The notebook demonstrated how the BirdNET model is used to predict bird species from bird audio input. the BirdNET model use its built-in preprocessor to chunk the input audio into fixed length pieces, convert each of small piece into a spectrogram by Short Time Fourier Transformation. The spectrogram is represented in both time and frequency domain, can be treated as "image" data (see Notebook). It is pass to the neural network model BirdNET to generate an embedding. 
