@@ -337,7 +337,7 @@ So for an audio recording longer than fixed chunk length, we can get embedding a
 **Files:**
 - **TransferLearningModel.ipynb**: This notebook discussed the bird song acoustic representation in time, and time-frequency domain as "image". illustrate the feature extraction for the model prediction. 
 
-- **BirdWatchingApp.ipynb**: This notebook illustrate how to use BirdNET model prediction bird species, and ranking of the result according to prediction confidence. 
+- **BirdWatchingApp.ipynb**: This notebook illustrate how to use BirdNET model for bird species prediction, and ranking of the result according to prediction confidence. 
 
 **5.3 Transfer Learning for Identification of Rare Bird Species**   
 
