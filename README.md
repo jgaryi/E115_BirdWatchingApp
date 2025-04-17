@@ -25,7 +25,7 @@
     │    ├── api
     │    │   ├── routers
     │    │   ├── utils
-    │    │   ├── service.py
+    │    │   └── service.py
     │    ├── docker-entrypoint.sh
     │    ├── docker-shell.sh
     │    ├── Dockerfile
@@ -34,9 +34,15 @@
     ├── frontend-react
     │    ├── public
     │    ├── src
+    │    ├── app
+    │    ├   ├── chat 
+    │    ├   ├── sounds explorer
+    │    ├   └── interactive maps
+    │    ├── components 
+    │    ├── service 
     │    ├── Dockerfile
     │    ├── docker-shell.sh
-    └── vector-db        
+    └── vector-db             
 
 ```
 
