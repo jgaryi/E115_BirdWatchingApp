@@ -333,8 +333,8 @@ Previous versions of the models are not expected to be revisited. Given that upd
    -   Text Data -> Saved as .txt files in the bird_description folder.
    -   Image Data -> Stored in the bird_images folder.
    -   Audio Data -> Manually added to the acoustic_data folder.
-- **preprocess_cv.py** This script process the images collected in bird_images by resizing them to 128x128 pixels and uploading the resized images to the resized folder in GCS bucket.
-- **semanticscholar.py** This script scrapes PDF articles from the semantic scholar website.
+- **preprocess_cv.py**: This script processes the images collected in bird_images by resizing them to 128x128 pixels and uploading the resized images to the resized folder in GCS bucket.
+- **semanticscholar.py**: This script scrapes PDF articles from the semantic scholar website.
 
 **5.2 Acoustic Model for Bird Identification**
 
