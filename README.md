@@ -104,6 +104,9 @@ The frontend will allow an audio file uploaded with a limitation of 5MB, and the
 
 **2.2. Bird Knowledge Expert (LLM-Agent Chatbot)**
 
+The LLM agent is the conversational layer that brings context and insight to the app. Whether responding to text-based questions or enhancing audio-based bird species predictions, it serves up detailed, accurate, and engaging information.
+Core features include:
+
 ### 3. Frontend React ###
 
 A user friendly React app was built to identify various species of mushrooms in the wild using computer vision models from the backend. Using the app a user can take a picture of a mushroom and upload it. The app will send the image to the backend api to get prediction results on weather the mushroom is poisonous or not. 
