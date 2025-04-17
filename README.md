@@ -47,13 +47,7 @@
 **Group Name:** Birdwatching App
 
 **Project:**  
-This project aims to develop an AI-powered bird identification and knowledge application, using the Yanachaga Chemillen National Park in Peru as a case study. The app will offer two primary methods for bird recognition: (1) users can upload a sound file for automatic identification, powered by an acoustic AI model, or (2) manually search for a bird by its scientific name using a dropdown menu to select from one of nine species.<br>
-
-If the identified bird is one of the 500 species found in the national park but not listed in the dropdown menu, the app will display only the species name and return to the initial page when clicked again. If the bird is one of the nine pre-selected species—whose populations are vulnerable and decreasing—the app will provide detailed information about the species, its migratory path, and an image for visual reference. <br>
-
-Interactive maps will show the bird's previously identified locations within the national park, habitat details, and changes over time that help explain why these species are vulnerable or endangered. Another map will also highlight other areas where the bird is likely to be found, based on predictions from a geo-referenced model using remote sensing data. Additionally, a built-in chatbot will allow users to ask bird-related questions and receive answers powered by a Large Language Model with Retrieval-Augmented Generation (LLM-RAG).<br>
-
-The statement of work and lastest version of the project wireframe are available here: [`reports/`](reports/)  
+This project leverages AI to support bird species identification, using Yanachaga Chemillén National Park in Peru as a case study. The park is home to over 500 bird species, many of which are endemic (found nowhere else in the world). The app is powered by an AI-based acoustic model trained to identify bird species through their vocalizations. It also features interactive maps enriched with environmental and habitat data, such as deforestation and biodiversity indicators. Additionally, a large language model (LLM) agent serves as a virtual bird expert, offering detailed information about identified species and answering bird-related queries. This project highlights the integration of AI prediction models, natural language processing, and geospatial data for applications in ecotourism, environmental monitoring, and education.  
 <br><br>
 
 ----
