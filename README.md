@@ -102,7 +102,13 @@ The backend API is built using FastAPI and serves as the core interface between 
 
 **2.1. Acoustic Model for Bird Species Identification**
 
-The frontend will allow an audio file uploaded with a limitation of 5MB, and the backend api llm_cnn_chat.py will save the file in a temperory path and pass the temp file path to BirdNET model. Without any preprocessing, the BirdNET model use its built-in preprocessor to chunk the input audio into fixed length (3 or 5 seconds) pieces, and convert each of small piece into a spectrogram by Short Time Fourier Transformation. The spectrogram is represented in both time and frequency domain, can be treated as "image" data (see 5.2 Notebook). Each image data chunk pass to the BirdNET neural network model and generate an embedding. So for an audio recording longer than fixed chunk length, the BirdNET model will generate more than one embeddings, and give prediction for each embedding or each chunk of data. The prediction confidence on each species are averaged over all chunks, and the results are ranked and get the prediction with highest confidence. The api llm_cnn_chat could answer question about the species related to habitat preferences, feeding behaviors and dietary needs, breeding cycles and nesting habits, conservation strategies and threats etc. The questions can be either when the audio is uploaded or after the model predict the audio input. 
+The acoustic model -- BirdNET is used for identification of bird species by audio recording. The frontend will allow an audio file uploaded, and the backend api ```llm_cnn_chat``` will save the file in a temperory path and pass the temp file path to BirdNET model for prediction. 
+Key features: 
+-   No preprocessing on audio file is required: The BirdNET model use its built-in preprocessor to chunk the input audio into fixed length (3 or 5 seconds) pieces, and convert each of small piece into a spectrogram as image input to neural network in BirdNET.
+-   Multiple audio format supported: supprot not only .mp3, .wav, but also .flac
+-   long recording supported: for an audio recording longer than fixed chunk length, the BirdNET model will generate embedding and make prediction on each chunk of data. The audio file size limition is 5MB
+-   Enhanced accuracy by longer data: The prediction on each data chunks is averaged on each species over all chunks, and the results are ranked and get the prediction with highest confidence. 
+-   Augmented with text query: The api could answer question either when the audio is uploaded or after the model predict the audio input about the species related to habitat preferences, feeding behaviors and dietary needs, breeding cycles and nesting habits, conservation strategies and threats etc. 
 
 **2.2. Bird Knowledge Expert (LLM-Agent Chatbot)**
 
@@ -321,7 +327,7 @@ This folder contains code that is not part of container - for e.g: Application m
 
 **5.2 Acoustid Model for Bird Identification**
 
-The notebook demonstrated how the BirdNET model is used to predict bird species from bird audio input. the BirdNET model use its built-in preprocessor to chunk the input audio into fixed length pieces, convert each of small piece into a spectrogram, and pass to the neural network model to generate an embedding. So for an audio recording longer than fixed chunk length, we can get embedding and prediction for each chunk of data. In the Notebook, we ranked the prediction result according to the confidence level from high to lower. A threshold can be set to decide if the prediction confidence level is acceptable, if not, the embedding generated for the audio file can be passed to transfer learn model for evaluation if it is a rare speices were trained in transfer leanring. 
+The notebook demonstrated how the BirdNET model is used to predict bird species from bird audio input. the BirdNET model use its built-in preprocessor to chunk the input audio into fixed length pieces, convert each of small piece into a spectrogram by Short Time Fourier Transformation. The spectrogram is represented in both time and frequency domain, can be treated as "image" data (see Notebook). It is pass to the neural network model BirdNET to generate an embedding. So for an audio recording longer than fixed chunk length, we can get embedding and prediction for each chunk of data. In the Notebook, we ranked the prediction result according to the confidence level from high to lower. A threshold can be set to decide if the prediction confidence level is acceptable, if not, the embedding generated for the audio file can be passed to transfer learn model for evaluation if it is a rare speices were trained in transfer leanring. 
 
 **5.3 Transfer Learning for Identification of Rare Bird Species**
 
