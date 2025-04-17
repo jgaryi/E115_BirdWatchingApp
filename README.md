@@ -89,7 +89,7 @@ The architectures follow a state of the art design using enterprise COTS and ope
 ### 2. Backend API ###
 >>>>>>> a60db3e4c99205c015520f1ad3e40bd4c2b3ac47
 
-We built backend api service using fast API to expose model functionality to the frontend. We also added apis that will help the frontend display some key information about the model and data. 
+The backend API is built using **FastAPI** and serves as the core interface between the frontend, the BirdNET model, and the LLM agent. It processes both audio and text inputs and routes them through intelligent workflows designed to enhance the birdwatching experience. 
 
 <img src="images/api-list.png"  width="800">
 
