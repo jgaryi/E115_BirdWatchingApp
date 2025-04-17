@@ -328,6 +328,14 @@ Both the acoustic and LLM-RAG datasets are dynamic, with snapshots taken at spec
 
 Previous versions of the models are not expected to be revisited. Given that updates are anticipated to occur every few months, the team will establish the initial baseline and later implement the Data Versioning Container.
 
+**Files:**
+- **cli.py**: This script scrapes text and images and stores the data both in GCS bucket. It handles the following:
+   -   Text Data -> Saved as .txt files in the bird_description folder.
+   -   Image Data -> Stored in the bird_images folder.
+   -   Audio Data -> Manually added to the acoustic_data folder.
+- **preprocess_cv.py** This script process the images collected in bird_images by resizing them to 128x128 pixels to ensure faster loading, improved performance, and consistent display in the app. uploading the resized images to the resized folder in the specified GCS location.
+- **semanticscholar.py** This script scrapes PDF articles from the semantic scholar website
+
 **5.2 Acoustic Model for Bird Identification**
 
 The notebook demonstrated how the BirdNET model is used to predict bird species from bird audio input. The BirdNET model use its built-in preprocessor to chunk the input audio into fixed length pieces, convert each of small piece into a spectrogram by Short Time Fourier Transformation. The spectrogram is represented in both time and frequency domain, can be treated as "image" data (see Notebook). It passes it to the neural network model BirdNET to generate an embedding. 
