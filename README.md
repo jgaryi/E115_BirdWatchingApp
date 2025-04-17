@@ -139,10 +139,12 @@ Users can interact with the maps by zooming in/out and toggling between multiple
 
 - **Audio Upload & Chat Interface**: Allows users to submit recordings and engage with the LLM-based chatbot to ask questions and receive context-aware information about the identified bird species and other bird information of their interest.
 
-  <img src="images/Frontend8.png"  width="800">
   The interface allows uploading audios for bird identification:
+
   <img src="images/Uploading Audio.png"  width="800">
+
   And getting expert information about birds:
+
   <img src="images/Chatbot.jpg"  width="800">
 
 
