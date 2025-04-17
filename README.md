@@ -78,14 +78,23 @@ Here is our Technical Architecture:
 
 The architectures follow a state of the art design using enterprise COTS and open source products. A Google Earth API is added in support of the several maps used in the app. 
 
+<<<<<<< HEAD
+<<<<<<< HEAD
 
+**Backend API**
+=======
+=======
+
+>>>>>>> bd1f5cc3af336ff388b60770c88bb8e530c3ad53
 ### 2. Backend API ###
+>>>>>>> a60db3e4c99205c015520f1ad3e40bd4c2b3ac47
 
 We built backend api service using fast API to expose model functionality to the frontend. We also added apis that will help the frontend display some key information about the model and data. 
 
 <img src="images/api-list.png"  width="800">
 
 **2.1. Acoustic Model for Bird Species Identification**
+Bioacoustic analysis of bird songs, is a novel and non-invasive technology which provides a rich windlow into biodiversity and ecosystem health for national park protection and convervation. There are several deep learning model developed for the biacoustic identification of birds, BirdNET is one of the most popular models which was trained with EfficientNet architecture, and a broader training set of more than 6000 bird species and some non-avian species. To enable a range of downstream use-cases, BirdNET trades off some accuracy for efficient computation. The BirdNET code is available on GitHub§, and includes support for training small classifiers on embeddings by using transfer learning (see Section 5.3). In the selected 11 speices, 9 of them are in the list of training data set. Those species can be directly identified and monitored by the BirdNET model, and for the other 2 species, we will apply transfer leaning to process it. 
 
 **2.2. Bird Knowledge Expert (LLM-Agent Chatbot)**
 
@@ -97,11 +106,21 @@ Here are some screenshots of our app:
 
 ```Add screenshots here```
 
+<<<<<<< HEAD
+
+## Running Dockerfile
+=======
 **3.1 Interactive Maps**
 
 **3.2 **
 
 ### 4. Running Dockerfile ###
+<<<<<<< HEAD
+>>>>>>> a60db3e4c99205c015520f1ad3e40bd4c2b3ac47
+Instructions for running the Dockerfile can be added here.
+To run Dockerfile - `Instructions here`
+=======
+>>>>>>> bd1f5cc3af336ff388b60770c88bb8e530c3ad53
 
 
 
