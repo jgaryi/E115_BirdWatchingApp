@@ -326,7 +326,7 @@ Both the acoustic and LLM-RAG datasets are dynamic, with snapshots taken at spec
 
 Previous versions of the models are not expected to be revisited. Given that updates are anticipated to occur every few months, the team will establish the initial baseline and later implement the Data Versioning Container.
 
-**5.2 Acoustid Model for Bird Identification**
+**5.2 Acoustic Model for Bird Identification**
 
 The notebook demonstrated how the BirdNET model is used to predict bird species from bird audio input. the BirdNET model use its built-in preprocessor to chunk the input audio into fixed length pieces, convert each of small piece into a spectrogram by Short Time Fourier Transformation. The spectrogram is represented in both time and frequency domain, can be treated as "image" data (see Notebook). It is pass to the neural network model BirdNET to generate an embedding. 
 
@@ -343,6 +343,7 @@ We implement and compare several models—including multinomial logistic regress
 - **TransferLearningModel.pdf**: A static PDF version of the notebook is provided for easier viewing directly on GitHub.
 
 **5.4. Interactive Maps**
+Three interactive maps provide complementary geospatial insights into the biodiversity and habitat conditions of Yanachaga-Chemillén National Park, using Earth Engine and Folium (a python interface to Leaflet) for visualization. The **bird location map** displays historical sighting data for selected endemic and rare species, enabling users to explore species distribution patterns within the protected area. The **deforestation map** overlays land cover classifications (ESA WorldCover) and forest loss data (Hansen Global Forest Change), helping users assess environmental pressures on bird habitats. The **biodiversity hotspot map** highlights the Tropical Andes and other global conservation priority regions, showing the park’s position within a high-priority biodiversity corridor. Users can interact with the maps by zooming in/out and toggling between multiple data layers, such as land cover, deforestation, species presence, and park boundaries, supported by custom legends for easy interpretation.
 
 
 ### 6. Work in Progress ####
