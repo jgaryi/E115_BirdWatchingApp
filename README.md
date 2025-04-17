@@ -76,6 +76,8 @@ Here is our Technical Architecture:
 
 <img src="images/technical-arch.png"  width="800">
 
+The architectures follow a state of the art design using enterprise COTS and open source products. A Google Earth API is added in support of the several maps used in the app. 
+
 
 ### 2. Backend API ###
 
@@ -117,7 +119,14 @@ This folder contains code that is not part of container - for e.g: Application m
 
 
 ### 6. Work in Progress ####
-Transfer learning
+**6.1 Transfer learning**
 
-----
-You may adjust this template as appropriate for your project.
+**6.2 Other Topics**
+
+The team identified the following future tasks for development and testing:
+
+1. Update internal code baseline from using cheese to bird naming conventions
+2. Problem resolution of an intermittent error for the chat input resulting in an Axios error
+3. Implement CI for multiple containers once we complete the lectures on this topic
+
+
