@@ -1,0 +1,11 @@
+{
+    "id": "78ff70af-c678-486c-876f-9a588a567385",
+    "dts": 1729871905,
+    "title": "Deforestation in Yanachaga Chemillén National Park",
+    "excerpt": "This interactive map visualizes different types of land cover and areas of deforestation (highlighted in red) within the Yanachaga Chemillén National Park, offering insights into environmental changes affecting bird species’ habitats.",
+    "detail": "This interactive map visualizes different types of land cover and areas of deforestation (highlighted in red) within the Yanachaga Chemillén National Park, offering insights into environmental changes affecting bird species’ habitats.<br><br>Notice how the extent of deforestation is significantly lower within the protected area compared to surrounding regions, highlighting its role in forest conservation.<br><br>This map uses publicly available remote sensing datasets: the ESA World Cover 2021 data for land cover classification from the European Space Agency, and the Hansen Global Forest Change (2023) data for forest loss, developed by the University of Maryland and available via Google Earth Engine.<br><br>Use the layer control menu (☰) in the upper right corner of the map to view land cover, deforestation, and protected area boundaries.",
+    "readTime": "",
+    "category": "Habitat Conditions",
+    "html": "bird_deforestation.html",
+    "image": "blue-cheese.jpg"
+}
