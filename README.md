@@ -42,7 +42,14 @@
     │    ├── service 
     │    ├── Dockerfile
     │    └── docker-shell.sh
-    └── vector-db             
+    └── vector-db
+         ├── agent_tools.py
+         ├── cli.py
+         ├── docker-compose.yml
+         ├── docker-entrypoint.sh
+         ├── Dockerfile
+         └── docker-shell.sh
+    
 
 ```
 
