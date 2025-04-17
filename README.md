@@ -363,7 +363,9 @@ Three interactive maps provide complementary geospatial insights into the biodiv
 
 
 ### 6. Work in Progress ####
+
 **6.1 Transfer learning**
+
 As part of ongoing development, the transfer learning model is intended to operate downstream of the primary BirdNET prediction system within the backend of the app. In this envisioned workflow, audio recordings are first processed by BirdNET, which attempts to identify bird species based on its extensive pre-trained acoustic model. If no species is detected with a confidence score above a defined threshold (e.g., 30%), the system will then trigger a secondary evaluation using our custom transfer learning model, which is specifically trained to recognize rare or underrepresented species such as Doliornis sclateri and Hapalopsittaca melanotis.
 
 This two-stage inference chain aims to improve recognition coverage for rare species that are often missed by general models. The transfer learning component is designed to operate on BirdNET-generated embeddings, leveraging a lightweight classifier (e.g., MLP) trained specifically on local field data. Although the model is technically viable, integration into the app's backend is currently limited by package compatibility issues and the existing backend environment. Future work will focus on resolving these conflicts or converting the model to a more interoperable format (e.g., ONNX) to support seamless deployment.
