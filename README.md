@@ -58,13 +58,13 @@ The statement of work and lastest version of the project wireframe are available
 
 ----
 
-### Milestone4 ###
+## Milestone4 ##
 
-In this milestone, we have the components for frontend, API service, also components from previous milestones for data management, including versioning, as well as the computer vision and language models.
+In this milestone, we have the components for frontend, API service, also components from previous milestones for data management, including versioning, as well as the interactive maps, and acoustic and language models.
 
 After completions of building a robust ML Pipeline in our previous milestone we have built a backend api service and frontend app. This will be our user-facing application that ties together the various components built in previous milestones.
 
-**Application Design**
+### 1. Application Design ###
 
 Before we start implementing the app we built a detailed design document outlining the application’s architecture. We built a Solution Architecture and Technical Architecture to ensure all our components work together.
 
@@ -77,13 +77,17 @@ Here is our Technical Architecture:
 <img src="images/technical-arch.png"  width="800">
 
 
-**Backend API**
+### 2. Backend API ###
 
 We built backend api service using fast API to expose model functionality to the frontend. We also added apis that will help the frontend display some key information about the model and data. 
 
 <img src="images/api-list.png"  width="800">
 
-**Frontend**
+**2.1. Acoustic Model for Bird Species Identification**
+
+**2.2. Bird Knowledge Expert (LLM-Agent Chatbot)**
+
+### 3. Frontend React ###
 
 A user friendly React app was built to identify various species of mushrooms in the wild using computer vision models from the backend. Using the app a user can take a picture of a mushroom and upload it. The app will send the image to the backend api to get prediction results on weather the mushroom is poisonous or not. 
 
@@ -91,13 +95,27 @@ Here are some screenshots of our app:
 
 ```Add screenshots here```
 
-## Running Dockerfile
+**3.1 Interactive Maps**
+
+**3.2 **
+
+### 4. Running Dockerfile ###
 Instructions for running the Dockerfile can be added here.
 To run Dockerfile - `Instructions here`
 
 
-**Notebooks/Reports**
+### 5. Notebooks/Reports ####
 This folder contains code that is not part of container - for e.g: Application mockup, EDA, any 🔍 🕵️‍♀️ 🕵️‍♂️ crucial insights, reports or visualizations.
+
+**5.1 Web Scrapping and Data Versioning**
+
+**5.2 Transfer Learning for Identification of Rare Bird Species**
+
+**5.3. Interactive Maps**
+
+
+### 6. Work in Progress ####
+
 
 ----
 You may adjust this template as appropriate for your project.
