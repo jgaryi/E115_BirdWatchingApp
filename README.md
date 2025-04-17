@@ -348,11 +348,11 @@ We implement and compare several models—including multinomial logistic regress
 Three interactive maps provide complementary geospatial insights into the biodiversity and habitat conditions of Yanachaga-Chemillén National Park, using Earth Engine and Folium (a python interface to Leaflet) for visualization. The **bird location map** displays historical sighting data for selected endemic and rare species, enabling users to explore species distribution patterns within the protected area. The **deforestation map** overlays land cover classifications (ESA WorldCover) and forest loss data (Hansen Global Forest Change), helping users assess environmental pressures on bird habitats. The **biodiversity hotspot map** highlights the Tropical Andes and other global conservation priority regions, showing the park’s position within a high-priority biodiversity corridor. Users can interact with the maps by zooming in/out and toggling between multiple data layers, such as land cover, deforestation, species presence, and park boundaries, supported by custom legends for easy interpretation.
 
 **Files:**
-- **InteractiveMapBird_Locations.ipynb**
+- **InteractiveMapBird_Locations.ipynb**: Displays historical sighting locations of selected bird species within Yanachaga-Chemillén National Park
 
-- **InteractiveMapDeforestation.ipynb**
+- **InteractiveMapDeforestation.ipynb**: Visualizes land cover and forest loss data over the protected area
 
-- **InteractiveMapBiodiversity.ipynb**
+- **InteractiveMapBiodiversity.ipynb**: Highlights global biodiversity hotspots with a focus on the Tropical Andes, showing the park’s placement within a major conservation priority zone
 
 
 ### 6. Work in Progress ####
