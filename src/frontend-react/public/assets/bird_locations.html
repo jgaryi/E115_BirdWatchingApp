@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_5bf4313623a0a6e2a833052230c63be5 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+</head>
+<body>
+    
+    
+<div style="
+  position: fixed;
+  bottom: 30px;
+  right: 10px;
+  z-index:9999;
+  background-color:white;
+  padding:10px;
+  border:2px solid gray;
+  font-size:12px;
+  box-shadow:2px 2px 6px rgba(0,0,0,0.3);
+  max-height:300px;
+  overflow:auto;
+">
+<b>Legend - Previous Bird Observations</b><br>
+<div><span style="background:#e41a1c;width:12px;height:12px;display:inline-block;"></span> Andigena hypoglauca</div>
+<div><span style="background:#4daf4a;width:12px;height:12px;display:inline-block;"></span> Doliornis sclateri</div>
+<div><span style="background:#984ea3;width:12px;height:12px;display:inline-block;"></span> Gallinago jamesoni</div>
+<div><span style="background:#ff7f00;width:12px;height:12px;display:inline-block;"></span> Hapalopsittaca melanotis</div>
+<div><span style="background:#a65628;width:12px;height:12px;display:inline-block;"></span> Pionus tumultuosus</div>
+<div><span style="background:#f781bf;width:12px;height:12px;display:inline-block;"></span> Pipile cumanensis</div>
+<div><span style="background:#999999;width:12px;height:12px;display:inline-block;"></span> Rupicola peruvianus</div>
+</div>
+    
+            <div class="folium-map" id="map_5bf4313623a0a6e2a833052230c63be5" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_5bf4313623a0a6e2a833052230c63be5 = L.map(
+                "map_5bf4313623a0a6e2a833052230c63be5",
+                {
+                    center: [-10.369959499186276, -75.20291643107971],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 10,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_315acecbf34996747c83a55d001d7b40 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_315acecbf34996747c83a55d001d7b40.addTo(map_5bf4313623a0a6e2a833052230c63be5);
+        
+    
+            var tile_layer_e4b22ba19358f2d5d665f3ac54b86ff3 = L.tileLayer(
+                "https://earthengine.googleapis.com/v1/projects/class2-449500/maps/ee60a3c5f5f853140d1a6a7564f564ef-fbbbee26c93b65d6e0391cbdc2c7f15a/tiles/{z}/{x}/{y}",
+                {
+  "minZoom": 0,
+  "maxZoom": 18,
+  "maxNativeZoom": 18,
+  "noWrap": false,
+  "attribution": "Protected Area",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_e4b22ba19358f2d5d665f3ac54b86ff3.addTo(map_5bf4313623a0a6e2a833052230c63be5);
+        
+    
+            var tile_layer_15ad34d5b316a459235cf28fa0580267 = L.tileLayer(
+                "https://earthengine.googleapis.com/v1/projects/class2-449500/maps/1fca57ed6ac9a90e2deb45fe2a11318e-34da527322ec7994cbbcb438c8e4d824/tiles/{z}/{x}/{y}",
+                {
+  "minZoom": 0,
+  "maxZoom": 18,
+  "maxNativeZoom": 18,
+  "noWrap": false,
+  "attribution": "Earth Engine",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_15ad34d5b316a459235cf28fa0580267.addTo(map_5bf4313623a0a6e2a833052230c63be5);
+        
+    
+            var tile_layer_c8c4c3db391c2c9e1c2a5641845abbe3 = L.tileLayer(
+                "https://earthengine.googleapis.com/v1/projects/class2-449500/maps/0266c69738018996cb71b5cc5f6380b7-06917b8360605fe07987311b1aed9120/tiles/{z}/{x}/{y}",
+                {
+  "minZoom": 0,
+  "maxZoom": 18,
+  "maxNativeZoom": 18,
+  "noWrap": false,
+  "attribution": "Earth Engine",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_c8c4c3db391c2c9e1c2a5641845abbe3.addTo(map_5bf4313623a0a6e2a833052230c63be5);
+        
+    
+            var tile_layer_539b3eacf932d654dcd41d6b689f8397 = L.tileLayer(
+                "https://earthengine.googleapis.com/v1/projects/class2-449500/maps/3444021b9970344c8edd07f4da618e1d-a076b74caa8cd02e6585dc3e6704f2af/tiles/{z}/{x}/{y}",
+                {
+  "minZoom": 0,
+  "maxZoom": 18,
+  "maxNativeZoom": 18,
+  "noWrap": false,
+  "attribution": "Earth Engine",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_539b3eacf932d654dcd41d6b689f8397.addTo(map_5bf4313623a0a6e2a833052230c63be5);
+        
+    
+            var tile_layer_7e253e2e4aec5b4cabe78b140effcfeb = L.tileLayer(
+                "https://earthengine.googleapis.com/v1/projects/class2-449500/maps/3f478c460893249796d2fd9651891943-faf1d9ea3da776d79bd9c17894e5424d/tiles/{z}/{x}/{y}",
+                {
+  "minZoom": 0,
+  "maxZoom": 18,
+  "maxNativeZoom": 18,
+  "noWrap": false,
+  "attribution": "Earth Engine",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_7e253e2e4aec5b4cabe78b140effcfeb.addTo(map_5bf4313623a0a6e2a833052230c63be5);
+        
+    
+            var tile_layer_6a7fadb3be7b971e4f4089c019a2910a = L.tileLayer(
+                "https://earthengine.googleapis.com/v1/projects/class2-449500/maps/7697f52cea64c5cc8bf3b477a5be1430-3584710862f1a90ad7b8ab80360be96c/tiles/{z}/{x}/{y}",
+                {
+  "minZoom": 0,
+  "maxZoom": 18,
+  "maxNativeZoom": 18,
+  "noWrap": false,
+  "attribution": "Earth Engine",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_6a7fadb3be7b971e4f4089c019a2910a.addTo(map_5bf4313623a0a6e2a833052230c63be5);
+        
+    
+            var tile_layer_797b0416b0635f8aa2ea6b31ba810a22 = L.tileLayer(
+                "https://earthengine.googleapis.com/v1/projects/class2-449500/maps/fe9023fbec9628834af84c825f879a13-637701e9be006e35a7b7bb9f7db6c6c4/tiles/{z}/{x}/{y}",
+                {
+  "minZoom": 0,
+  "maxZoom": 18,
+  "maxNativeZoom": 18,
+  "noWrap": false,
+  "attribution": "Earth Engine",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_797b0416b0635f8aa2ea6b31ba810a22.addTo(map_5bf4313623a0a6e2a833052230c63be5);
+        
+    
+            var tile_layer_deb7f6db92462158f20cf05fcb6c27e0 = L.tileLayer(
+                "https://earthengine.googleapis.com/v1/projects/class2-449500/maps/9ad2c4cb40b039ec251df8b7dd9e9d6b-897ab0a7dbbf72a46b14c015a3dd18ac/tiles/{z}/{x}/{y}",
+                {
+  "minZoom": 0,
+  "maxZoom": 18,
+  "maxNativeZoom": 18,
+  "noWrap": false,
+  "attribution": "Earth Engine",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_deb7f6db92462158f20cf05fcb6c27e0.addTo(map_5bf4313623a0a6e2a833052230c63be5);
+        
+    
+            var layer_control_50b89b400448858a82caf5ee3fb65143_layers = {
+                base_layers : {
+                    "openstreetmap" : tile_layer_315acecbf34996747c83a55d001d7b40,
+                },
+                overlays :  {
+                    "Protected Area Boundary" : tile_layer_e4b22ba19358f2d5d665f3ac54b86ff3,
+                    "Andigena hypoglauca" : tile_layer_15ad34d5b316a459235cf28fa0580267,
+                    "Doliornis sclateri" : tile_layer_c8c4c3db391c2c9e1c2a5641845abbe3,
+                    "Gallinago jamesoni" : tile_layer_539b3eacf932d654dcd41d6b689f8397,
+                    "Hapalopsittaca melanotis" : tile_layer_7e253e2e4aec5b4cabe78b140effcfeb,
+                    "Pionus tumultuosus" : tile_layer_6a7fadb3be7b971e4f4089c019a2910a,
+                    "Pipile cumanensis" : tile_layer_797b0416b0635f8aa2ea6b31ba810a22,
+                    "Rupicola peruvianus" : tile_layer_deb7f6db92462158f20cf05fcb6c27e0,
+                },
+            };
+            let layer_control_50b89b400448858a82caf5ee3fb65143 = L.control.layers(
+                layer_control_50b89b400448858a82caf5ee3fb65143_layers.base_layers,
+                layer_control_50b89b400448858a82caf5ee3fb65143_layers.overlays,
+                {
+  "position": "topright",
+  "collapsed": true,
+  "autoZIndex": true,
+}
+            ).addTo(map_5bf4313623a0a6e2a833052230c63be5);
+
+        
+    
+            tile_layer_315acecbf34996747c83a55d001d7b40.addTo(map_5bf4313623a0a6e2a833052230c63be5);
+        
+    
+            tile_layer_e4b22ba19358f2d5d665f3ac54b86ff3.addTo(map_5bf4313623a0a6e2a833052230c63be5);
+        
+    
+            tile_layer_15ad34d5b316a459235cf28fa0580267.addTo(map_5bf4313623a0a6e2a833052230c63be5);
+        
+    
+            tile_layer_c8c4c3db391c2c9e1c2a5641845abbe3.addTo(map_5bf4313623a0a6e2a833052230c63be5);
+        
+    
+            tile_layer_539b3eacf932d654dcd41d6b689f8397.addTo(map_5bf4313623a0a6e2a833052230c63be5);
+        
+    
+            tile_layer_7e253e2e4aec5b4cabe78b140effcfeb.addTo(map_5bf4313623a0a6e2a833052230c63be5);
+        
+    
+            tile_layer_6a7fadb3be7b971e4f4089c019a2910a.addTo(map_5bf4313623a0a6e2a833052230c63be5);
+        
+    
+            tile_layer_797b0416b0635f8aa2ea6b31ba810a22.addTo(map_5bf4313623a0a6e2a833052230c63be5);
+        
+    
+            tile_layer_deb7f6db92462158f20cf05fcb6c27e0.addTo(map_5bf4313623a0a6e2a833052230c63be5);
+        
+</script>
+</html>
