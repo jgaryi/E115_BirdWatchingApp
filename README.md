@@ -68,7 +68,7 @@ This project leverages AI to support bird species identification, using Yanachag
 ----
 ## Deliverables:
 
-#### 1. Kubernetes Deployment ####
+### 1. Kubernetes Deployment ###
 
 ### 2. Ansible Playbooks for Automated Deployment ###
 
