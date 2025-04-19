@@ -1,6 +1,8 @@
-## Project Milestone 4 - E115 - Birdwatching App
+## Project Milestone 5 - E115 - Birdwatching App
    
-#### Project Milestone 4 Organization
+#### Project Milestone 5 Organization
+
+#### Tree below to be changed ####
 
 ```
 ├── Readme.md
@@ -53,7 +55,7 @@
 
 ```
 
-# E115 - Milestone 4 - Birdwatching App
+# E115 - Milestone 5 - Birdwatching App
 
 **Team Members:** Jaqueline Garcia-Yi, Susan Urban, Yong Li, and Victoria Okereke
 
@@ -64,6 +66,21 @@ This project leverages AI to support bird species identification, using Yanachag
 <br><br>
 
 ----
+## Deliverables:
+
+### 1. Kubernetes Deployment ###
+### 2. Ansible Playbooks for Automated Deployment ###
+### 3. CI/CD Pipeline Implementation ###
+### 4. Machine Learning Workflow ###
+### 5. Continuous Integration Setup ###
+### 6. Automated Testing Implementation ###
+### 7. Test Documentation ###
+### 8. Presentation Materials ###
+**8.1 Presentation (PDF)**
+**8.2 Link to Medium Blog Post**
+
+
+## MATERIAL FROM PREVIOUS MILESTONE 4 ##
 
 ## Milestone4 ##
 
