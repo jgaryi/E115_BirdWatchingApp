@@ -1,0 +1,13 @@
+#Run the docker-shell inside the folder (as usual)
+#chmod +x docker-shell.sh
+./docker-shell.sh
+
+#Confirm the container is running (check if birdnet_app container is listed, in a different terminal not inside the app)
+docker ps
+
+#Test (in a different terminal in the folder not inside the app)
+curl -X POST http://localhost:9090/analyze-bird \
+  -F "file=@test.mp3"
+
+You should see the name of the identified bird from the audio in your terminal.
+
