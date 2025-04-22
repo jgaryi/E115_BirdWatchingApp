@@ -1,3 +1,5 @@
+# UPDATE: the birdnet_app folder was added in the SRC, it containes the full container for being able to run the birdnet + transfer learning independently #
+
 ## Project Milestone 5 - E115 - Birdwatching App
    
 #### Project Milestone 5 Organization
