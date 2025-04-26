@@ -5,8 +5,6 @@
    
 #### Project Milestone 5 Organization
 
-#### Tree below to be changed ####
-
 ```
 ├── Readme.md
 ├── images 
