@@ -11,7 +11,7 @@
 ├── Readme.md
 ├── images 
 ├── src
-│   ├── vectorDb
+│   ├── vector-db
 │   ├── api-service
 │   ├── birdnet_app
 │   ├── deployment
