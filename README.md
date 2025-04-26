@@ -14,6 +14,7 @@
 │   ├── vectorDb
 │   ├── api-service
 │   ├── birdnet_app
+│   ├── deployment
 │   └── frontendreact
 ├── .github/ 
 │   └── workflows/
