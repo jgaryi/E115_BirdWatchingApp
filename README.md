@@ -10,19 +10,6 @@
 ```
 ├── Readme.md
 ├── images 
-├── notebooks
-│   ├── BirdWatchingApp.ipynb
-│   ├── Acoustic_Monitoring_EDA.ipynb
-│   ├── Interactive_Map_Biodiversity.ipynb
-│   ├── Interactive_Map_Bird_Locations.ipynb
-│   ├── Interactive_Map_Deforestation.ipynb
-│   ├── SemanticScholar.py
-│   ├── cli.py
-│   └── preprocess_cv.py
-├── references
-├── reports
-│   ├── FinalPresentation.pdf
-│   └── MediumPost(pdf or link) 
 ├── src
 │   ├── vectorDb
 │   ├── api-service
@@ -38,9 +25,21 @@
 │       └── lint.yml 
 │       └── deploy.yml 
 ├── tests/   
-    └── test_unit.py
-    └── test_integration.py
-    
+│   └── test_unit.py
+│   └── test_integration.py
+├── notebooks
+│   ├── BirdWatchingApp.ipynb
+│   ├── Acoustic_Monitoring_EDA.ipynb
+│   ├── Interactive_Map_Biodiversity.ipynb
+│   ├── Interactive_Map_Bird_Locations.ipynb
+│   ├── Interactive_Map_Deforestation.ipynb
+│   ├── SemanticScholar.py
+│   ├── cli.py
+│   └── preprocess_cv.py
+├── references
+├── reports
+│   ├── FinalPresentation.pdf
+│   └── MediumPost(pdf or link)     
 ```
 
 # E115 - Milestone 5 - Birdwatching App
