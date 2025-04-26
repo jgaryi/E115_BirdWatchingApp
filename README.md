@@ -36,6 +36,7 @@
 │   ├── Interactive_Map_Biodiversity.ipynb
 │   ├── Interactive_Map_Bird_Locations.ipynb
 │   ├── Interactive_Map_Deforestation.ipynb
+│   ├── TransferLearningModel.ipynb
 │   ├── SemanticScholar.py
 │   ├── cli.py
 │   └── preprocess_cv.py
