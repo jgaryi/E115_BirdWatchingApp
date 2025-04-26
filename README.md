@@ -82,7 +82,7 @@ This project leverages AI to support bird species identification, using Yanachag
 
 ### 4. Known issues and limitations. ###
 
-### Notebooks and Reports ###
+### 5. Notebooks and Reports ###
 
 **a. Final Presentation (PDF)**
 
