@@ -16,8 +16,8 @@
 │   ├── birdnet_app
 │   ├── deployment
 │   └── frontendreact
-├── .github/ 
-│   └── workflows/
+├── .github 
+│   └── workflows
 │       └── data_scraping.yml   
 │       └── data_sound_explorer.yml   
 │       └── data_maps.yml   
@@ -25,9 +25,11 @@
 │       └── integration_test.yml  
 │       └── lint.yml 
 │       └── deploy.yml 
-├── tests/   
+├── tests   
 │   └── test_unit.py
 │   └── test_integration.py
+├── ansible   
+├── kubernetes   
 ├── notebooks
 │   ├── BirdWatchingApp.ipynb
 │   ├── Acoustic_Monitoring_EDA.ipynb
