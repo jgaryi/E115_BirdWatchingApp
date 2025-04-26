@@ -19,43 +19,28 @@
 │   ├── SemanticScholar.py
 │   ├── cli.py
 │   └── preprocess_cv.py
-│   
 ├── references
 ├── reports
-│   ├── BirdWatchingAppMidterm.pdf
-│   └── Statement of Work_Sample.pdf 
-│
-└── src  
-    ├── api-service
-    │    ├── api
-    │    │   ├── routers
-    │    │   ├── utils
-    │    │   └── service.py
-    │    ├── docker-entrypoint.sh
-    │    ├── docker-shell.sh
-    │    ├── Dockerfile
-    │    ├── Pipfile
-    │    ├── Pipfile.lock
-    ├── frontend-react
-    │    ├── public
-    │    ├── src
-    │    ├── app
-    │    ├   ├── chat 
-    │    ├   ├── sounds explorer
-    │    ├   └── interactive maps
-    │    ├── components 
-    │    ├── service 
-    │    ├── Dockerfile
-    │    └── docker-shell.sh
-    └── vector-db
-         ├── agent_tools.py
-         ├── cli.py
-         ├── docker-compose.yml
-         ├── docker-entrypoint.sh
-         ├── Dockerfile
-         └── docker-shell.sh
+│   ├── FinalPresentation.pdf
+│   └── MediumPost(pdf or link) 
+├── src
+│   ├── vectorDb
+│   ├── api-service
+│   ├── birdnet_app
+│   └── frontendreact
+├── .github/ 
+│   └── workflows/
+│       └── data_scraping.yml   
+│       └── data_sound_explorer.yml   
+│       └── data_maps.yml   
+│       └── unit_test.yml   
+│       └── integration_test.yml  
+│       └── lint.yml 
+│       └── deploy.yml 
+├── tests/   
+│   └── test_unit.py
+│   └── test_integration.py
     
-
 ```
 
 # E115 - Milestone 5 - Birdwatching App
