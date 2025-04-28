@@ -1,4 +1,4 @@
-### Internal notes for M5 (please do not delete yet): A new birdnet_app folder has been added to the src directory. It contains a complete, self-contained setup for running BirdNET with transfer learning independently. Also, for running vector db: python cli.py --download --chunk --embed --load --chunk_type char-split ###
+### Internal notes for M5 (please do not delete this paragraph yet): A new birdnet_app folder has been added to the src directory. It contains a complete, self-contained setup for running BirdNET with transfer learning independently. Also, for running vector db: python cli.py --download --chunk --embed --load --chunk_type char-split ###
 
 
 ## Project Milestone 5 - E115 - Birdwatching App
