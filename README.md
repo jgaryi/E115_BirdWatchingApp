@@ -55,8 +55,6 @@ This project leverages AI to support bird species identification, using Yanachag
 <br><br>
 
 ----
-## Deliverables:
-
 ### 1. Prerequisites and setup instructions. ###
 
 ### 2. Deployment instructions. ###
