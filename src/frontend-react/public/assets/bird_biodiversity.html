@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_93ad2bfde541bb19189d12a7378d29c7 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+</head>
+<body>
+    
+    
+<div style="
+  position: fixed;
+  bottom: 30px;
+  right: 10px;
+  z-index: 9999;
+  background-color: white;
+  padding: 10px;
+  border: 2px solid gray;
+  font-size: 12px;
+  box-shadow: 2px 2px 6px rgba(0,0,0,0.3);
+  max-height: 300px;
+  overflow-y: auto;
+">
+<b>Legend</b><br>
+<div><span style="background:#DDA0DD;width:12px;height:12px;display:inline-block;"></span> Tropical Andes Hotspot</div>
+<div><span style="background:#FFA500;width:12px;height:12px;display:inline-block;"></span> Other Global Hotspots (zoom out to view)</div>
+<div><span style="background:#000000;width:12px;height:12px;display:inline-block;"></span> Yanachaga-Chemillen National Park</div>
+</div>
+    
+            <div class="folium-map" id="map_93ad2bfde541bb19189d12a7378d29c7" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_93ad2bfde541bb19189d12a7378d29c7 = L.map(
+                "map_93ad2bfde541bb19189d12a7378d29c7",
+                {
+                    center: [-10.369959499186276, -75.40291643107972],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 10,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_90e464d89cc9532c5b7a89ba5ab72172 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_90e464d89cc9532c5b7a89ba5ab72172.addTo(map_93ad2bfde541bb19189d12a7378d29c7);
+        
+    
+            var tile_layer_dfeaf4b653a3f021e153ec5bfd5fed25 = L.tileLayer(
+                "https://earthengine.googleapis.com/v1/projects/class2-449500/maps/69a246712a725752914bc09053715777-220475777075a468138e426968e596f1/tiles/{z}/{x}/{y}",
+                {
+  "minZoom": 0,
+  "maxZoom": 18,
+  "maxNativeZoom": 18,
+  "noWrap": false,
+  "attribution": "EE",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_dfeaf4b653a3f021e153ec5bfd5fed25.addTo(map_93ad2bfde541bb19189d12a7378d29c7);
+        
+    
+            var tile_layer_a4a143c74343e120cdd0b188988d88e8 = L.tileLayer(
+                "https://earthengine.googleapis.com/v1/projects/class2-449500/maps/05142b00014ee37ee7fb0419f40e1557-03a8c483c50563fb0eceee362684203b/tiles/{z}/{x}/{y}",
+                {
+  "minZoom": 0,
+  "maxZoom": 18,
+  "maxNativeZoom": 18,
+  "noWrap": false,
+  "attribution": "EE",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_a4a143c74343e120cdd0b188988d88e8.addTo(map_93ad2bfde541bb19189d12a7378d29c7);
+        
+    
+            var tile_layer_d305fd7114b888ec94491d64ac0f3931 = L.tileLayer(
+                "https://earthengine.googleapis.com/v1/projects/class2-449500/maps/ee60a3c5f5f853140d1a6a7564f564ef-f81a740f2b1a47f15cb033d9db6ac979/tiles/{z}/{x}/{y}",
+                {
+  "minZoom": 0,
+  "maxZoom": 18,
+  "maxNativeZoom": 18,
+  "noWrap": false,
+  "attribution": "EE",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_d305fd7114b888ec94491d64ac0f3931.addTo(map_93ad2bfde541bb19189d12a7378d29c7);
+        
+    
+            var layer_control_4f55a3d1962335d5aecb5187053c5dc2_layers = {
+                base_layers : {
+                    "openstreetmap" : tile_layer_90e464d89cc9532c5b7a89ba5ab72172,
+                },
+                overlays :  {
+                    "Tropical Andes" : tile_layer_dfeaf4b653a3f021e153ec5bfd5fed25,
+                    "Other Hotspots" : tile_layer_a4a143c74343e120cdd0b188988d88e8,
+                    "Protected Area Border" : tile_layer_d305fd7114b888ec94491d64ac0f3931,
+                },
+            };
+            let layer_control_4f55a3d1962335d5aecb5187053c5dc2 = L.control.layers(
+                layer_control_4f55a3d1962335d5aecb5187053c5dc2_layers.base_layers,
+                layer_control_4f55a3d1962335d5aecb5187053c5dc2_layers.overlays,
+                {
+  "position": "topright",
+  "collapsed": true,
+  "autoZIndex": true,
+}
+            ).addTo(map_93ad2bfde541bb19189d12a7378d29c7);
+
+        
+    
+            tile_layer_90e464d89cc9532c5b7a89ba5ab72172.addTo(map_93ad2bfde541bb19189d12a7378d29c7);
+        
+    
+            tile_layer_dfeaf4b653a3f021e153ec5bfd5fed25.addTo(map_93ad2bfde541bb19189d12a7378d29c7);
+        
+    
+            tile_layer_a4a143c74343e120cdd0b188988d88e8.addTo(map_93ad2bfde541bb19189d12a7378d29c7);
+        
+    
+            tile_layer_d305fd7114b888ec94491d64ac0f3931.addTo(map_93ad2bfde541bb19189d12a7378d29c7);
+        
+</script>
+</html>
