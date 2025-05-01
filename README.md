@@ -57,15 +57,48 @@ This project leverages AI to support bird species identification, using Yanachag
 ----
 ### 1. Prerequisites and setup instructions. ###
 
+Prerequisites to integrate and deploy the application include the following:
+
+- Google Cloud Platform account
+https://cloud.google.com
+
+- Docker installed on your workstation
+
+Setup:
+- Developers satisfactorily complete all pylint, JSLint, Hadolint, Black, and unit tests locally prior to commiting the code.
+- As part of the commit process, integration tests (a representative set) are run and passed via GitHub actions. Once successfully passed, the pull request is completed integrating the code into the baseline. 
+
+
 ### 2. Deployment instructions. ###
+
+Tutorials from cheese-app-v3 and cheese-app-v4
 
 ### 3. Usage details and examples. ###
 
+Pictures and brief descriptions of examples from above. 
+
 ### 4. Known issues and limitations. ###
 
+Issues:
+
+Limitations:
+
+- the number of new birds (not already contained within the birdnet training set) is limited but will be growing with greater engagement with the Yanachaga Chemillén National Park staff in the future. The transfer learning capability is in place and can be easily extended with future additions. 
+
 ### 5. Notebooks and Reports ###
+Pylint
+
+JSlint
+
+Hadolint
+
+Unit Test
+
+Integration Test
 
 **a. Final Presentation (PDF)**
+
+
 
 **b. Medium Blog Post (Link)**
 
