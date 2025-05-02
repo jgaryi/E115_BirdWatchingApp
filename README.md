@@ -55,29 +55,400 @@ This project leverages AI to support bird species identification, using Yanachag
 <br><br>
 
 ----
-### 1. Prerequisites and setup instructions. ###
 
-Prerequisites to integrate and deploy the application include the following:
+## Continuous Integration and Continuous Deployment (CI/CD) 
 
-- Google Cloud Platform account
-https://cloud.google.com
+**Continuous Integration and Continuous Delivery/Continuous Deployment (CI/CD)** is a set of principles and practices in software development and operations aimed at frequently delivering code changes reliably and efficiently.
 
-- Docker installed on your workstation
+## Continuous Integration (CI) ##
 
-Setup:
-- Developers satisfactorily complete all pylint, JSLint, Hadolint, Black, and unit tests locally prior to commiting the code.
-- As part of the commit process, integration tests (a representative set) are run and passed via GitHub actions. Once successfully passed, the pull request is completed integrating the code into the baseline. 
+The practice of regularly integrating code changes from multiple developers into a shared repository. The main goal is to detect integration issues early by automatically testing and building the code whenever a change is made. CI ensures that the codebase is always in a functional state.
+
+YONG CAN ADD HIS PORTION
+
+### CI Prerequisites: ###
+
+- Developers satisfactorily complete all pylint(python), JSLint(JavaScript), Hadolint(Dockerfile), Black(formatter), and unit tests locally prior to commiting the code.
+
+### CI Setup/Instructions: ###
+
+- Unit test (not activated)
+- GitHub action for integration test
+- Integration test
+
+## 2. Deployment to GCP ##
+
+### Prerequisites ###
+
+#### API's to enable in GCP #### 
+Search for each of these in the GCP search bar and click enable to enable these API's
+* Vertex AI API
+* Compute Engine API
+* Service Usage API
+* Cloud Resource Manager API
+* Google Container Registry API
+* Kubernetes Engine API
+
+#### Setup GCP Service Account 
+- To setup a service account, go to [GCP Console](https://console.cloud.google.com/home/dashboard), search for  "Service accounts" from the top search box or go to: "IAM & Admins" > "Service accounts" from the top-left menu and create a new service account called "deployment". 
+- Give the following roles:
+- For `deployment`:
+    - Compute Admin
+    - Compute OS Login
+    - Container Registry Service Agent
+    - Kubernetes Engine Admin
+    - Service Account User
+    - Storage Admin
+    - Vertex AI Administrator
+- Then click done.
+- This will create a service account.
+- On the right "Actions" column click the vertical ... and select "Create key". A prompt for Create private key for "deployment" will appear. Select "JSON" and click create. This will download a private key json file to your computer. Copy this json file into the **secrets** folder.
+- Rename the json key file to `deployment.json`
+- Follow the same process to create another service account called `gcp-service`
+- For `gcp-service` give the following roles:
+    - Storage Object Viewer
+    - Vertex AI Administrator
+- Then click done.
+- This will create a service account.
+- On the right "Actions" column click the vertical ... and select "Create key". A prompt for Create private key for "gcp-service" will appear select "JSON" and click create. This will download a Private key json file to your computer. Copy this json file into the **secrets** folder.
+- Rename the json key file to `gcp-service.json`
+
+### Setup Docker Container (Ansible, Docker, Kubernetes)
+
+Use Docker to build and run a standard container with all of the required software.
+
+#### Run `deployment` container
+- cd into `deployment`
+- Go into `docker-shell.sh` and change `GCP_PROJECT` to your project id
+- Run `sh docker-shell.sh` 
+
+- Check versions of tools:
+```
+gcloud --version
+ansible --version
+kubectl version --client
+```
+
+- Check to make sure you are authenticated to GCP
+- Run `gcloud auth list`
+
+The Docker container connects to your GCP and can create VMs and deploy containers all from the command line.
 
 
-### 2. Deployment instructions. ###
+### SSH Setup
+#### Configuring OS Login for service account
+Run this command within the `deployment` container
+```
+gcloud compute project-info add-metadata --project <YOUR GCP_PROJECT> --metadata enable-oslogin=TRUE
+```
+example: 
+```
+gcloud compute project-info add-metadata --project ac215-project --metadata enable-oslogin=TRUE
+```
 
-Tutorials from cheese-app-v3 and cheese-app-v4
+#### Create SSH key for service account
+```
+cd /secrets
+ssh-keygen -f ssh-key-deployment
+cd /app
+```
 
-### 3. Usage details and examples. ###
+### Providing public SSH keys to instances
+```
+gcloud compute os-login ssh-keys add --key-file=/secrets/ssh-key-deployment.pub
+```
+From the output of the above command keep note of the username. Here is a snippet of the output 
+```
+- accountId: ac215-project
+    gid: '3906553998'
+    homeDirectory: /home/sa_100110341521630214262
+    name: users/deployment@ac215-project.iam.gserviceaccount.com/projects/ac215-project
+    operatingSystemType: LINUX
+    primary: true
+    uid: '3906553998'
+	...
+    username: sa_100110341521630214262
+```
+The username is `sa_100110341521630214262`
+
+### Deployment Setup
+* Add ansible user details in inventory.yml file
+* GCP project details in inventory.yml file
+* GCP Compute instance details in inventory.yml file
+* Replace project to your GCP project id in inventory_prod.yml
+* Replace project to your GCP project id in docker-shell.sh
+
+
+### Deployment
+
+#### Build and Push Docker Containers to Google Artifact Registry
+```
+ansible-playbook deploy-docker-images.yml -i inventory.yml
+```
+
+#### Create Compute Instance (VM) Server in GCP
+```
+ansible-playbook deploy-create-instance.yml -i inventory.yml --extra-vars cluster_state=present
+```
+
+Get the IP address of the compute instance from the GCP Console and update the appserver>hosts in the inventory.yml file
+
+#### Provision Compute Instance in GCP
+Install and setup for deployment.
+```
+ansible-playbook deploy-provision-instance.yml -i inventory.yml
+```
+
+#### Setup Docker Containers in the  Compute Instance
+```
+ansible-playbook deploy-setup-containers.yml -i inventory.yml
+```
+
+SSH into the server from the GCP console and see the status of the containers
+```
+sudo docker container ls
+sudo docker container logs api-service -f
+sudo docker container logs frontend-react -f
+sudo docker container logs nginx -f
+sudo docker contaier logs birdnet_app -f
+```
+
+To get into a container run:
+```
+sudo docker exec -it api-service /bin/bash
+```
+
+#### Configure Nginx file for Web Server
+* Create the nginx.conf file for defaults routes in the web server
+
+#### Setup Webserver on the Compute Instance
+```
+ansible-playbook deploy-setup-webserver.yml -i inventory.yml
+```
+Once the command runs go to `http://<External IP>/` 
+
+## **Delete the Compute Instance / Persistent disk**
+```
+ansible-playbook deploy-create-instance.yml -i inventory.yml --extra-vars cluster_state=absent
+```
+
+## Deployment with Scaling using Kubernetes
+
+In this section deploy the BirdWatching app to a K8s cluster
+
+### API's to enable in GCP for Project
+Search for each of these in the GCP search bar and click enable to enable these API's
+* Vertex AI API
+* Compute Engine API
+* Service Usage API
+* Cloud Resource Manager API
+* Google Container Registry API
+* Kubernetes Engine API
+
+### Start Deployment Docker Container
+-  `cd deployment`
+- Run `sh docker-shell.sh` or `docker-shell.bat` for windows
+- Check versions of tools
+`gcloud --version`
+`kubectl version`
+`kubectl version --client`
+
+- Confirm authentication to GCP
+- Run `gcloud auth list`
+
+### Build and Push Docker Containers to GCR
+**This step is only required if you have NOT already done this**
+```
+ansible-playbook deploy-docker-images.yml -i inventory.yml
+```
+
+### Create & Deploy Cluster
+```
+ansible-playbook deploy-k8s-cluster.yml -i inventory.yml --extra-vars cluster_state=present
+```
+
+This is how the various services communicate between each other in the Kubernetes cluster.
+
+```mermaid
+graph LR
+    B[Browser] -->|nginx-ip.sslip.io/| I[Ingress Controller]
+    I -->|/| F[Frontend Service<br/>NodePort:3000]
+    I -->|/api/| A[API Service<br/>NodePort:9000]
+    A -->|vector-db:8000| V[Vector-DB Service<br/>NodePort:8000]
+
+    style I fill:#lightblue
+    style F fill:#lightgreen
+    style A fill:#lightgreen
+    style V fill:#lightgreen
+```
+
+### Try some kubectl commands
+```
+kubectl get all
+kubectl get all --all-namespaces
+kubectl get pods --all-namespaces
+```
+
+```
+kubectl get componentstatuses
+kubectl get nodes
+```
+
+### If you want to shell into a container in a Pod
+```
+kubectl get pods --namespace=cheese-app-cluster-namespace
+kubectl get pod api-5d4878c545-47754 --namespace=cheese-app-cluster-namespace
+kubectl exec --stdin --tty api-5d4878c545-47754 --namespace=cheese-app-cluster-namespace  -- /bin/bash
+```
+
+### View the App
+* Copy the `nginx_ingress_ip` from the terminal from the create cluster command
+* Go to `http://<YOUR INGRESS IP>.sslip.io`
+
+---
+
+## Create Kubernetes Cluster 
+
+### Create Cluster
+```
+gcloud container clusters create test-cluster --num-nodes 2 --zone us-east1-c
+```
+
+### Checkout the cluster in GCP
+* Go to the Kubernetes Engine menu item to see the cluster details
+    - Click on the cluster name to see the cluster details
+    - Click on the Nodes tab to view the nodes
+    - Click on any node to see the pods running in the node
+* Go to the Compute Engine menu item to see the VMs in the cluster
+
+### Try some kubectl commands
+```
+kubectl get all
+kubectl get all --all-namespaces
+kubectl get pods --all-namespaces
+```
+
+```
+kubectl get componentstatuses
+kubectl get nodes
+```
+
+### Deploy the App
+```
+kubectl apply -f deploy-k8s-tic-tac-toe.yml
+```
+
+### Get the Loadbalancer external IP
+```
+kubectl get services
+```
+
+### View the App
+* Copy the `External IP` from the `kubectl get services`
+* Go to `http://<YOUR EXTERNAL IP>`
+
+## Setup GitHub Action Workflow Credentials
+
+Setup credentials in GitHub to perform the following functions in GCP:
+* Push docker images to GCR
+* Run Vertex AI pipeline jobs
+* Update kubernetes deployments 
+
+### Setup
+* Go to the repo Settings
+* Select "Secrets and variable" from the left side menu and select "Actions"
+* Under "Repository secrets" click "New repository secret"
+* Give the Name as "GOOGLE_APPLICATION_CREDENTIALS"
+* For the Secret copy+paste the contents of your secrets file `deployment.json` 
+
+**Continuous Deployment (CD):** This takes the automation a step further by automatically deploying code changes to production after they pass all the automated tests in the deployment pipeline. This approach allows for a rapid release cycle and is commonly used in scenarios where rapid deployment and iteration are essential.
+
+
+### Frontend & Backend Changes
+
+A GitHub Action builds and deploys a new version of the app when a git commit has a comment `/run-deploy-app`
+
+* Open the file `src` / `api-service` / `api` / `service.py`
+* Update the version in line 29:
+```
+@app.get("/status")
+async def get_api_status():
+    return {
+        "version": "3.1",
+    }
+```
+* Open the file `src` / `frontend-react` / `src` / `services` / `Common.js`
+* Update the version in line 3:
+```
+export const APP_VERSION = 2.5;
+```
+
+To change the background color of the header in the frontend.
+* Open the file `src` / `frontend-react` / `src` / `components` / `layout` / `Header.jsx`
+* Update the background color in line 69 to `bg-sky-700`:
+```
+className={`fixed w-full top-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-sky-700' : 'bg-transparent'
+```
+
+To run the deploy app action, add the following to code commit comment:
+**Do this outside the container**
+* Add `/deploy-app` to the commit message to re-deploy the frontend and backend 
+
+```
+git add .
+git commit -m "update frontend and backend version and header color /deploy-app"
+git push
+```
+
+### ML Component Changes
+
+To run Vertex AI Pipelines on code commits, add the following to code commit comment:
+* Add `/run-ml-pipeline` to the commit message to run the entire Vertex AI ML pipeline
+* Add `/run-data-collector` to the commit message to run the data collector ML pipeline
+* Add `/run-data-processor` to the commit message to run the data processor ML pipeline
+
+#### View the App (If you have a domain)
+1. Get your ingress IP:
+   * Copy the `nginx_ingress_ip` value that was displayed in the terminal after running the cluster creation command or from GCP console -> Kubernetes > Gateways, Services & Ingress > INGRESS
+
+   * Example IP: `34.148.61.120`
+
+2. Configure your domain DNS settings:
+   * Go to your domain provider's website (e.g., GoDaddy, Namecheap, etc.)
+   * Find the DNS settings or DNS management section
+   * Add a new 'A Record' with:
+     - Host/Name: `@` (or leave blank, depending on provider)
+     - Points to/Value: Your `nginx_ingress_ip`
+     - TTL: 3600 (or default)
+
+3. Wait for DNS propagation (can take 5-30 minutes)
+
+4. Access your app:
+   * Go to: `http://your-domain.com`
+   * Example: `http://formaggio.me`
+
+#### View the App (If you do not have a domain)
+* Copy the `nginx_ingress_ip` from the terminal from the create cluster command
+* Go to `http://<YOUR INGRESS IP>.sslip.io`
+
+* Example: http://35.231.159.32.sslip.io/
+
+<hr style="height:4px;border-width:0;color:gray;background-color:gray">
+
+
+### Delete Cluster
+```
+gcloud container clusters delete test-cluster --zone us-east1-c
+```
+
+---
+
+
+## 3. Usage details and examples. ##
 
 Pictures and brief descriptions of examples from above. 
 
-### 4. Known issues and limitations. ###
+## 4. Known issues and limitations. ##
 
 Issues:
 
@@ -85,7 +456,7 @@ Limitations:
 
 - the number of new birds (not already contained within the birdnet training set) is limited but will be growing with greater engagement with the Yanachaga Chemillén National Park staff in the future. The transfer learning capability is in place and can be easily extended with future additions. 
 
-### 5. Notebooks and Reports ###
+## 5. Notebooks and Reports ##
 Pylint
 
 JSlint
