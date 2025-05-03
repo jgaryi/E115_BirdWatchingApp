@@ -21,6 +21,17 @@ if not os.path.exists(audio_path):
 with open(audio_path, "rb") as f:
     audio_bytes = f.read()  # Returns bytes object
 
+# Utility functions for testing - Create digital silence and audio file for testing
+def generate_silent_audio(duration_ms=3000):
+    """Generate silent audio segment for testing"""
+    return AudioSegment.silent(duration=duration_ms)
+
+def create_test_audio_file(duration_ms=3000):
+    """Create a temporary test audio file"""
+    audio = generate_silent_audio(duration_ms)
+    with tempfile.NamedTemporaryFile(suffix=".wav", delete=False) as f:
+        audio.export(f.name, format="wav")
+        return f.name
 
 # I. Audio duration test cases
 def test_preprocess_short_audio():
@@ -36,17 +47,12 @@ def test_preprocess_long_audio():
     assert duration <= 90  # Should be less than 90 seconds
 
 
-# II. Utility functions for testing - Create digital silence and audio file for testing
-def generate_silent_audio(duration_ms=3000):
-    """Generate silent audio segment for testing"""
-    return AudioSegment.silent(duration=duration_ms)
-
-def create_test_audio_file(duration_ms=3000):
-    """Create a temporary test audio file"""
-    audio = generate_silent_audio(duration_ms)
-    with tempfile.NamedTemporaryFile(suffix=".wav", delete=False) as f:
-        audio.export(f.name, format="wav")
-        return f.name
+# II. Test case for handling invalid audio
+def test_preprocess_invalid_audio():
+    """Test handling of invalid audio input"""
+    result = preprocess_audio_bytes_to_wav_segment(b"invalid_data")
+    assert "error" in result
+    assert "Unsupported or corrupt" in result["error"]
 
 
 # III. Test birdnet analysis and classification
@@ -129,7 +135,7 @@ def test_classify_unknown_species(mock_predict, mock_recording, mock_analyzer):
     os.remove(temp_path)
 
 
-# Test full detection pipeline
+# V. Test full detection pipeline
 # test case with successful detection using BirdNET
 @patch('bird.analyze_birdnet_from_audio_segment')
 @patch('bird.classify_with_custom_model')
@@ -169,6 +175,7 @@ def test_detect_species_fallback(mock_custom, mock_birdnet):
     assert result["scientific_name"] == "Custom result"
 
 
+# VI. API Integration Test with Simulated Audio
 # Test API endpoint with valid audio - successful request
 def test_api_endpoint_success():
     """Test successful API request"""

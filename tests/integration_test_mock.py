@@ -21,7 +21,8 @@ def test_full_integration_with_simulated_audio():
     
     # 2. Test BirdNET analysis
     birdnet_result, temp_path = analyze_birdnet_from_audio_segment(audio_segment)
-    if birdnet_result:  # If BirdNET detects something
+    print("BirdNET Result:", birdnet_result)  # Debugging: Print the BirdNET result
+    if birdnet_result:                        # If BirdNET detects something
         assert "scientific_name" in birdnet_result
         assert 0 <= birdnet_result["average_confidence"] <= 1
     else:  # Test fallback to custom model
@@ -98,7 +99,8 @@ def test_model_agreement_on_known_samples():
     print("Custom Result:", custom_result)  # Debugging: Print the custom result
 
     # 3. They should agree (or at least not contradict)
-    if birdnet_result and birdnet_result["average_confidence"] > 0.5:
+    confidence_threshold = 0.5
+    if birdnet_result and birdnet_result["average_confidence"] > confidence_threshold :
         assert birdnet_result["scientific_name"] == custom_result  # Strong agreement
     else:
         assert custom_result in ["Doliornis sclateri", "Hapalopsittaca melanotis", "Species not identified"]  # Weak agreement
