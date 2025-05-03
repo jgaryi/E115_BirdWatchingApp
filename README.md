@@ -452,6 +452,8 @@ Pictures and brief descriptions of examples from above.
 
 Issues:
 
+- Depending on the workstation, if it is a Mac or Windows or the version of the Mac (M1/M2/M4 chip), the instructions may need to be modified to run successfully. Since each workstation is configured differently or has different versions, the combination of changes are specific for that workstation. 
+
 Limitations:
 
 - the number of new birds (not already contained within the birdnet training set) is limited but will be growing with greater engagement with the Yanachaga Chemillén National Park staff in the future. The transfer learning capability is in place and can be easily extended with future additions. 
