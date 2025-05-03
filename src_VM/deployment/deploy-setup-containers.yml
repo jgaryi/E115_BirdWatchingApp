@@ -1,0 +1,144 @@
+- name: Configure containers on app server
+  hosts: appserver
+  connection: ssh
+  become: true
+
+  vars:
+    docker_network_name: bird-app-network
+ 
+  tasks:
+    # Setup secrets so containers can have access to GCP resources 
+    - name: Create secrets directory
+      file:
+        path: "/srv/secrets"
+        state: "directory"
+        mode: 0755
+    - name: Copy service account key file
+      copy:
+        src: ../secrets/gcp-service.json
+        dest: "/srv/secrets/gcp-service.json"
+        mode: 0644
+    - name: Authenticate gcloud using service account
+      shell: "gcloud auth activate-service-account --key-file /srv/secrets/gcp-service.json"
+    
+    # Create common network for all containers
+    - name: Create network
+      docker_network:
+          name: "{{docker_network_name}}"
+          driver: "bridge"
+          attachable: "yes"
+
+    - name: Copy docker tag file
+      copy:
+        src: .docker-tag
+        dest: .docker-tag
+        mode: 0644
+    - name: "Get docker tag"
+      shell: "cat .docker-tag"
+      register: tag
+    - name: Print tag
+      debug:
+        var: tag
+    
+    - name: Create frontend container
+      docker_container:
+        name: "frontend"
+        image: "us-docker.pkg.dev/{{ gcp_project }}/bird-app-frontend-react/frontend:{{ tag.stdout}}"
+        state: started
+        recreate: yes
+        pull: yes
+        restart: yes
+        published_ports:
+          - 3000:3000
+        env:
+          NEXTAUTH_SECRET: "a5wijChiheTkwb1ROBVN0mrAPG2VEpJKaF3S15CfvgE="
+        networks:
+          - name: "{{docker_network_name}}"
+
+    # Create a folder on persistent disk
+    - name: Create persistent directory
+      file:
+        path: "/mnt/disk-1/persistent"
+        state: "directory"
+        mode: 0777
+    - name: Create chromadb directory
+      file:
+        path: "/mnt/disk-1/chromadb"
+        state: "directory"
+        mode: 0777
+
+    - name: Create vector-db container
+      docker_container:
+        name: "vector-db"
+        image: "chromadb/chroma:0.5.6"
+        state: started
+        recreate: yes
+        published_ports:
+          - 8000:8000
+        env:
+          IS_PERSISTENT: "TRUE"
+          ANONYMIZED_TELEMETRY: "FALSE"
+        networks:
+          - name: "{{docker_network_name}}"
+        volumes:
+          - /mnt/disk-1/chromadb:/chroma/chroma
+
+    - name: Load Vector DB
+      shell: docker run --rm -it -e GCP_PROJECT="{{ gcp_project }}" -e CHROMADB_HOST="vector-db" -e CHROMADB_PORT="8000" -e GOOGLE_APPLICATION_CREDENTIALS="/secrets/gcp-service.json" -v /srv/secrets:/secrets --network "{{docker_network_name}}" "us-docker.pkg.dev/{{ gcp_project }}/bird-app-vector-db-cli/vector-db-cli:{{ tag.stdout}}" cli.py --download --chunk --embed --load --chunk_type char-split
+
+    - name: Create api-service container
+      docker_container:
+        name: "api-service"
+        image: "us-docker.pkg.dev/{{ gcp_project }}/bird-app-api-service/api-service:{{ tag.stdout}}"
+        state: started
+        recreate: yes
+        published_ports:
+          - 9000:9000
+        env:
+          GOOGLE_APPLICATION_CREDENTIALS: "/secrets/gcp-service.json"
+          GCP_PROJECT: "{{ gcp_project }}"
+          GCS_BUCKET_NAME: "birdwatching_app"
+          CHROMADB_HOST: "vector-db"
+          CHROMADB_PORT: "8000"
+        networks:
+          - name: "{{docker_network_name}}"
+        volumes:
+          - /mnt/disk-1/persistent:/persistent
+          - /srv/secrets:/secrets
+
+    - name: Create birdnet_app container
+      docker_container:
+        name: "birdnet_app"
+        image: "us-docker.pkg.dev/{{ gcp_project }}/bird-app-birdnet-app/birdnet-app:{{ tag.stdout }}"
+        state: started
+        recreate: yes
+        published_ports:
+          - 9090:9090
+        env:
+          GOOGLE_APPLICATION_CREDENTIALS: "/secrets/gcp-service.json"
+          GCP_PROJECT: "{{ gcp_project }}"
+        networks:
+          - name: "{{docker_network_name}}"
+        volumes:
+          - /srv/secrets:/secrets
+
+    - name: Create nginx container
+      docker_container:
+        name: "nginx"
+        image: "nginx:stable"
+        state: started
+        recreate: yes
+        published_ports:
+          - 80:80
+          - 443:443
+        volumes:
+          - /home/jgarciayi_g_harvard_edu/nginx-conf/nginx:/etc/nginx/conf.d
+        networks:
+          - name: "{{docker_network_name}}"
+
+
+    - name: Check if containers are running
+      shell: docker ps
+    
+    - name: "Remove all unused containers"
+      shell: docker system prune -a -f

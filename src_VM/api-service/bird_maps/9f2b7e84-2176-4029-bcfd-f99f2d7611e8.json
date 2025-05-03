@@ -1,0 +1,11 @@
+{
+    "id": "9f2b7e84-2176-4029-bcfd-f99f2d7611e8",
+    "dts": 1730476705,
+    "title": "Previous bird observations",
+    "excerpt": "This interactive map displays previous observations of selected priority bird species within Yanachaga Chemillén National Park. These species were chosen for their ecological significance, rarity, or value as ecosystem indicators.",
+    "detail": "This interactive map displays previous observations of selected priority bird species within Yanachaga Chemillén National Park. These species were chosen for their ecological significance, rarity, or value as ecosystem indicators.<br><br>The observation data are sourced from the publicly available eBird database, contributed by citizen scientists and birdwatchers worldwide (from 1980s to June 2025).<br><br>Use the layer control menu (☰) in the upper right corner of the map to select and explore the species of your interest.",
+    "readTime": "",
+    "category": "Bird Locations",
+    "html": "bird_locations.html",
+    "image": "mapbirdlocation.jpg"
+}
