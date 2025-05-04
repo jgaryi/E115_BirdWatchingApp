@@ -1,5 +1,5 @@
 ### Internal notes for M5 (please do not delete this paragraph yet): A new birdnet_app folder has been added to the src directory. It contains a complete, self-contained setup for running BirdNET with transfer learning independently. Also, for running vector db: python cli.py --download --chunk --embed --load --chunk_type char-split ###
-
+### Internal notes for M5, also add final presentation and Medium blog post to repo ###
 
 ## Project Milestone 5 - E115 - Birdwatching App
    
@@ -56,434 +56,11 @@ This project leverages AI to support bird species identification, using Yanachag
 
 ----
 
-## Continuous Integration and Continuous Deployment (CI/CD) 
+## Milestone5 ##
 
-**Continuous Integration and Continuous Delivery/Continuous Deployment (CI/CD)** is a set of principles and practices in software development and operations aimed at frequently delivering code changes reliably and efficiently.
+In this milestone, we focused on Continuous Integration/Continuous Deployment (CI/CD) which is a set of principles and practices in software development and operations aimed at frequently delivering code changes reliably and efficiently.
 
-## Continuous Integration (CI) ##
-
-The practice of regularly integrating code changes from multiple developers into a shared repository. The main goal is to detect integration issues early by automatically testing and building the code whenever a change is made. CI ensures that the codebase is always in a functional state.
-
-YONG CAN ADD HIS PORTION
-
-### CI Prerequisites: ###
-
-- Developers satisfactorily complete all pylint(python), JSLint(JavaScript), Hadolint(Dockerfile), Black(formatter), and unit tests locally prior to commiting the code.
-
-### CI Setup/Instructions: ###
-
-- Unit test (not activated)
-- GitHub action for integration test
-- Integration test
-
-## 2. Deployment to GCP ##
-
-### Prerequisites ###
-
-#### API's to enable in GCP #### 
-Search for each of these in the GCP search bar and click enable to enable these API's
-* Vertex AI API
-* Compute Engine API
-* Service Usage API
-* Cloud Resource Manager API
-* Google Container Registry API
-* Kubernetes Engine API
-
-#### Setup GCP Service Account 
-- To setup a service account, go to [GCP Console](https://console.cloud.google.com/home/dashboard), search for  "Service accounts" from the top search box or go to: "IAM & Admins" > "Service accounts" from the top-left menu and create a new service account called "deployment". 
-- Give the following roles:
-- For `deployment`:
-    - Compute Admin
-    - Compute OS Login
-    - Container Registry Service Agent
-    - Kubernetes Engine Admin
-    - Service Account User
-    - Storage Admin
-    - Vertex AI Administrator
-- Then click done.
-- This will create a service account.
-- On the right "Actions" column click the vertical ... and select "Create key". A prompt for Create private key for "deployment" will appear. Select "JSON" and click create. This will download a private key json file to your computer. Copy this json file into the **secrets** folder.
-- Rename the json key file to `deployment.json`
-- Follow the same process to create another service account called `gcp-service`
-- For `gcp-service` give the following roles:
-    - Storage Object Viewer
-    - Vertex AI Administrator
-- Then click done.
-- This will create a service account.
-- On the right "Actions" column click the vertical ... and select "Create key". A prompt for Create private key for "gcp-service" will appear select "JSON" and click create. This will download a Private key json file to your computer. Copy this json file into the **secrets** folder.
-- Rename the json key file to `gcp-service.json`
-
-### Setup Docker Container (Ansible, Docker, Kubernetes)
-
-Use Docker to build and run a standard container with all of the required software.
-
-#### Run `deployment` container
-- cd into `deployment`
-- Go into `docker-shell.sh` and change `GCP_PROJECT` to your project id
-- Run `sh docker-shell.sh` 
-
-- Check versions of tools:
-```
-gcloud --version
-ansible --version
-kubectl version --client
-```
-
-- Check to make sure you are authenticated to GCP
-- Run `gcloud auth list`
-
-The Docker container connects to your GCP and can create VMs and deploy containers all from the command line.
-
-
-### SSH Setup
-#### Configuring OS Login for service account
-Run this command within the `deployment` container
-```
-gcloud compute project-info add-metadata --project <YOUR GCP_PROJECT> --metadata enable-oslogin=TRUE
-```
-example: 
-```
-gcloud compute project-info add-metadata --project ac215-project --metadata enable-oslogin=TRUE
-```
-
-#### Create SSH key for service account
-```
-cd /secrets
-ssh-keygen -f ssh-key-deployment
-cd /app
-```
-
-### Providing public SSH keys to instances
-```
-gcloud compute os-login ssh-keys add --key-file=/secrets/ssh-key-deployment.pub
-```
-From the output of the above command keep note of the username. Here is a snippet of the output 
-```
-- accountId: ac215-project
-    gid: '3906553998'
-    homeDirectory: /home/sa_100110341521630214262
-    name: users/deployment@ac215-project.iam.gserviceaccount.com/projects/ac215-project
-    operatingSystemType: LINUX
-    primary: true
-    uid: '3906553998'
-	...
-    username: sa_100110341521630214262
-```
-The username is `sa_100110341521630214262`
-
-### Deployment Setup
-* Add ansible user details in inventory.yml file
-* GCP project details in inventory.yml file
-* GCP Compute instance details in inventory.yml file
-* Replace project to your GCP project id in inventory_prod.yml
-* Replace project to your GCP project id in docker-shell.sh
-
-
-### Deployment
-
-#### Build and Push Docker Containers to Google Artifact Registry
-```
-ansible-playbook deploy-docker-images.yml -i inventory.yml
-```
-
-#### Create Compute Instance (VM) Server in GCP
-```
-ansible-playbook deploy-create-instance.yml -i inventory.yml --extra-vars cluster_state=present
-```
-
-Get the IP address of the compute instance from the GCP Console and update the appserver>hosts in the inventory.yml file
-
-#### Provision Compute Instance in GCP
-Install and setup for deployment.
-```
-ansible-playbook deploy-provision-instance.yml -i inventory.yml
-```
-
-#### Setup Docker Containers in the  Compute Instance
-```
-ansible-playbook deploy-setup-containers.yml -i inventory.yml
-```
-
-SSH into the server from the GCP console and see the status of the containers
-```
-sudo docker container ls
-sudo docker container logs api-service -f
-sudo docker container logs frontend-react -f
-sudo docker container logs nginx -f
-sudo docker contaier logs birdnet_app -f
-```
-
-To get into a container run:
-```
-sudo docker exec -it api-service /bin/bash
-```
-
-#### Configure Nginx file for Web Server
-* Create the nginx.conf file for defaults routes in the web server
-
-#### Setup Webserver on the Compute Instance
-```
-ansible-playbook deploy-setup-webserver.yml -i inventory.yml
-```
-Once the command runs go to `http://<External IP>/` 
-
-## **Delete the Compute Instance / Persistent disk**
-```
-ansible-playbook deploy-create-instance.yml -i inventory.yml --extra-vars cluster_state=absent
-```
-
-## Deployment with Scaling using Kubernetes
-
-In this section deploy the BirdWatching app to a K8s cluster
-
-### API's to enable in GCP for Project
-Search for each of these in the GCP search bar and click enable to enable these API's
-* Vertex AI API
-* Compute Engine API
-* Service Usage API
-* Cloud Resource Manager API
-* Google Container Registry API
-* Kubernetes Engine API
-
-### Start Deployment Docker Container
--  `cd deployment`
-- Run `sh docker-shell.sh` or `docker-shell.bat` for windows
-- Check versions of tools
-`gcloud --version`
-`kubectl version`
-`kubectl version --client`
-
-- Confirm authentication to GCP
-- Run `gcloud auth list`
-
-### Build and Push Docker Containers to GCR
-**This step is only required if you have NOT already done this**
-```
-ansible-playbook deploy-docker-images.yml -i inventory.yml
-```
-
-### Create & Deploy Cluster
-```
-ansible-playbook deploy-k8s-cluster.yml -i inventory.yml --extra-vars cluster_state=present
-```
-
-This is how the various services communicate between each other in the Kubernetes cluster.
-
-```mermaid
-graph LR
-    B[Browser] -->|nginx-ip.sslip.io/| I[Ingress Controller]
-    I -->|/| F[Frontend Service<br/>NodePort:3000]
-    I -->|/api/| A[API Service<br/>NodePort:9000]
-    A -->|vector-db:8000| V[Vector-DB Service<br/>NodePort:8000]
-
-    style I fill:#lightblue
-    style F fill:#lightgreen
-    style A fill:#lightgreen
-    style V fill:#lightgreen
-```
-
-### Try some kubectl commands
-```
-kubectl get all
-kubectl get all --all-namespaces
-kubectl get pods --all-namespaces
-```
-
-```
-kubectl get componentstatuses
-kubectl get nodes
-```
-
-### If you want to shell into a container in a Pod
-```
-kubectl get pods --namespace=cheese-app-cluster-namespace
-kubectl get pod api-5d4878c545-47754 --namespace=cheese-app-cluster-namespace
-kubectl exec --stdin --tty api-5d4878c545-47754 --namespace=cheese-app-cluster-namespace  -- /bin/bash
-```
-
-### View the App
-* Copy the `nginx_ingress_ip` from the terminal from the create cluster command
-* Go to `http://<YOUR INGRESS IP>.sslip.io`
-
----
-
-## Create Kubernetes Cluster 
-
-### Create Cluster
-```
-gcloud container clusters create test-cluster --num-nodes 2 --zone us-east1-c
-```
-
-### Checkout the cluster in GCP
-* Go to the Kubernetes Engine menu item to see the cluster details
-    - Click on the cluster name to see the cluster details
-    - Click on the Nodes tab to view the nodes
-    - Click on any node to see the pods running in the node
-* Go to the Compute Engine menu item to see the VMs in the cluster
-
-### Try some kubectl commands
-```
-kubectl get all
-kubectl get all --all-namespaces
-kubectl get pods --all-namespaces
-```
-
-```
-kubectl get componentstatuses
-kubectl get nodes
-```
-
-### Deploy the App
-```
-kubectl apply -f deploy-k8s-tic-tac-toe.yml
-```
-
-### Get the Loadbalancer external IP
-```
-kubectl get services
-```
-
-### View the App
-* Copy the `External IP` from the `kubectl get services`
-* Go to `http://<YOUR EXTERNAL IP>`
-
-## Setup GitHub Action Workflow Credentials
-
-Setup credentials in GitHub to perform the following functions in GCP:
-* Push docker images to GCR
-* Run Vertex AI pipeline jobs
-* Update kubernetes deployments 
-
-### Setup
-* Go to the repo Settings
-* Select "Secrets and variable" from the left side menu and select "Actions"
-* Under "Repository secrets" click "New repository secret"
-* Give the Name as "GOOGLE_APPLICATION_CREDENTIALS"
-* For the Secret copy+paste the contents of your secrets file `deployment.json` 
-
-**Continuous Deployment (CD):** This takes the automation a step further by automatically deploying code changes to production after they pass all the automated tests in the deployment pipeline. This approach allows for a rapid release cycle and is commonly used in scenarios where rapid deployment and iteration are essential.
-
-
-### Frontend & Backend Changes
-
-A GitHub Action builds and deploys a new version of the app when a git commit has a comment `/run-deploy-app`
-
-* Open the file `src` / `api-service` / `api` / `service.py`
-* Update the version in line 29:
-```
-@app.get("/status")
-async def get_api_status():
-    return {
-        "version": "3.1",
-    }
-```
-* Open the file `src` / `frontend-react` / `src` / `services` / `Common.js`
-* Update the version in line 3:
-```
-export const APP_VERSION = 2.5;
-```
-
-To change the background color of the header in the frontend.
-* Open the file `src` / `frontend-react` / `src` / `components` / `layout` / `Header.jsx`
-* Update the background color in line 69 to `bg-sky-700`:
-```
-className={`fixed w-full top-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-sky-700' : 'bg-transparent'
-```
-
-To run the deploy app action, add the following to code commit comment:
-**Do this outside the container**
-* Add `/deploy-app` to the commit message to re-deploy the frontend and backend 
-
-```
-git add .
-git commit -m "update frontend and backend version and header color /deploy-app"
-git push
-```
-
-### ML Component Changes
-
-To run Vertex AI Pipelines on code commits, add the following to code commit comment:
-* Add `/run-ml-pipeline` to the commit message to run the entire Vertex AI ML pipeline
-* Add `/run-data-collector` to the commit message to run the data collector ML pipeline
-* Add `/run-data-processor` to the commit message to run the data processor ML pipeline
-
-#### View the App (If you have a domain)
-1. Get your ingress IP:
-   * Copy the `nginx_ingress_ip` value that was displayed in the terminal after running the cluster creation command or from GCP console -> Kubernetes > Gateways, Services & Ingress > INGRESS
-
-   * Example IP: `34.148.61.120`
-
-2. Configure your domain DNS settings:
-   * Go to your domain provider's website (e.g., GoDaddy, Namecheap, etc.)
-   * Find the DNS settings or DNS management section
-   * Add a new 'A Record' with:
-     - Host/Name: `@` (or leave blank, depending on provider)
-     - Points to/Value: Your `nginx_ingress_ip`
-     - TTL: 3600 (or default)
-
-3. Wait for DNS propagation (can take 5-30 minutes)
-
-4. Access your app:
-   * Go to: `http://your-domain.com`
-   * Example: `http://formaggio.me`
-
-#### View the App (If you do not have a domain)
-* Copy the `nginx_ingress_ip` from the terminal from the create cluster command
-* Go to `http://<YOUR INGRESS IP>.sslip.io`
-
-* Example: http://35.231.159.32.sslip.io/
-
-<hr style="height:4px;border-width:0;color:gray;background-color:gray">
-
-
-### Delete Cluster
-```
-gcloud container clusters delete test-cluster --zone us-east1-c
-```
-
----
-
-
-## 3. Usage details and examples. ##
-
-Pictures and brief descriptions of examples from above. 
-
-## 4. Known issues and limitations. ##
-
-Issues:
-
-- Depending on the workstation, if it is a Mac or Windows or the version of the Mac (M1/M2/M4 chip), the instructions may need to be modified to run successfully. Since each workstation is configured differently or has different versions, the combination of changes are specific for that workstation. 
-
-Limitations:
-
-- the number of new birds (not already contained within the birdnet training set) is limited but will be growing with greater engagement with the Yanachaga Chemillén National Park staff in the future. The transfer learning capability is in place and can be easily extended with future additions. 
-
-## 5. Notebooks and Reports ##
-Pylint
-
-JSlint
-
-Hadolint
-
-Unit Test
-
-Integration Test
-
-**a. Final Presentation (PDF)**
-
-
-
-**b. Medium Blog Post (Link)**
-
-
-## MATERIAL FROM PREVIOUS MILESTONE 4 ##
-
-## Milestone4 ##
-
-In this milestone, we have the frontend, API service, components from previous milestones for data management, including versioning, as well as the interactive maps, and acoustic and language models.
-
-After completion of building a robust ML Pipeline in our previous milestone we have built a backend api service and frontend app. This will be our user-facing application that ties together the various components built in previous milestones.
-
+From previous milestones, we have the frontend, API service, data management, as well as the interactive maps, and acoustic and language models.
 
 ### 1. Application Design ###
 
@@ -560,6 +137,410 @@ Users can interact with the maps by zooming in/out and toggling between multiple
 
   <img src="images/Chatbot.jpg"  width="800">
 
+### 4. Running CI/CD ###
+
+**4.1 Continuous Integration (CI)**
+
+The practice of regularly integrating code changes from multiple developers into a shared repository. The main goal is to detect integration issues early by automatically testing and building the code whenever a change is made. CI ensures that the codebase is always in a functional state.
+
+YONG CAN ADD HIS PORTION
+
+**CI Prerequisites:**
+- Developers satisfactorily complete all pylint(python), JSLint(JavaScript), Hadolint(Dockerfile), Black(formatter), and unit tests locally prior to commiting the code.
+
+**CI Setup/Instructions:**
+
+- Unit test (not activated)
+- GitHub action for integration test
+- Integration test
+
+**4.2 Prequistes and Setup for Deployment to GCP**
+
+**Prerequisites:**
+
+**API's to enable in GCP**
+
+Search for each of these in the GCP search bar and click enable to enable these API's:
+* Vertex AI API
+* Compute Engine API
+* Service Usage API
+* Cloud Resource Manager API
+* Google Container Registry API
+* Kubernetes Engine API
+
+**Setup GCP Service Account**
+
+- To setup a service account, go to [GCP Console](https://console.cloud.google.com/home/dashboard), search for  "Service accounts" from the top search box or go to: "IAM & Admins" > "Service accounts" from the top-left menu and create a new service account called "deployment". 
+- Give the following roles:
+- For `deployment`:
+    - Compute Admin
+    - Compute OS Login
+    - Container Registry Service Agent
+    - Kubernetes Engine Admin
+    - Service Account User
+    - Storage Admin
+    - Vertex AI Administrator
+- Then click done.
+- This will create a service account.
+- On the right "Actions" column click the vertical ... and select "Create key". A prompt for Create private key for "deployment" will appear. Select "JSON" and click create. This will download a private key json file to your computer. Copy this json file into the **secrets** folder.
+- Rename the json key file to `deployment.json`
+- Follow the same process to create another service account called `gcp-service`
+- For `gcp-service` give the following roles:
+    - Storage Object Viewer
+    - Vertex AI Administrator
+- Then click done.
+- This will create a service account.
+- On the right "Actions" column click the vertical ... and select "Create key". A prompt for Create private key for "gcp-service" will appear select "JSON" and click create. This will download a Private key json file to your computer. Copy this json file into the **secrets** folder.
+- Rename the json key file to `gcp-service.json`
+
+**Setup Docker Container (Ansible, Docker, Kubernetes)**
+
+Use Docker to build and run a standard container with all of the required software.
+
+**Run `deployment` container**
+
+- cd into `deployment`
+- Go into `docker-shell.sh` and change `GCP_PROJECT` to your project id
+- Run
+```
+sh docker-shell.sh
+```
+
+- Check versions of tools:
+```
+gcloud --version
+ansible --version
+kubectl version --client
+```
+
+- Check to make sure you are authenticated to GCP
+- Run
+```
+gcloud auth list
+```
+
+The Docker container connects to your GCP and can create VMs and deploy containers all from the command line.
+
+**SSH Setup**
+
+**Configuring OS Login for service account**
+Run this command within the `deployment` container:
+```
+gcloud compute project-info add-metadata --project <YOUR GCP_PROJECT> --metadata enable-oslogin=TRUE
+```
+example: 
+```
+gcloud compute project-info add-metadata --project ac215-project --metadata enable-oslogin=TRUE
+```
+
+**Create SSH key for service account**
+```
+cd /secrets
+ssh-keygen -f ssh-key-deployment
+cd /app
+```
+
+**Providing public SSH keys to instances**
+```
+gcloud compute os-login ssh-keys add --key-file=/secrets/ssh-key-deployment.pub
+```
+From the output of the above command keep note of the username. Here is a snippet of the output 
+```
+- accountId: ac215-project
+    gid: '3906553998'
+    homeDirectory: /home/sa_100110341521630214262
+    name: users/deployment@ac215-project.iam.gserviceaccount.com/projects/ac215-project
+    operatingSystemType: LINUX
+    primary: true
+    uid: '3906553998'
+	...
+    username: sa_100110341521630214262
+```
+The username is `sa_100110341521630214262`
+
+**Deployment Setup**
+* Add ansible user details in inventory.yml file
+* GCP project details in inventory.yml file
+* GCP Compute instance details in inventory.yml file
+* Replace project to your GCP project id in inventory_prod.yml
+* Replace project to your GCP project id in docker-shell.sh
+
+**4.3 Deployment**
+
+**Build and Push Docker Containers to Google Artifact Registry**
+```
+ansible-playbook deploy-docker-images.yml -i inventory.yml
+```
+
+**Create Compute Instance (VM) Server in GCP**
+```
+ansible-playbook deploy-create-instance.yml -i inventory.yml --extra-vars cluster_state=present
+```
+
+Get the IP address of the compute instance from the GCP Console and update the appserver>hosts in the inventory.yml file
+
+**Provision Compute Instance in GCP**
+Install and setup for deployment.
+```
+ansible-playbook deploy-provision-instance.yml -i inventory.yml
+```
+
+**Setup Docker Containers in the  Compute Instance**
+```
+ansible-playbook deploy-setup-containers.yml -i inventory.yml
+```
+
+SSH into the server from the GCP console and see the status of the containers
+```
+sudo docker container ls
+sudo docker container logs api-service -f
+sudo docker container logs frontend-react -f
+sudo docker container logs nginx -f
+sudo docker contaier logs birdnet_app -f
+```
+
+To get into a container, run:
+```
+sudo docker exec -it api-service /bin/bash
+```
+
+**Configure Nginx file for Web Server**
+* Create the nginx.conf file for defaults routes in the web server
+
+**Setup Webserver on the Compute Instance**
+```
+ansible-playbook deploy-setup-webserver.yml -i inventory.yml
+```
+Once the command runs go to `http://<External IP>/` 
+
+**Delete the Compute Instance / Persistent disk**
+```
+ansible-playbook deploy-create-instance.yml -i inventory.yml --extra-vars cluster_state=absent
+```
+
+**Deployment with Scaling using Kubernetes**
+
+In this section deploy the BirdWatching app to a K8s cluster
+
+**API's to enable in GCP for Project**
+If not previously completed, search for each of these in the GCP search bar and click enable to enable these API's:
+* Vertex AI API
+* Compute Engine API
+* Service Usage API
+* Cloud Resource Manager API
+* Google Container Registry API
+* Kubernetes Engine API
+
+**Start Deployment Docker Container**
+-  `cd deployment`
+- Run `sh docker-shell.sh` or `docker-shell.bat` for windows
+- Check versions of tools
+`gcloud --version`
+`kubectl version`
+`kubectl version --client`
+
+- Confirm authentication to GCP
+- Run `gcloud auth list`
+
+**Build and Push Docker Containers to GCR**
+This step is only required if you have NOT already done this
+```
+ansible-playbook deploy-docker-images.yml -i inventory.yml
+```
+
+**Create & Deploy Cluster**
+```
+ansible-playbook deploy-k8s-cluster.yml -i inventory.yml --extra-vars cluster_state=present
+```
+
+This is how the various services communicate between each other in the Kubernetes cluster.
+
+```mermaid
+graph LR
+    B[Browser] -->|nginx-ip.sslip.io/| I[Ingress Controller]
+    I -->|/| F[Frontend Service<br/>NodePort:3000]
+    I -->|/api/| A[API Service<br/>NodePort:9000]
+    A -->|vector-db:8000| V[Vector-DB Service<br/>NodePort:8000]
+
+    style I fill:#lightblue
+    style F fill:#lightgreen
+    style A fill:#lightgreen
+    style V fill:#lightgreen
+```
+
+Try some kubectl commands
+```
+kubectl get all
+kubectl get all --all-namespaces
+kubectl get pods --all-namespaces
+```
+
+```
+kubectl get componentstatuses
+kubectl get nodes
+```
+
+If you want to shell into a container in a Pod
+```
+kubectl get pods --namespace=cheese-app-cluster-namespace
+kubectl get pod api-5d4878c545-47754 --namespace=cheese-app-cluster-namespace
+kubectl exec --stdin --tty api-5d4878c545-47754 --namespace=cheese-app-cluster-namespace  -- /bin/bash
+```
+
+View the App
+* Copy the `nginx_ingress_ip` from the terminal from the create cluster command
+* Go to `http://<YOUR INGRESS IP>.sslip.io`
+
+**Create Kubernetes Cluster**
+
+**Create Cluster**
+```
+gcloud container clusters create test-cluster --num-nodes 2 --zone us-east1-c
+```
+
+Checkout the cluster in GCP
+* Go to the Kubernetes Engine menu item to see the cluster details
+    - Click on the cluster name to see the cluster details
+    - Click on the Nodes tab to view the nodes
+    - Click on any node to see the pods running in the node
+* Go to the Compute Engine menu item to see the VMs in the cluster
+
+Try some kubectl commands
+```
+kubectl get all
+kubectl get all --all-namespaces
+kubectl get pods --all-namespaces
+```
+
+```
+kubectl get componentstatuses
+kubectl get nodes
+```
+
+**Deploy the App**
+```
+kubectl apply -f deploy-k8s-tic-tac-toe.yml
+```
+
+**Get the Loadbalancer external IP**
+```
+kubectl get services
+```
+
+**View the App**
+* Copy the `External IP` from the `kubectl get services`
+* Go to `http://<YOUR EXTERNAL IP>`
+
+
+**4.4 Continuous Deployment (CD):** 
+
+This takes the automation a step further by automatically deploying code changes to production after they pass all the automated tests in the deployment pipeline. This approach allows for a rapid release cycle and is commonly used in scenarios where rapid deployment and iteration are essential.
+
+**Setup GitHub Action Workflow Credentials**
+
+Setup credentials in GitHub to perform the following functions in GCP:
+* Push docker images to GCR
+* Run Vertex AI pipeline jobs
+* Update kubernetes deployments 
+
+**Setup**
+* Go to the repo Settings
+* Select "Secrets and variable" from the left side menu and select "Actions"
+* Under "Repository secrets" click "New repository secret"
+* Give the Name as "GOOGLE_APPLICATION_CREDENTIALS"
+* For the Secret copy+paste the contents of your secrets file `deployment.json` 
+
+**Frontend & Backend Changes**
+
+A GitHub Action builds and deploys a new version of the app when a git commit has a comment `/run-deploy-app`
+
+* Open the file `src` / `api-service` / `api` / `service.py`
+* Update the version in line 29:
+```
+@app.get("/status")
+async def get_api_status():
+    return {
+        "version": "3.1",
+    }
+```
+* Open the file `src` / `frontend-react` / `src` / `services` / `Common.js`
+* Update the version in line 3:
+```
+export const APP_VERSION = 2.5;
+```
+
+To change the background color of the header in the frontend.
+* Open the file `src` / `frontend-react` / `src` / `components` / `layout` / `Header.jsx`
+* Update the background color in line 69 to `bg-sky-700`:
+```
+className={`fixed w-full top-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-sky-700' : 'bg-transparent'
+```
+
+To run the deploy app action, add the following to code commit comment:
+**Do this outside the container**
+* Add `/deploy-app` to the commit message to re-deploy the frontend and backend 
+
+```
+git add .
+git commit -m "update frontend and backend version and header color /deploy-app"
+git push
+```
+
+**ML Component Changes**
+
+To run Vertex AI Pipelines on code commits, add the following to code commit comment:
+* Add `/run-ml-pipeline` to the commit message to run the entire Vertex AI ML pipeline
+* Add `/run-data-collector` to the commit message to run the data collector ML pipeline
+* Add `/run-data-processor` to the commit message to run the data processor ML pipeline
+
+**View the App (If you have a domain)**
+1. Get your ingress IP:
+   * Copy the `nginx_ingress_ip` value that was displayed in the terminal after running the cluster creation command or from GCP console -> Kubernetes > Gateways, Services & Ingress > INGRESS
+
+   * Example IP: `34.148.61.120`
+
+2. Configure your domain DNS settings:
+   * Go to your domain provider's website (e.g., GoDaddy, Namecheap, etc.)
+   * Find the DNS settings or DNS management section
+   * Add a new 'A Record' with:
+     - Host/Name: `@` (or leave blank, depending on provider)
+     - Points to/Value: Your `nginx_ingress_ip`
+     - TTL: 3600 (or default)
+
+3. Wait for DNS propagation (can take 5-30 minutes)
+
+4. Access your app:
+   * Go to: `http://your-domain.com`
+   * Example: `http://formaggio.me`
+
+**View the App (If you do not have a domain)**
+* Copy the `nginx_ingress_ip` from the terminal from the create cluster command
+* Go to `http://<YOUR INGRESS IP>.sslip.io`
+
+* Example: http://35.231.159.32.sslip.io/
+
+<hr style="height:4px;border-width:0;color:gray;background-color:gray">
+
+**Delete Cluster**
+```
+gcloud container clusters delete test-cluster --zone us-east1-c
+```
+
+### 5. Usage details and examples. ###
+
+Pictures and brief descriptions of examples from above. 
+
+### 6. Known issues and limitations. ###
+
+Issues:
+
+- Depending on the workstation, if it is a Mac or Windows or the version of the Mac (M1/M2/M4 chip), the instructions may need to be modified to run successfully. Since each workstation is configured differently or has different versions, the combination of changes are specific for that workstation. 
+
+Limitations:
+
+- the number of new birds (not already contained within the birdnet training set) is limited but will be growing with greater engagement with the Yanachaga Chemillén National Park staff in the future. The transfer learning capability is in place and can be easily extended with future additions. 
+
+### This is from MS4 and should be deleted ###
 
 ### 4. Running Dockerfile ###
 
@@ -726,10 +707,10 @@ Make sure you do not have any running containers and clear up an unused images. 
 4. Run ```docker image ls```
 
 
-### 5. Notebooks/Reports ####
+### 7. Notebooks/Reports ####
 This folder contains code that is not part of a container e.g., Application mockup, EDA, any 🔍 🕵️‍♀️ 🕵️‍♂️ crucial insights, reports or visualizations.
 
-**5.1 Web Scrapping and Data Versioning**
+**7.1 Web Scrapping and Data Versioning**
 
 We collected bird species information by scraping text from three authoritative websites, along with scholarly articles sourced from Google Scholar and Semantic Scholar. The extracted data was cleaned and structured before being stored in a GCS bucket for use in downstream processing and semantic search.
 
@@ -749,7 +730,7 @@ Previous versions of the models are not expected to be revisited. Given that upd
 - **preprocess_cv.py**: This script processes the images collected in bird_images by resizing them to 128x128 pixels and uploading the resized images to the resized folder in GCS bucket.
 - **semanticscholar.py**: This script scrapes PDF articles from the semantic scholar website.
 
-**5.2 Acoustic Model for Bird Identification**
+**7.2 Acoustic Model for Bird Identification**
 
 The notebook demonstrated how the BirdNET model is used to predict bird species from bird audio input. The BirdNET model use its built-in preprocessor to chunk the input audio into fixed length pieces, convert each of small piece into a spectrogram by Short Time Fourier Transformation. The spectrogram is represented in both time and frequency domain, can be treated as "image" data (see Notebook). It passes it to the neural network model BirdNET to generate an embedding. 
 
@@ -760,7 +741,7 @@ So for an audio recording longer than the fixed chunk length, we obtain embeddin
 
 - **BirdWatchingApp.ipynb**: This notebook illustrates how to use the BirdNET model for bird species prediction, and ranking of the result according to the prediction confidence. 
 
-**5.3 Transfer Learning for Identification of Rare Bird Species**   
+**7.3 Transfer Learning for Identification of Rare Bird Species**   
 
 In this project, we develop a transfer learning approach to classify rare bird species based on audio recordings. The transfer learning workflow begins by preprocessing field recordings, followed by extracting acoustic embeddings using the BirdNET model. These embeddings serve as feature vectors for training lightweight classifiers capable of recognizing underrepresented species such as Doliornis and Hapalopsittaca.
 
@@ -771,7 +752,7 @@ We implement and compare several models—including multinomial logistic regress
 
 - **TransferLearningModel.pdf**: A static PDF version of the notebook is provided for easier viewing directly on GitHub.
 
-**5.4. Interactive Maps**  
+**7.4. Interactive Maps**  
 
 Three interactive maps provide complementary geospatial insights into the biodiversity and habitat conditions of Yanachaga-Chemillén National Park, using Earth Engine and Folium (a python interface to Leaflet) for visualization. The **bird location map** displays historical sighting data for selected endemic and rare species, enabling users to explore species distribution patterns within the protected area. The **deforestation map** overlays land cover classifications (ESA WorldCover) and forest loss data (Hansen Global Forest Change), helping users assess environmental pressures on bird habitats. The **biodiversity hotspot map** highlights the Tropical Andes and other global conservation priority regions, showing the park’s position within a high-priority biodiversity corridor. Users can interact with the maps by zooming in/out and toggling between multiple data layers, such as land cover, deforestation, species presence, and park boundaries, supported by custom legends for easy interpretation.
 
@@ -782,17 +763,22 @@ Three interactive maps provide complementary geospatial insights into the biodiv
 
 - **InteractiveMapBiodiversity.ipynb**: Highlights global biodiversity hotspots with a focus on the Tropical Andes, showing the park’s placement within a major conservation priority zone
 
+**7.5. Linters**
 
-### 6. Work in Progress ####
+**7.6. Unit Test**
 
-**6.1 Transfer learning**
+**7.7. Integration Test**
+
+### 8. Work in Progress (Need to either delete or update) ####
+
+**8.1 Transfer learning**
 
 As part of ongoing development, the transfer learning model is intended to operate downstream of the primary BirdNET prediction system within the backend of the app. In this envisioned workflow, audio recordings are first processed by BirdNET, which attempts to identify bird species based on its extensive pre-trained acoustic model. If no species is detected with a confidence score above a defined threshold (e.g., 30%), the system will then trigger a secondary evaluation using our custom transfer learning model, which is specifically trained to recognize rare or underrepresented species such as Doliornis sclateri and Hapalopsittaca melanotis.
 
 This two-stage inference chain aims to improve recognition coverage for rare species that are often missed by general models. The transfer learning component is designed to operate on BirdNET-generated embeddings, leveraging a lightweight classifier (e.g., MLP) trained specifically on local field data. Although the model is technically viable, integration into the app's backend is currently limited by package compatibility issues and the existing backend environment. Future work will focus on resolving these conflicts or converting the model to a more interoperable format (e.g., ONNX) to support seamless deployment.
 
 
-**6.2 Other Topics**
+**8.2 Other Topics**
 
 The team identified the following future tasks for development and testing:
 
