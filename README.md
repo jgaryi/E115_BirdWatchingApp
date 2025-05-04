@@ -528,7 +528,27 @@ gcloud container clusters delete test-cluster --zone us-east1-c
 
 ### 5. Usage details and examples. ###
 
-Pictures and brief descriptions of examples from above. 
+Scaling by manually increasing and decreasing the load:
+To scale up, run the following code:
+
+```kubectl scale deployment frontend \
+  --replicas=5 \
+  -n bird-app-cluster-namespace
+kubectl get pods -n bird-app-cluster-namespace```
+
+<img src="images/scaling_up_in_progress.png"  width="800">
+
+<img src="images/scaled_up.png"  width="800">
+
+To scale down, run the following code:
+
+```kubectl scale deployment frontend \
+  --replicas=1 \
+  -n bird-app-cluster-namespace
+kubectl get pods -n bird-app-cluster-namespace```
+
+<img src="images/scaling_down_in_process"  width="800">
+<img src="images/scaled_down.png"  width="800">
 
 ### 6. Known issues and limitations. ###
 
