@@ -547,7 +547,7 @@ kubectl scale deployment frontend \
   -n bird-app-cluster-namespace
 kubectl get pods -n bird-app-cluster-namespace
 
-<img src="images/scaling_down_in_process"  width="800">
+<img src="images/scaling_down_in_process.png"  width="800">
 <img src="images/scaled_down.png"  width="800">
 
 ### 6. Known issues and limitations. ###
