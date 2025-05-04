@@ -452,7 +452,7 @@ Setup credentials in GitHub to perform the following functions in GCP:
 
 **Frontend & Backend Changes**
 
-A GitHub Action builds and deploys a new version of the app when a git commit has a comment `/run-deploy-app`
+A GitHub Action builds and deploys a new version of the app when a git commit has a comment `/deploy-app`
 
 * Open the file `src` / `api-service` / `api` / `service.py`
 * Update the version in line 29:
@@ -485,6 +485,14 @@ git add .
 git commit -m "update frontend and backend version and header color /deploy-app"
 git push
 ```
+
+Header before change:
+
+<img src="images/original_before_gitaction_update.png"  width="800">
+
+Header after change:
+
+<img src="images/header_color_title_change.png"  width="800">
 
 **ML Component Changes**
 
@@ -531,10 +539,12 @@ gcloud container clusters delete test-cluster --zone us-east1-c
 Scaling by manually increasing and decreasing the load:
 To scale up, run the following code:
 
+```
 kubectl scale deployment frontend \
   --replicas=5 \
   -n bird-app-cluster-namespace
 kubectl get pods -n bird-app-cluster-namespace
+```
 
 <img src="images/scaling_up_in_progress.png"  width="800">
 
@@ -542,11 +552,12 @@ kubectl get pods -n bird-app-cluster-namespace
 
 To scale down, run the following code:
 
+```
 kubectl scale deployment frontend \
   --replicas=1 \
   -n bird-app-cluster-namespace
 kubectl get pods -n bird-app-cluster-namespace
-
+```
 <img src="images/scaling_down_in_process.png"  width="800">
 <img src="images/scaled_down.png"  width="800">
 
