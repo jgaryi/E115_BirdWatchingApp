@@ -1,0 +1,55 @@
+name: Python Tests
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.12"]
+
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ matrix.python-version }}
+    
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        pip install pytest pytest-cov
+        # Install BirdNET dependencies
+        pip install birdnetlib librosa pydub numpy joblib
+        
+    - name: Run Unit Tests
+      run: |
+        pytest test_unit.py -v --cov=bird --cov-report=xml:unit-coverage.xml
+      
+    - name: Run Integration Tests
+      run: |
+        pytest test_integration.py -v --cov=bird --cov-append --cov-report=xml:integration-coverage.xml
+      env:
+        # Add any required environment variables for integration tests
+        TEST_AUDIO_PATH: "Andigena_sample.wav"
+      
+    - name: Combine Coverage Reports
+      run: |
+        pip install coverage
+        coverage combine unit-coverage.xml integration-coverage.xml
+        coverage xml -o combined-coverage.xml
+      
+    - name: Upload Coverage to Codecov
+      uses: codecov/codecov-action@v3
+      with:
+        file: ./combined-coverage.xml
+        flags: unittests
+        name: codecov-umbrella
+        fail_ci_if_error: true
