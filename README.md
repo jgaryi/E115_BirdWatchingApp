@@ -471,7 +471,7 @@ export const APP_VERSION = 2.5;
 
 To change the background color of the header in the frontend.
 * Open the file `src` / `frontend-react` / `src` / `components` / `layout` / `Header.jsx`
-* Update the background color in line 69 to `bg-sky-700`:
+* Update the background color to `bg-blue-900/90`:
 ```
 className={`fixed w-full top-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-sky-700' : 'bg-transparent'
 ```
