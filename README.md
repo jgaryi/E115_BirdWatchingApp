@@ -821,7 +821,7 @@ The integration test will test the interaction between functions. In the integra
 
 - **test_integration_mock.py**: covers all integration test cases (with simulated audios) listed above to verify the interaction between functions in birdnet_app. 
 
-- **nistructions_for_unit_integration_test.pdf**: Explain the unit test in details and the instructions to run the test_integration.py by pytest.
+- **instructions_for_unit_integration_test.pdf**: Explain the unit test in details and the instructions to run the test_integration.py by pytest.
 
 ### 8. Work in Progress (Need to either delete or update) ####
 
