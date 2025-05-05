@@ -809,7 +809,7 @@ The unit test will test each individual functions in birdnet_app container in is
 - **nistructions_for_unit_integration_test.pdf**: Explain the unit test in details and the instructions to run the test_unit.py by pytest.
 
 **7.7. Integration Test**
-The integration test will test the interaction between functions. In the integration test, both simulated and real audio input can be used during the test, but real audio inputs are commonly used. Below are all test cases in the integration test, and the instruction to run the test is shown in the report instructions_for_unit_integration_test.pdf.
+The integration test will test the interaction between functions. In the integration test, both simulated and real audio input can be used during the test, but real audio inputs are commonly used. Below are all test cases in the integration test, and the instruction to run the test is shown in the report listed below.
 1.	Test the full pipeline with real audio: Verify the entire workflow from audio upload to species prediction
 2.	API integration test with real request: Test the FastAPI endpoint with real HTTP call and actual audio processing
 3.	Test edge cases in integration: Verify real-world scenarios that unit test might miss
