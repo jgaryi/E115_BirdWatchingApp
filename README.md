@@ -797,6 +797,22 @@ Three interactive maps provide complementary geospatial insights into the biodiv
 **7.5. Linters**
 
 **7.6. Unit Test**
+The unit test will test each individual functions in birdnet_app container in isolation with mocked dependencies. In the test, we use simulated audio input instead of real one. Below are all test cases in unit test, and the instruction to run unit test is shown in the report instructions_for_unit_integration_test.pdf
+  1.	Audio Preprocessing: 
+      o	Test padding of short audio
+      o	Test of long audio over limit
+      o	Test handling of invalid audio
+  2.	BirdNET Analysis
+    o	Test successful detection
+    o	Test no detection case
+    o	Test error handling
+  3.	Custom Model Classification
+    o	Test known species detection
+    o	Test unknown species case
+  4.	Full Pipeline
+    o	Test BirdNET primary path
+    o	Test fallback to custom model
+
 
 **7.7. Integration Test**
 
