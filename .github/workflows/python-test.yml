@@ -1,0 +1,74 @@
+name: Python Tests
+
+on:
+  push:
+    branches: [ yong ]
+  pull_request:
+    branches: [ yong ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.11"]
+
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ matrix.python-version }}
+
+    - name: Install FFmpeg
+      run: sudo apt-get install -y ffmpeg
+    
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install pytest pytest-cov httpx
+        # Install BirdNET dependencies
+        pip install \
+        birdnetlib \
+        librosa==0.9.2 \
+        pydub \
+        numpy==1.24.4 \
+        joblib \
+        fastapi \
+        uvicorn \
+        python-multipart \
+        resampy \
+        tensorflow==2.15.0 
+          
+    - name: Run Unit Tests
+      run: |
+        pytest tests/test_unit.py -v -s
+      
+    - name: Run Integration Tests
+      run: |
+        pytest tests/test_integration.py -v -s
+
+      env:
+        # Add any required environment variables for integration tests
+        TEST_AUDIO_PATH: "test.mp3"
+      
+    # - name: Combine Coverage Reports
+    #   run: |
+    #     pip install coverage
+    #     # Convert XML to coverage format
+    #     python -m coverage xml -i unit-coverage.xml || echo "Failed to convert unit coverage"
+    #     python -m coverage xml -i integration-coverage.xml || echo "Failed to convert integration coverage"
+    #     # Combine
+    #     python -m coverage combine .coverage*
+    #     python -m coverage xml -o combined-coverage.xml
+    #     # Verify
+    #     python -m coverage report
+      
+    # - name: Upload Coverage to Codecov
+    #   uses: codecov/codecov-action@v3
+    #   with:
+    #     file: ./combined-coverage.xml
+    #     flags: unittests
+    #     name: codecov-umbrella
+    #     fail_ci_if_error: true
