@@ -797,7 +797,7 @@ Three interactive maps provide complementary geospatial insights into the biodiv
 **7.5. Linters**
 
 **7.6. Unit Test**
-The unit test will test each individual functions in birdnet_app container in isolation with mocked dependencies. In the test, we use simulated audio input instead of real one. Below are all test cases in unit test, and the instruction to run unit test is shown in the report instructions_for_unit_integration_test.pdf
+The unit test will test each individual functions in birdnet_app container in isolation with mocked dependencies. In the unit test, we use simulated audio input instead of real one. Below are all test cases in unit test, and the instruction to run unit test is shown in the report instructions_for_unit_integration_test.pdf
   1.	Audio Preprocessing: (a) Test padding of short audio. (b) Test of long audio over limit (c) Test handling of invalid audio
   2.	BirdNET Analysis:  (a) Test successful detection  (b) Test no detection case.  (c) Test error handling
   3.	Custom Model Classification:  (a) Test known species detection. (b) Test unknown species case
@@ -805,6 +805,13 @@ The unit test will test each individual functions in birdnet_app container in is
 
 
 **7.7. Integration Test**
+The integration test will test the interaction between functions. In the integration test, both simulated and real audio input can be used during the test, but real audio inputs are commonly used. Below are all test cases in the integration test, and the instruction to run the test is shown in the report instructions_for_unit_integration_test.pdf.
+1.	Test the full pipeline with real audio: Verify the entire workflow from audio upload to species prediction
+2.	API integration test with real request: Test the FastAPI endpoint with real HTTP call and actual audio processing
+3.	Test edge cases in integration: Verify real-world scenarios that unit test might miss
+4.	Cross-validate BirdNET and Custom model: Ensure both models agree on simple case as it expected
+5.	Performance testing: Check if the system meets real-time requirement
+
 
 ### 8. Work in Progress (Need to either delete or update) ####
 
