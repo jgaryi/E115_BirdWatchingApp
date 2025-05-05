@@ -797,12 +797,16 @@ Three interactive maps provide complementary geospatial insights into the biodiv
 **7.5. Linters**
 
 **7.6. Unit Test**
-The unit test will test each individual functions in birdnet_app container in isolation with mocked dependencies. In the unit test, we use simulated audio input instead of real one. Below are all test cases in unit test, and the instruction to run unit test is shown in the report instructions_for_unit_integration_test.pdf
+The unit test will test each individual functions in birdnet_app container in isolation with mocked dependencies. In the unit test, we use simulated audio input instead of real one. Below are all test cases in unit test, and the instruction to run unit test is shown in the report listed below. 
   1.	Audio Preprocessing: (a) Test padding of short audio. (b) Test of long audio over limit (c) Test handling of invalid audio
   2.	BirdNET Analysis:  (a) Test successful detection  (b) Test no detection case.  (c) Test error handling
   3.	Custom Model Classification:  (a) Test known species detection. (b) Test unknown species case
   4.	Full Pipeline:  (a) Test BirdNET primary path. (b)Test fallback to custom model
 
+**Files:**
+- **test_unit.py**: covers all unit test cases list above to verify the functionality of all functions in the birdnet_app container. 
+
+- **nistructions_for_unit_integration_test.pdf**: Explain the unit test in details and the instructions to run the test_unit.py by pytest.
 
 **7.7. Integration Test**
 The integration test will test the interaction between functions. In the integration test, both simulated and real audio input can be used during the test, but real audio inputs are commonly used. Below are all test cases in the integration test, and the instruction to run the test is shown in the report instructions_for_unit_integration_test.pdf.
@@ -812,6 +816,12 @@ The integration test will test the interaction between functions. In the integra
 4.	Cross-validate BirdNET and Custom model: Ensure both models agree on simple case as it expected
 5.	Performance testing: Check if the system meets real-time requirement
 
+**Files:**
+- **test_integration.py**: covers all integration test cases (with real audios) listed above to verify the interaction between functions in birdnet_app. 
+
+- **test_integration_mock.py**: covers all integration test cases (with simulated audios) listed above to verify the interaction between functions in birdnet_app. 
+
+- **nistructions_for_unit_integration_test.pdf**: Explain the unit test in details and the instructions to run the test_integration.py by pytest.
 
 ### 8. Work in Progress (Need to either delete or update) ####
 
