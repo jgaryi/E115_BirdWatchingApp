@@ -806,7 +806,7 @@ The unit test will test each individual functions in birdnet_app container in is
 **Files:**
 - **test_unit.py**: covers all unit test cases list above to verify the functionality of all functions in the birdnet_app container. 
 
-- **nistructions_for_unit_integration_test.pdf**: Explain the unit test in details and the instructions to run the test_unit.py by pytest.
+- **instructions_for_unit_integration_test.pdf**: Explain the unit test in details and the instructions to run the test_unit.py by pytest.
 
 **7.7. Integration Test**
 The integration test will test the interaction between functions. In the integration test, both simulated and real audio input can be used during the test, but real audio inputs are commonly used. Below are all test cases in the integration test, and the instruction to run the test is shown in the report listed below.
