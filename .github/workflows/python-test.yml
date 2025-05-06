@@ -41,13 +41,32 @@ jobs:
         resampy \
         tensorflow==2.15.0 
           
-    - name: Run Unit Tests
-      run: |
-        pytest tests/test_unit.py -v -s
+    # - name: Run Unit Tests
+    #   run: |
+    #     pytest tests/test_unit.py -v \
+    #           --cov=bird \
+    #           --cov-report=xml:unit-coverage.xml \
+    #           --cov-report=term
       
-    - name: Run Integration Tests
+    # - name: Run Integration Tests
+    #   run: |
+    #     pytest tests/test_integration.py -v \
+    #           --cov=bird \
+    #           --cov-append \
+    #           --cov-report=xml:integration-coverage.xml \
+    #           --cov-report=term
+
+    - name: Run Tests with Coverage
       run: |
-        pytest tests/test_integration.py -v -s
+        # Run all tests with single coverage command
+        python -m pytest tests/ -v -s \
+          --cov=bird \
+          --cov-report=xml:coverage.xml \
+          --cov-report=term
+        
+        # Debug: Show coverage file
+        head -n 20 coverage.xml
+        ls -la
 
       env:
         # Add any required environment variables for integration tests
@@ -56,14 +75,19 @@ jobs:
     # - name: Combine Coverage Reports
     #   run: |
     #     pip install coverage
-    #     # Convert XML to coverage format
-    #     python -m coverage xml -i unit-coverage.xml || echo "Failed to convert unit coverage"
-    #     python -m coverage xml -i integration-coverage.xml || echo "Failed to convert integration coverage"
-    #     # Combine
+    #     # First convert XML reports to coverage's native format
+    #     python -m coverage xml -i unit-coverage.xml --data-file=.coverage.unit
+    #     python -m coverage xml -i integration-coverage.xml --data-file=.coverage.integration
+    
+    #     # Combine all coverage data
     #     python -m coverage combine .coverage*
+    
+    #     # Generate final XML report
     #     python -m coverage xml -o combined-coverage.xml
-    #     # Verify
+    
+    #     # Debug: Show coverage summary and files
     #     python -m coverage report
+    #     ls -la
       
     # - name: Upload Coverage to Codecov
     #   uses: codecov/codecov-action@v3
@@ -72,3 +96,8 @@ jobs:
     #     flags: unittests
     #     name: codecov-umbrella
     #     fail_ci_if_error: true
+        
+    - name: Upload Coverage to Codecov
+      uses: codecov/codecov-action@v3
+      with:
+        file: coverage.xml
