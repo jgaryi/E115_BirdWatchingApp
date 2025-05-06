@@ -604,7 +604,7 @@ The integration test will test the interaction between functions. In the integra
 
 The birdwatching app develped implemented basic function for bird speices detection and chat with agent about the bird species detected. More functionalities can be considered for futher steps.
 
-1. Extend the number of training species for transfer learning: current transfer learning model is trained with two real species. more data from other speices could be available 
+1. Extend the number of training species for transfer learning: current transfer learning model is trained with two real species. more data from other speices could be available to retrain the model and extend the model capabilty. 
 2. 
 
 
@@ -613,9 +613,7 @@ The birdwatching app develped implemented basic function for bird speices detect
 One of primary further goal of this project is to deploy the birdwatching app to edge devices located in remote national park for monitoring the bird species continuously as ecosystem perservation purpose. The edge or embedded device have limited source: power, computation and memory. SO we need to do some adaptations to enable this deployment. 
 
 (1) software adaptation includes: lightweight container such as using minimal base image, only ship runtime dependencies. 
-
 (2) Replace GKE with k3s (lightweight kubernetes) for edge orchestration.
-
 (3) Apply techniques to achieve low-power computation, such as select edge computer for efficient Tensorflow Lite model execution and use model with low-bit quantization to reduce compute load. 
 
 
