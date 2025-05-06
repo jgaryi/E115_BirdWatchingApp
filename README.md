@@ -610,7 +610,13 @@ The birdwatching app develped implemented basic function for bird speices detect
 
 **8.2 Adaptation for Deployment to Edge or IoT Device**
 
-One of primary further goal of this project is to deploy the birdwatching app to edge devices located in remote national park for monitoring the bird species continuously as ecosystem perservation purpose. The edge or embedded device have limited source: power, computation and memory. SO we need to do some adaptations to enable this deployment. (1) software adaptation includes: lightweight container such as using minimal base image, only ship runtime dependencies. and (2) Replace GKE with k3s (lightweight kubernetes) for edge orchestration. and (3) Apply techniques to achieve low-power computation, such as select edge computer for efficient Tensorflow Lite model execution and use model with low-bit quantization to reduce compute load. 
+One of primary further goal of this project is to deploy the birdwatching app to edge devices located in remote national park for monitoring the bird species continuously as ecosystem perservation purpose. The edge or embedded device have limited source: power, computation and memory. SO we need to do some adaptations to enable this deployment. 
+
+(1) software adaptation includes: lightweight container such as using minimal base image, only ship runtime dependencies. 
+
+(2) Replace GKE with k3s (lightweight kubernetes) for edge orchestration.
+
+(3) Apply techniques to achieve low-power computation, such as select edge computer for efficient Tensorflow Lite model execution and use model with low-bit quantization to reduce compute load. 
 
 
 
