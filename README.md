@@ -598,21 +598,23 @@ The integration test will test the interaction between functions. In the integra
 
 - **instructions_for_unit_integration_test.pdf**: Explain the unit test in details and the instructions to run the test_integration.py by pytest.
 
-### 8. Work in Progress ####
+### 8. Future Works ####
 
-**8.1 Transfer learning**
+**8.1 Improve App Functionalities**
 
-As part of ongoing development, the transfer learning model is intended to operate downstream of the primary BirdNET prediction system within the backend of the app. In this envisioned workflow, audio recordings are first processed by BirdNET, which attempts to identify bird species based on its extensive pre-trained acoustic model. If no species is detected with a confidence score above a defined threshold (e.g., 30%), the system will then trigger a secondary evaluation using our custom transfer learning model, which is specifically trained to recognize rare or underrepresented species such as Doliornis sclateri and Hapalopsittaca melanotis.
+The birdwatching app develped implemented basic function for bird speices detection and chat with agent about the bird species detected. More functionalities can be considered for futher steps.
 
-This two-stage inference chain aims to improve recognition coverage for rare species that are often missed by general models. The transfer learning component is designed to operate on BirdNET-generated embeddings, leveraging a lightweight classifier (e.g., MLP) trained specifically on local field data. Although the model is technically viable, integration into the app's backend is currently limited by package compatibility issues and the existing backend environment. Future work will focus on resolving these conflicts or converting the model to a more interoperable format (e.g., ONNX) to support seamless deployment.
+1. Extend the number of training species for transfer learning: current transfer learning model is trained with two real species. more data from other speices could be available 
+2. 
 
 
-**8.2 Other Topics**
+**8.2 Adaptation for Deployment to Edge or IoT Device**
 
-The team identified the following future tasks for development and testing:
+One of primary further goal of this project is to deploy the birdwatching app to edge devices located in remote national park for monitoring the bird species continuously as ecosystem perservation purpose. The edge or embedded device have limited source: power, computation and memory. SO we need to do some adaptations to enable this deployment. (1) software adaptation includes: lightweight container such as using minimal base image, only ship runtime dependencies. and (2) Replace GKE with k3s (lightweight kubernetes) for edge orchestration. and (3) Apply techniques to achieve low-power computation, such as select edge computer for efficient Tensorflow Lite model execution and use model with low-bit quantization to reduce compute load. 
 
-1. Update internal code baseline from using cheese to bird naming conventions
-2. Problem resolution of an intermittent error for the chat input resulting in an Axios error
-3. Implement CI/CD for multiple containers once we complete the lectures on this topic
+
+
+
+
 
 
