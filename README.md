@@ -143,16 +143,16 @@ Users can interact with the maps by zooming in/out and toggling between multiple
 
 The practice of regularly integrating code changes from multiple developers into a shared repository. The main goal is to detect integration issues early by automatically testing and building the code whenever a change is made. CI ensures that the codebase is always in a functional state.
 
-YONG CAN ADD HIS PORTION
 
 **CI Prerequisites:**
 - Developers satisfactorily complete all pylint(python), JSLint(JavaScript), Hadolint(Dockerfile), Black(formatter), and unit tests locally prior to commiting the code.
 
 **CI Setup/Instructions:**
 
-- Unit test (not activated)
-- GitHub action for integration test
-- Integration test
+- Unit test (see report instructions_for_unit_integration_test.pdf)
+- Integration test (see report instructions_for_unit_integration_test.pdf)
+- GitHub action for integration test (check action on the python-test.yml)
+
 
 **4.2 Prequistes and Setup for Deployment to GCP**
 
