@@ -394,54 +394,7 @@ Setup credentials in GitHub to perform the following functions in GCP:
 
 **Frontend & Backend Changes**
 
-A GitHub Action builds and deploys a new version of the app when a git commit has a comment `/deploy-app`
-
-* Open the file `src` / `api-service` / `api` / `service.py`
-* Update the version in line 29:
-```
-@app.get("/status")
-async def get_api_status():
-    return {
-        "version": "3.1",
-    }
-```
-* Open the file `src` / `frontend-react` / `src` / `services` / `Common.js`
-* Update the version in line 3:
-```
-export const APP_VERSION = 2.5;
-```
-
-To change the background color of the header in the frontend.
-* Open the file `src` / `frontend-react` / `src` / `components` / `layout` / `Header.jsx`
-* Update the background color to `bg-blue-900/90`:
-```
-className={`fixed w-full top-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-sky-700' : 'bg-transparent'
-```
-
-To run the deploy app action, add the following to code commit comment:
-**Do this outside the container**
-* Add `/deploy-app` to the commit message to re-deploy the frontend and backend 
-
-```
-git add .
-git commit -m "update frontend and backend version and header color /deploy-app"
-git push
-```
-
-Header before change:
-
-<img src="images/original_before_gitaction_update.png"  width="800">
-
-Header after change:
-
-<img src="images/header_color_title_change.png"  width="800">
-
-**ML Component Changes**
-
-To run Vertex AI Pipelines on code commits, add the following to code commit comment:
-* Add `/run-ml-pipeline` to the commit message to run the entire Vertex AI ML pipeline
-* Add `/run-data-collector` to the commit message to run the data collector ML pipeline
-* Add `/run-data-processor` to the commit message to run the data processor ML pipeline
+See the report for our example implementation of a GitHub Action.
 
 **View the App (If you have a domain)**
 1. Get your ingress IP:
