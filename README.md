@@ -394,7 +394,7 @@ Setup credentials in GitHub to perform the following functions in GCP:
 
 **Frontend & Backend Changes**
 
-See the /reports/CICD_and_Kubernetes_Scaling.pdf for our example implementation of a GitHub Action.
+See the [`reports/`](/reports/CICD_and_Kubernetes_Scaling.pdf) for our example implementation of a GitHub Action.
 
 **View the App (If you have a domain)**
 1. Get your ingress IP:
