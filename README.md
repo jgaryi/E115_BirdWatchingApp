@@ -530,21 +530,18 @@ The integration test will test the interaction between functions. In the integra
 
 ### 8. Future Works ####
 
-**8.1 Improve App Functionalities**
-
 The birdwatching app develped implemented basic function for bird speices detection and chat with agent about the bird species detected. More functionalities can be considered for futher steps.
 
-1. Extend the number of training species for transfer learning: current transfer learning model is trained with two real species. more data from other speices could be available to retrain the model and extend the model capabilty. 
-2. 
+1. Mobile responsive design: Since most users are likely to access the app via mobile devices, it's essential to make the application fully mobile-responsive. This includes optimizing both the frontend interface and backend systems to ensure a seamless mobile experience. 
 
+2. Multimodal inputs - both audio and image: Future development can integrate both audio detection and image recognition for more accurate bird species identification. Image inputs can be processed directly using APIs such as GPT or Gemini to enhance classification capabilities.
 
-**8.2 Adaptation for Deployment to Edge or IoT Device**
+3. Preprocessor to remove background noise in audio input: In practical scenarios, bird call recordings may include background noise from wind, water, or other environmental sounds. Implementing audio preprocessing techniques to filter out such noise could significantly improve model prediction accuracy.
 
-One of primary further goal of this project is to deploy the birdwatching app to edge devices located in remote national park for monitoring the bird species continuously as ecosystem perservation purpose. The edge or embedded device have limited source: power, computation and memory. SO we need to do some adaptations to enable this deployment. 
+4. Extend the number of training species for transfer learning: Currently, the transfer learning model supports only two rare bird species. With access to additional data, the model can be expanded to recognize a wider variety of rare species, increasing its utility and value. 
 
-1. software adaptation includes: lightweight container such as using minimal base image, only ship runtime dependencies.  
-2. Replace GKE with k3s (lightweight kubernetes) for edge orchestration.
-3. Apply techniques to achieve low-power computation, such as select edge computer for efficient Tensorflow Lite model execution and use model with low-bit quantization to reduce compute load. 
+5. Display the prediction confidence with spectrogram: For professional or research-oriented users, we could provide features such as 
+prediction confidence scores along with spectrogram visualizations. This tool would offer deeper insights into the acoustic characteristics of the bird calls and support more advanced analysis.
 
 
 
