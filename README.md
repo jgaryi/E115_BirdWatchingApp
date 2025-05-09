@@ -16,7 +16,6 @@
 │   └── workflows
 │       └── python-test.yml 
 │       └── deploy.yml 
-├── tests (see section 8 for explanation and full list)  
 ├── ansible   
 ├── kubernetes   
 ├── notebooks (see section 8 for explanation and full list)
@@ -55,9 +54,9 @@ This project leverages AI to support bird species identification, using Yanachag
 ### 5. Continuous Integration / Deployment (CI/CD)
 ##### a) Prerequisites and Setup Instructions   
 ##### b) Deployment Instructions    
-### 6. Potential Impact
+### 6. Impact
 ### 7. Next Steps / Future Work
-### 8. Supplementary Notebooks and Reports
+### 8. Notebooks and Reports
 <br><br>
 
 ----
@@ -338,7 +337,7 @@ We leverage GitHub Actions to automate our continuous integration and deployment
 See the [`reports/`](/reports/CICD_and_Kubernetes_Scaling.pdf) for our example implementation of a GitHub Action.
 
 
-## 6. Potential Impact
+## 6. Impact
 Our Bird Watching app is built to address a critical gap in eco-tourism and conservation: the lack of accessible tools for identifying and learning about unique bird species in remote, biodiverse regions. National parks in Peru and similar areas are home to hundreds of rare and endemic bird species, yet reliable, localized information about them is scarce—especially for tourists and casual observers.
 By transforming audio recordings into spectrograms and using AI to identify bird species, our app empowers travelers to explore the natural world around them with confidence, even in areas where traditional field guides or expert support are unavailable. This opens up a new level of interaction with nature, turning passive sightseeing into active, informed discovery.
 The app’s interactive maps, enriched with remote sensing data, help users navigate diverse habitats and locate bird hotspots in real-time, while the built-in LLM agent provides instant, context-aware answers to bird-related questions—from identifying species behaviors to understanding their ecological significance.
@@ -353,7 +352,7 @@ We are considering the following improvements to enhance the app’s functionali
  - Expanded Species Coverage: The current transfer learning model supports only two rare bird species. With additional training data, the model can be extended to recognize a broader range of rare species, increasing its overall utility and impact.
 -  Advanced Visualization Features: For professional and research-focused users, we could offer features such as prediction confidence scores combined with spectrogram visualizations. These tools would provide deeper insights into acoustic patterns and support more detailed analysis.
 
-## 8. Supplementary Notebooks/Reports ####
+## 8.  Notebooks and Reports ####
 This folder contains code that is not part of a container e.g., application mockup, EDA, any crucial insights, reports or visualizations.
 
 ### 8.1 Web Scrapping and Data Versioning
