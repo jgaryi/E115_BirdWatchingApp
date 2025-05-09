@@ -92,7 +92,7 @@ The app is structured into the following key sections:
     
 Users can interact with the maps by zooming in/out and toggling between multiple data layers, such as land cover classifications, deforestation patterns, and the boundaries of the protected area. These interactive features enable a deeper spatial understanding of bird habitats and environmental pressures within Yanachaga Chemillén National Park.
   
-<img src="images/Deforestation2.png"  width="400"><img src="images/Deforestation1.png"  width="400">
+<img src="images/Deforestation2.png"  width="400"><img src="images/Deforestation.png"  width="400">
   
 - **Audio Upload & Chat Interface**: Allows users to submit recordings and engage with the LLM-based chatbot to ask questions and receive context-aware information about the identified bird species and other bird information of their interest.
 
