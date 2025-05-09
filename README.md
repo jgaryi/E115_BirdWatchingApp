@@ -114,12 +114,13 @@ These tools offer a spatially rich perspective on the challenges and significanc
     - Upload bird call recordings for species identification
    
 <img src="images/BirdAssistant1.png"  width="800">
+
 <img src="images/BirdAssistant4.png"  width="800">
-   
-    - Submit text questions, or a combination of text and audio
-
-    - Engage in a conversation with a chatbot (Agent LLM)
-
+        
+    - Submit text questions, or a combination of text and audio    
+    
+    - Engage in a conversation with a chatbot (Agent LLM)    
+     
 <img src="images/BirdAssistant3.png"  width="800">
 
 
@@ -185,7 +186,7 @@ The Bird Assistant is an interactive feature that allows users to identify bird 
 The Bird Sound Explorer provides an audio-visual gallery of local and endemic birds from Yanachaga-Chemillén National Park, our pilot region in Peru. Each entry includes a high-quality image of the bird and a playable audio recording of its call. This feature is designed to help users familiarize themselves with the sounds and appearances of birds they may encounter in the field.
    
 Key features: 
-   - The primary functionality centers around integrating with a backend service that hosts a BirdNET-based acoustic model for species prediction and a large language model (LLM) acting as a bird expert assistant.
+- The primary functionality centers around integrating with a backend service that hosts a BirdNET-based acoustic model for species prediction and a large language model (LLM) acting as a bird expert assistant.
 - Users can record or upload bird vocalizations directly through the interface. These audio files are sent to the backend via a RESTful API, which returns prediction results indicating the most likely bird species to the LLM. The frontend then displays this information in a clear and accessible format, enabling users to further explore related content.
 
 
