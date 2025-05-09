@@ -11,13 +11,11 @@
 │   ├── api-service
 │   ├── birdnet_app
 │   ├── deployment
-│   └── frontendreact
+│   └── frontend-react
 ├── .github 
 │   └── workflows
 │       └── python-test.yml 
 │       └── deploy.yml 
-├── ansible   
-├── kubernetes   
 ├── notebooks (see section 8 for explanation and full list)
 ├── reports (see section 8 for explanation and full list)
 ```
