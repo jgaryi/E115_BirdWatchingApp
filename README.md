@@ -80,25 +80,25 @@ The app is structured into the following key sections:
 
 - **Home Page**: Offers an overview of the app’s capabilities and guides users to different features.
   
-#### PLACEHOLDER FOR ADDING GRAPH
+<img src="images/Frontend1.png"  width="800">
    
 - **Bird Sound Explorer**: A catalog of local bird species, complete with images and example vocalizations.
   
-#### PLACEHOLDER FOR ADDING GRAPH
+<img src="images/Frontend4.png"  width="800">
    
 - **Interactive Maps**: This section presents geospatial visualizations of ecological and environmental data, including historical bird sighting locations, habitat conditions (e.g., forest cover, deforestation), and biodiversity hotspots.
   
-#### PLACEHOLDER FOR ADDING GRAPH
+<img src="images/Frontend5.png"  width="800">
     
 Users can interact with the maps by zooming in/out and toggling between multiple data layers, such as land cover classifications, deforestation patterns, and the boundaries of the protected area. These interactive features enable a deeper spatial understanding of bird habitats and environmental pressures within Yanachaga Chemillén National Park.
   
-#### PLACEHOLDER FOR ADDING GRAPH
+<img src="images/Deforestation2.png"  width="400"><img src="images/Deforestation1.png"  width="400">
   
 - **Audio Upload & Chat Interface**: Allows users to submit recordings and engage with the LLM-based chatbot to ask questions and receive context-aware information about the identified bird species and other bird information of their interest.
 
   The interface allows uploading audios for bird identification:
 
-#### PLACEHOLDER FOR ADDING GRAPH
+<img src="images/Uploading Audio.png"  width="800">
     
   And getting expert information about birds:
       
@@ -108,13 +108,13 @@ Users can interact with the maps by zooming in/out and toggling between multiple
     
 The technical architecture of our BirdWatching app is outlined below, designed to integrate all core components efficiently while ensuring smooth operation across development, deployment, and user-facing functionality. 
         
-#### PLACEHOLDER FOR ADDING GRAPH
+<img src="images/technical-arch.png"  width="800">
 	  
 ### 3.1. Backend Implementation   
 
 The backend API is built using FastAPI and serves as the core interface between the frontend, the BirdNET model, and the LLM agent. It processes both audio and text inputs. The backend API further provides endpoints for checking model status and overall API health.
              
-#### PLACEHOLDER FOR ADDING GRAPH
+<img src="images/api-list.png"  width="800">
      
 The backend of our BirdWatching app consists of three core components that work together to identify bird species, manage data, and provide informative responses to user queries:
    
