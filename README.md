@@ -71,7 +71,7 @@ Remote, biodiverse places like many national parks in Peru are home to hundreds 
    
 Our solution is a BirdWatching app that uses AI to identify both common and rare species from spectrograms which are visual representations of bird sounds from audio recordings. It also features interactive maps with remote sensing data and includes a built-in LLM agent to answer bird-related questions.
    
-#### PLACEHOLDER FOR ADDING GRAPH
+<img src="images/Overall.png"  width="800">
 
 
 ## 2.   Usage Details
