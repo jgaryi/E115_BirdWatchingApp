@@ -84,7 +84,7 @@ The backend API is built using FastAPI and serves as the core interface between 
 
 **2.1. Acoustic Model for Bird Species Identification**
 
-The acoustic model BirdNET is used for identification of bird species by audio recording. The frontend allows an audio file to be uploaded, and the backend api ```llm_cnn_chat``` saves the file in a temperory path and passes the temp file path to the BirdNET model for prediction. 
+The acoustic model BirdNET is used for identification of bird species by audio recording. The frontend allows an audio file to be uploaded, and the backend api ```llm_cnn_chat``` saves the file in a temperory path and passes the temp file path to the BirdNET model for prediction. If the prediction confidence is low, the audio bytes will be passed to transfer learning model to check if it is one of rare species.
 Key features: 
 -   No preprocessing on audio file is required: The BirdNET model uses its built-in preprocessor to chunk the input audio into fixed length (3 or 5 seconds) pieces, and converts each of the small pieces into a spectrogram as an image input to a neural network in BirdNET.
 -   Multiple audio formats supported: supports not only .mp3 and .wav, but also .flac
