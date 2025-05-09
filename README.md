@@ -78,7 +78,7 @@ Our solution is a BirdWatching app that uses AI to identify both common and rare
 
 The BirdWatching app was developed using Yanachaga-Chemillén National Park in Peru as a case study and is designed to provide users with an interactive, informative experience. The app is organized into the following key sections, each aimed at enhancing user engagement with local bird species and their ecological context:  
 
-- **Home Page**: Provides an overview of the app’s features and serves as the main navigation hub. It introduces users to the app’s core capabilities and links them to the different tools available for exploring bird species and their environments.
+- **Home Page**: Provides an overview of the app’s features and serves as the main navigation hub. It introduces users to the app’s core capabilities and links them to the different pages available for exploring bird species and their environments.
   
 <img src="images/Frontend1.png"  width="800">
    
@@ -112,16 +112,21 @@ These tools offer a spatially rich perspective on the challenges and significanc
 - **Audio Upload & Chat Interface**: allows users to interact directly with the app through audio and/or text. Users can:
 
     - Upload bird call recordings for species identification
-
+   
+<img src="images/BirdAssistant1.png"  width="800">
+<img src="images/BirdAssistant4.png"  width="800">
+   
     - Submit text questions, or a combination of text and audio
 
     - Engage in a conversation with a chatbot (Agent LLM)
 
-<img src="images/BirdAssistant1.png"  width="800">
+<img src="images/BirdAssistant3.png"  width="800">
+
 
 The chatbot provides context-aware responses about bird species, including their behavior, habitat, conservation status, among others. The system retains memory of previous interactions, enabling users to refer back to earlier questions or follow up for deeper insights.
 
-<img src="images/BirdAssistant3.png"  width="800">
+<img src="images/BirdAssistant5.png"  width="800">
+
     
 
   
