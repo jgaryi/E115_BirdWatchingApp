@@ -90,7 +90,7 @@ The BirdWatching app was developed using Yanachaga-Chemillén National Park in P
  
 This feature is particularly useful for tourists, educators, and amateur birdwatchers preparing for field visits.
  
-	<img src="images/Frontend4.png"  width="800">
+<img src="images/Frontend4.png"  width="800">
    
 - **Interactive Maps**: presents geospatial visualizations of ecological and environmental data, helping users understand bird habitats and broader conservation contexts. Features include:
 
@@ -105,7 +105,7 @@ This feature is particularly useful for tourists, educators, and amateur birdwat
     
 Users can interact with the maps by zooming in/out and toggling between multiple data layers, such as land cover classifications, deforestation patterns, and the boundaries of the protected area. These interactive features enable a deeper spatial understanding of bird habitats and environmental pressures within Yanachaga Chemillén National Park.
   
-	<img src="images/Deforestation2.png"  width="400"><img src="images/Deforestation.png"  width="400">
+<img src="images/Deforestation2.png"  width="400"><img src="images/Deforestation.png"  width="400">
    
 These tools offer a spatially rich perspective on the challenges and significance of habitat conservation within the park.
    
