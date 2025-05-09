@@ -396,6 +396,15 @@ Three interactive maps provide complementary geospatial insights into the biodiv
 - **InteractiveMapBiodiversity.ipynb**: Highlights global biodiversity hotspots with a focus on the Tropical Andes, showing the park’s placement within a major conservation priority zone
 
 ### 8.5. Linters
+Pylint, ESLint, and Hadolint were used to ensure code quality across the backend, frontend, and Docker configuration. Pylint helped enforce PEP 8 standards and catch common Python issues such as unused imports and undefined variables. ESLint was applied to the React-based frontend to detect syntax issues and maintain best practices in JavaScript. Hadolint was used to evaluate Dockerfiles for security and efficiency. While Pylint flagged several areas for improvement, ESLint and Hadolint did not reveal major errors. Their suggestions will be considered in future iterations of the app. The results from all tools are included in the reports.
+   
+**Files:**
+- **PylintCurrentResultsForApp.pdf**: pylint results of current python code
+  
+- **HadolintCurrentResultsApp.pdf**: Hadolint results of current dockerfile code
+  
+- **ESlintCurrentResultsApp.pdf**: ESlint results of current frontend code (JavaScript)
+    
 
 ### 8.6. Unit Test
 The unit test will test each individual functions in birdnet_app container in isolation with mocked dependencies. In the unit test, we use simulated audio input instead of real one. Below are all test cases in unit test, and the instruction to run unit test is shown in the report listed below. 
@@ -429,7 +438,7 @@ The integration test will test the interaction between functions. In the integra
 The slides of the final presentation in pdf.
    
 **File:**  
-- Final_presentation_pdf
+- **Final_presentation_pdf**
 
 
 
