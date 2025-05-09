@@ -19,6 +19,7 @@
 ├── tests (python files of unit and integrations tests)
 ├── notebooks (see section 8 for explanation and full list)
 ├── reports (see section 8 for explanation and full list)
+├── references
 ```
 
 **Team Members:** Jaqueline Garcia-Yi, Susan Urban, Yong Li, and Victoria Okereke
