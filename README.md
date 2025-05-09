@@ -117,9 +117,11 @@ These tools offer a spatially rich perspective on the challenges and significanc
 
     - Engage in a conversation with a chatbot (Agent LLM)
 
+<img src="images/BirdAssistant1.png"  width="800">
+
 The chatbot provides context-aware responses about bird species, including their behavior, habitat, conservation status, among others. The system retains memory of previous interactions, enabling users to refer back to earlier questions or follow up for deeper insights.
 
-<img src="images/Uploading Audio.png"  width="800">
+<img src="images/BirdAssistant3.png"  width="800">
     
 
   
