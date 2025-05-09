@@ -226,18 +226,7 @@ For production scalability and fault tolerance, we also deploy the application u
 
 This is how the various services communicate between each other in the Kubernetes cluster.
 
-```mermaid
-graph LR
-    B[Browser] -->|nginx-ip.sslip.io/| I[Ingress Controller]
-    I -->|/| F[Frontend Service<br/>NodePort:3000]
-    I -->|/api/| A[API Service<br/>NodePort:9000]
-    A -->|vector-db:8000| V[Vector-DB Service<br/>NodePort:8000]
-
-    style I fill:#lightblue
-    style F fill:#lightgreen
-    style A fill:#lightgreen
-    style V fill:#lightgreen
-```
+<img src="images/kubernetes_image.png"  width="800">
 
 The Kubernetes deployment workflow includes:    
 
