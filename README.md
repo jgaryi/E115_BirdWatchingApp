@@ -92,23 +92,36 @@ This feature is particularly useful for tourists, educators, and amateur birdwat
  
 <img src="images/Frontend4.png"  width="800">
    
-- **Interactive Maps**: This section presents geospatial visualizations of ecological and environmental data, including historical bird sighting locations, habitat conditions (e.g., forest cover, deforestation), and biodiversity hotspots.
+- **Interactive Maps**: presents geospatial visualizations of ecological and environmental data, helping users understand bird habitats and broader conservation contexts. Features include:
+
+    - Species previous sighting locations
+
+    - Deforestation maps showing forest cover loss
+
+    - Biodiversity hotspot overlays indicating areas of high ecological value
+
   
 <img src="images/Frontend5.png"  width="800">
     
 Users can interact with the maps by zooming in/out and toggling between multiple data layers, such as land cover classifications, deforestation patterns, and the boundaries of the protected area. These interactive features enable a deeper spatial understanding of bird habitats and environmental pressures within Yanachaga Chemillén National Park.
   
 <img src="images/Deforestation2.png"  width="400"><img src="images/Deforestation.png"  width="400">
-  
-- **Audio Upload & Chat Interface**: Allows users to submit recordings and engage with the LLM-based chatbot to ask questions and receive context-aware information about the identified bird species and other bird information of their interest.
+   
+These tools offer a spatially rich perspective on the challenges and significance of habitat conservation within the park.
+   
+- **Audio Upload & Chat Interface**: allows users to interact directly with the app through audio and/or text. Users can:
 
-  The interface allows uploading audios for bird identification:
+    - Upload bird call recordings for species identification
+
+    - Submit text questions, or a combination of text and audio
+
+    - Engage in a conversation with a chatbot (Agent LLM)
+
+The chatbot provides context-aware responses about bird species, including their behavior, habitat, conservation status, among others. The system retains memory of previous interactions, enabling users to refer back to earlier questions or follow up for deeper insights.
 
 <img src="images/Uploading Audio.png"  width="800">
     
-  And getting expert information about birds:
-      
-#### PLACEHOLDER FOR ADDING GRAPH
+
   
 ## 3.   Technical Approach
     
