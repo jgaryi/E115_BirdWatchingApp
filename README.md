@@ -76,14 +76,20 @@ Our solution is a BirdWatching app that uses AI to identify both common and rare
 
 ## 2.   Usage Details
 
-The app is structured into the following key sections:
+The BirdWatching app was developed using Yanachaga-Chemillén National Park in Peru as a case study and is designed to provide users with an interactive, informative experience. The app is organized into the following key sections, each aimed at enhancing user engagement with local bird species and their ecological context:  
 
-- **Home Page**: Offers an overview of the app’s capabilities and guides users to different features.
+- **Home Page**: Provides an overview of the app’s features and serves as the main navigation hub. It introduces users to the app’s core capabilities and links them to the different tools available for exploring bird species and their environments.
   
 <img src="images/Frontend1.png"  width="800">
    
-- **Bird Sound Explorer**: A catalog of local bird species, complete with images and example vocalizations.
-  
+- **Bird Sound Explorer**: functions as a curated catalog of local bird species from Yanachaga-Chemillén National Park. Each entry includes:
+
+    - A high-quality image of the bird
+
+    - A playable audio recording of its call
+ 
+This feature is particularly useful for tourists, educators, and amateur birdwatchers preparing for field visits.
+ 
 <img src="images/Frontend4.png"  width="800">
    
 - **Interactive Maps**: This section presents geospatial visualizations of ecological and environmental data, including historical bird sighting locations, habitat conditions (e.g., forest cover, deforestation), and biodiversity hotspots.
