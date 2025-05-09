@@ -527,7 +527,7 @@ The integration test will test the interaction between functions. In the integra
 
 - **instructions_for_unit_integration_test.pdf**: Explain the unit test in details and the instructions to run the test_integration.py by pytest.
 
-### 8. Future Works ####
+### 8. Future Work ####
 
 The birdwatching app develped implemented basic function for bird speices detection and chat with agent about the bird species detected. More functionalities can be considered for futher steps.
 
