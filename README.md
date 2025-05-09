@@ -15,7 +15,8 @@
 ├── .github 
 │   └── workflows
 │       └── python-test.yml 
-│       └── deploy.yml 
+│       └── deploy.yml
+├── tests (python files of unit and integrations tests)
 ├── notebooks (see section 8 for explanation and full list)
 ├── reports (see section 8 for explanation and full list)
 ```
