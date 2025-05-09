@@ -80,7 +80,7 @@ The BirdWatching app was developed using Yanachaga-Chemillén National Park in P
 
 - **Home Page**: Provides an overview of the app’s features and serves as the main navigation hub. It introduces users to the app’s core capabilities and links them to the different pages available for exploring bird species and their environments.
   
-<img src="images/Frontend1.png"  width="800">
+	<img src="images/Frontend1.png"  width="800">
    
 - **Bird Sound Explorer**: functions as a curated catalog of local bird species from Yanachaga-Chemillén National Park. Each entry includes:
 
@@ -90,7 +90,7 @@ The BirdWatching app was developed using Yanachaga-Chemillén National Park in P
  
 This feature is particularly useful for tourists, educators, and amateur birdwatchers preparing for field visits.
  
-<img src="images/Frontend4.png"  width="800">
+	<img src="images/Frontend4.png"  width="800">
    
 - **Interactive Maps**: presents geospatial visualizations of ecological and environmental data, helping users understand bird habitats and broader conservation contexts. Features include:
 
@@ -101,11 +101,11 @@ This feature is particularly useful for tourists, educators, and amateur birdwat
     - Biodiversity hotspot overlays indicating areas of high ecological value
 
   
-<img src="images/Frontend5.png"  width="800">
+	<img src="images/Frontend5.png"  width="800">
     
 Users can interact with the maps by zooming in/out and toggling between multiple data layers, such as land cover classifications, deforestation patterns, and the boundaries of the protected area. These interactive features enable a deeper spatial understanding of bird habitats and environmental pressures within Yanachaga Chemillén National Park.
   
-<img src="images/Deforestation2.png"  width="400"><img src="images/Deforestation.png"  width="400">
+	<img src="images/Deforestation2.png"  width="400"><img src="images/Deforestation.png"  width="400">
    
 These tools offer a spatially rich perspective on the challenges and significance of habitat conservation within the park.
    
@@ -126,7 +126,7 @@ These tools offer a spatially rich perspective on the challenges and significanc
 
 The chatbot provides context-aware responses about bird species, including their behavior, habitat, conservation status, among others. The system retains memory of previous interactions, enabling users to refer back to earlier questions or follow up for deeper insights.
 
-<img src="images/BirdAssistant5.png"  width="800">
+	<img src="images/BirdAssistant5.png"  width="800">
 
     
 
