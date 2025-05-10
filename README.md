@@ -69,7 +69,7 @@ Remote, biodiverse places like many national parks in Peru are home to hundreds 
 
 ### 1.2.   Solution   
    
-Our solution is a BirdWatching app that uses AI to identify both common and rare species from spectrograms which are visual representations of bird sounds from audio recordings. It also features interactive maps with remote sensing data and includes a built-in LLM agent to answer bird-related questions.
+Our solution is a BirdWatching app that uses AI to identify both common and rare species from spectrograms, which are visual representations of bird sounds from audio recordings. It also features interactive maps with remote sensing data and includes a built-in LLM agent to answer bird-related questions.
    
 <img src="images/Overall.png"  width="800">
 
@@ -157,7 +157,6 @@ Key features:
 -   No preprocessing on audio file is required: The BirdNET model uses its built-in preprocessor to chunk the input audio into fixed length (3 or 5 seconds) pieces, and converts each of the small pieces into a spectrogram as an image input to a neural network in BirdNET.
 -   Multiple audio formats supported: supports not only .mp3 and .wav, but also .flac
 -   Long recording supported: for an audio recording longer than a fixed chunk length, the BirdNET model will generate embeddings and make a prediction on each chunk of data. The audio file size limition is 5MB.
--   Enhanced accuracy with longer data: The prediction on each data chunk is averaged on each species over all chunks. The results are ranked to obtain the prediction with the highest confidence. 
 -   Augmented with text query: The api answers a question either when the audio is uploaded or after the model prediction.  The audio input about the species relates to habitat preferences, feeding behaviors and dietary needs, breeding cycles and nesting habits, conservation strategies and threats. 
 
     
@@ -358,7 +357,7 @@ Our Bird Watching app is built to address a critical gap in eco-tourism and cons
 By transforming audio recordings into spectrograms and using AI to identify bird species, our app empowers travelers to explore the natural world around them with confidence, even in areas where traditional field guides or expert support are unavailable. This opens up a new level of interaction with nature, turning passive sightseeing into active, informed discovery.
 The app’s interactive maps, enriched with remote sensing data, help users navigate diverse habitats and locate bird hotspots in real-time, while the built-in LLM agent provides instant, context-aware answers to bird-related questions—from identifying species behaviors to understanding their ecological significance.
 Beyond personal enrichment, the app has significant value for local guides, educators, and conservationists, offering a powerful, accessible tool to enhance tours, support environmental education, and even contribute observational data for research and biodiversity monitoring.
-By making advanced bird identification technology available on a smartphone, our app helps bridge the gap between nature and technology—turning remote, under-documented ecosystems into spaces of discovery, learning, and conservation for a broader global audience.
+By making advanced bird identification technology available, our app helps bridge the gap between nature and technology—turning remote, under-documented ecosystems into spaces of discovery, learning, and conservation for a broader global audience.
 
 ## 7. Next Steps / Future Work
 We are considering the following improvements to enhance the app’s functionality and better user experience:
