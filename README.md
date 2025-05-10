@@ -126,7 +126,7 @@ These tools offer a spatially rich perspective on the challenges and significanc
 
 The chatbot provides context-aware responses about bird species, including their behavior, habitat, conservation status, among others. The system retains memory of previous interactions, enabling users to refer back to earlier questions or follow up for deeper insights.
 
-	<img src="images/BirdAssistant5.png"  width="800">
+<img src="images/BirdAssistant5.png"  width="800">
 
     
 
