@@ -1,0 +1,63 @@
+name: Continuous Integration and Continuous Deployment
+run-name: ${{ github.actor }} submitted a CI/CD Action
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  deploy:
+    if: contains(github.event.head_commit.message, '/deploy-app')
+    runs-on: ubuntu-latest
+
+    env:
+      GCP_PROJECT: gen-lang-client-0083231133
+      CLUSTER_NAME: bird-app-cluster
+      CLUSTER_LOCATION: us-east1-c
+      NAMESPACE: bird-app-cluster-namespace
+      FRONTEND_IMAGE: gcr.io/gen-lang-client-0083231133/bird-app-frontend-react
+
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v4
+
+      - name: Authenticate to GCP
+        uses: google-github-actions/auth@v1
+        with:
+          credentials_json: '${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}'
+
+      - name: Set up gcloud
+        uses: google-github-actions/setup-gcloud@v1
+
+      - name: Configure Docker for GCR
+        run: gcloud auth configure-docker
+
+      - name: Build & Push Frontend Image
+        run: |
+          TAG=$(date +%Y%m%d%H%M%S)
+          echo "🔖 Building and pushing frontend image with tag: $TAG"
+          docker build -t $FRONTEND_IMAGE:$TAG src/frontend-react
+          docker push   $FRONTEND_IMAGE:$TAG
+          echo "FRONTEND_TAG=$TAG" >> $GITHUB_ENV
+
+      - name: Install kubectl
+        run: gcloud components install kubectl --quiet
+
+      - name: Get GKE credentials
+        run: |
+          gcloud container clusters get-credentials $CLUSTER_NAME \
+            --zone $CLUSTER_LOCATION \
+            --project $GCP_PROJECT
+
+      - name: Update Frontend Deployment
+        run: |
+          kubectl set image deployment/frontend \
+            frontend=$FRONTEND_IMAGE:$FRONTEND_TAG \
+            -n $NAMESPACE
+
+      - name: Verify Deployed Image
+        run: |
+          echo "Deployed image is:"
+          kubectl get deployment frontend \
+            -n $NAMESPACE \
+            -o=jsonpath='{.spec.template.spec.containers[0].image}'

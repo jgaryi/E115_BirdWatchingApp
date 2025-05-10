@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_d14d7d84eea4915cce9af1ee85511c74 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+</head>
+<body>
+    
+    
+<div style="
+  position: fixed;
+  bottom: 30px;
+  right: 10px;
+  z-index:9999;
+  background-color:white;
+  padding:10px;
+  border:2px solid gray;
+  font-size:12px;
+  box-shadow:2px 2px 6px rgba(0,0,0,0.3);
+  max-height:300px;
+  overflow:auto;
+">
+<b>Legend</b><br>
+<div><span style="background:#A3CC99;width:12px;height:12px;display:inline-block;"></span> Trees</div>
+<div><span style="background:#ffbb22;width:12px;height:12px;display:inline-block;"></span> Shrubland</div>
+<div><span style="background:#ffff4c;width:12px;height:12px;display:inline-block;"></span> Grassland</div>
+<div><span style="background:#f096ff;width:12px;height:12px;display:inline-block;"></span> Cropland</div>
+<div><span style="background:#8B4513;width:12px;height:12px;display:inline-block;"></span> Built-up</div>
+<div><span style="background:#b4b4b4;width:12px;height:12px;display:inline-block;"></span> Bare</div>
+<div><span style="background:#0032c8;width:12px;height:12px;display:inline-block;"></span> Water</div>
+<div><span style="background:#ff0000;width:12px;height:12px;display:inline-block;"></span> Forest Loss</div>
+<div><span style="background:#000000;width:12px;height:12px;display:inline-block;"></span> Protected Area</div>
+</div>
+    
+            <div class="folium-map" id="map_d14d7d84eea4915cce9af1ee85511c74" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_d14d7d84eea4915cce9af1ee85511c74 = L.map(
+                "map_d14d7d84eea4915cce9af1ee85511c74",
+                {
+                    center: [-10.369959499186276, -75.40291643107972],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 10,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_7c53e7e4d9ac05350f2eb82be1cba395 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_7c53e7e4d9ac05350f2eb82be1cba395.addTo(map_d14d7d84eea4915cce9af1ee85511c74);
+        
+    
+            var tile_layer_703449d923e06bd06d4fca93716b834e = L.tileLayer(
+                "https://earthengine.googleapis.com/v1/projects/class2-449500/maps/1de74546cbf4465a5caa31bdfa81d6e9-f6f7fb067d6fb2b6f59c3a967ff98525/tiles/{z}/{x}/{y}",
+                {
+  "minZoom": 0,
+  "maxZoom": 18,
+  "maxNativeZoom": 18,
+  "noWrap": false,
+  "attribution": "ESA WorldCover",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_703449d923e06bd06d4fca93716b834e.addTo(map_d14d7d84eea4915cce9af1ee85511c74);
+        
+    
+            var tile_layer_3a924b8de997c913014c94e079382ef9 = L.tileLayer(
+                "https://earthengine.googleapis.com/v1/projects/class2-449500/maps/b4f87de8c421c15d302220b84f2671a4-dd0a8746898755a3b18ca20ada4e52d8/tiles/{z}/{x}/{y}",
+                {
+  "minZoom": 0,
+  "maxZoom": 18,
+  "maxNativeZoom": 18,
+  "noWrap": false,
+  "attribution": "Hansen Forest Loss",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_3a924b8de997c913014c94e079382ef9.addTo(map_d14d7d84eea4915cce9af1ee85511c74);
+        
+    
+            var tile_layer_4572318858ce732ee0c94e97ff795e05 = L.tileLayer(
+                "https://earthengine.googleapis.com/v1/projects/class2-449500/maps/ee60a3c5f5f853140d1a6a7564f564ef-ae249dba69c4631ac7f534aae8a94ea2/tiles/{z}/{x}/{y}",
+                {
+  "minZoom": 0,
+  "maxZoom": 18,
+  "maxNativeZoom": 18,
+  "noWrap": false,
+  "attribution": "Boundary",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_4572318858ce732ee0c94e97ff795e05.addTo(map_d14d7d84eea4915cce9af1ee85511c74);
+        
+    
+            var layer_control_34f91529a09bf849164e6273a633baab_layers = {
+                base_layers : {
+                    "openstreetmap" : tile_layer_7c53e7e4d9ac05350f2eb82be1cba395,
+                },
+                overlays :  {
+                    "Land Cover" : tile_layer_703449d923e06bd06d4fca93716b834e,
+                    "Forest Loss" : tile_layer_3a924b8de997c913014c94e079382ef9,
+                    "Protected Area" : tile_layer_4572318858ce732ee0c94e97ff795e05,
+                },
+            };
+            let layer_control_34f91529a09bf849164e6273a633baab = L.control.layers(
+                layer_control_34f91529a09bf849164e6273a633baab_layers.base_layers,
+                layer_control_34f91529a09bf849164e6273a633baab_layers.overlays,
+                {
+  "position": "topright",
+  "collapsed": true,
+  "autoZIndex": true,
+}
+            ).addTo(map_d14d7d84eea4915cce9af1ee85511c74);
+
+        
+    
+            tile_layer_7c53e7e4d9ac05350f2eb82be1cba395.addTo(map_d14d7d84eea4915cce9af1ee85511c74);
+        
+    
+            tile_layer_703449d923e06bd06d4fca93716b834e.addTo(map_d14d7d84eea4915cce9af1ee85511c74);
+        
+    
+            tile_layer_3a924b8de997c913014c94e079382ef9.addTo(map_d14d7d84eea4915cce9af1ee85511c74);
+        
+    
+            tile_layer_4572318858ce732ee0c94e97ff795e05.addTo(map_d14d7d84eea4915cce9af1ee85511c74);
+        
+</script>
+</html>

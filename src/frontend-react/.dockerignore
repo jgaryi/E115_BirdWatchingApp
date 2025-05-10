@@ -1,0 +1,17 @@
+# Dependency directories
+node_modules
+.next
+
+# OS / editor junk
+.DS_Store
+.eslintcache
+
+# Local environment overrides
+env.local
+
+# Misc
+scratch.txt
+
+# Git stuff
+.git
+.gitignore

@@ -1,0 +1,103 @@
+name: Python Tests
+
+on:
+  push:
+    branches: [ yong ]
+  pull_request:
+    branches: [ yong ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.11"]
+
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ matrix.python-version }}
+
+    - name: Install FFmpeg
+      run: sudo apt-get install -y ffmpeg
+    
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install pytest pytest-cov httpx
+        # Install BirdNET dependencies
+        pip install \
+        birdnetlib \
+        librosa==0.9.2 \
+        pydub \
+        numpy==1.24.4 \
+        joblib \
+        fastapi \
+        uvicorn \
+        python-multipart \
+        resampy \
+        tensorflow==2.15.0 
+          
+    # - name: Run Unit Tests
+    #   run: |
+    #     pytest tests/test_unit.py -v \
+    #           --cov=bird \
+    #           --cov-report=xml:unit-coverage.xml \
+    #           --cov-report=term
+      
+    # - name: Run Integration Tests
+    #   run: |
+    #     pytest tests/test_integration.py -v \
+    #           --cov=bird \
+    #           --cov-append \
+    #           --cov-report=xml:integration-coverage.xml \
+    #           --cov-report=term
+
+    - name: Run Tests with Coverage
+      run: |
+        # Run all tests with single coverage command
+        python -m pytest tests/ -v -s \
+          --cov=bird \
+          --cov-report=xml:coverage.xml \
+          --cov-report=term
+        
+        # Debug: Show coverage file
+        head -n 20 coverage.xml
+        ls -la
+
+      env:
+        # Add any required environment variables for integration tests
+        TEST_AUDIO_PATH: "test.mp3"
+      
+    # - name: Combine Coverage Reports
+    #   run: |
+    #     pip install coverage
+    #     # First convert XML reports to coverage's native format
+    #     python -m coverage xml -i unit-coverage.xml --data-file=.coverage.unit
+    #     python -m coverage xml -i integration-coverage.xml --data-file=.coverage.integration
+    
+    #     # Combine all coverage data
+    #     python -m coverage combine .coverage*
+    
+    #     # Generate final XML report
+    #     python -m coverage xml -o combined-coverage.xml
+    
+    #     # Debug: Show coverage summary and files
+    #     python -m coverage report
+    #     ls -la
+      
+    # - name: Upload Coverage to Codecov
+    #   uses: codecov/codecov-action@v3
+    #   with:
+    #     file: ./combined-coverage.xml
+    #     flags: unittests
+    #     name: codecov-umbrella
+    #     fail_ci_if_error: true
+        
+    - name: Upload Coverage to Codecov
+      uses: codecov/codecov-action@v3
+      with:
+        file: coverage.xml
